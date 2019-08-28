@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 //--------models-----------
 use Modules\Theme\Services\ThemeService;
 //--- extends ---
-use Modules\Extend\Traits\ArtisanTrait;
+use Modules\Xot\Traits\ArtisanTrait;
 //--- services
 use Modules\Geo\Models\GeoNamesCap;
 

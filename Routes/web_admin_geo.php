@@ -2,7 +2,7 @@
 
 
 
-use Modules\Extend\Library\XOT;
+use Modules\Xot\Library\XOT;
 
 $namespace = $this->getNamespace().'\Controllers'.'\Admin';
 $pack = class_basename($this->getNamespace());

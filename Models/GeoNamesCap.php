@@ -6,7 +6,7 @@ namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 
 /**
  * { item_description }

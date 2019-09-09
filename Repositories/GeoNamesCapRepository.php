@@ -1,12 +1,13 @@
 <?php
+
 namespace Modules\Geo\Repositories;
 
 //---base
 use Modules\Xot\Repositories\XotBaseRepository;
 
-class GeoNamesCapRepository extends XotBaseRepository{
+class GeoNamesCapRepository extends XotBaseRepository {
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */

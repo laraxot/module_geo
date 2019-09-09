@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Modules\Xot\Library\XOT;
 
 $namespace = $this->getNamespace().'\Controllers'.'\Admin';

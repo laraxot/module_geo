@@ -1,22 +1,18 @@
 <?php
 
-
-
 namespace Modules\Geo\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //--------models-----------
-use Modules\Theme\Services\ThemeService;
-//--- extends ---
-use Modules\Xot\Traits\ArtisanTrait;
-//--- services
 use Modules\Geo\Models\GeoNamesCap;
+//--- extends ---
+use Modules\Theme\Services\ThemeService;
+//--- services
+use Modules\Xot\Traits\ArtisanTrait;
 
-class GeoController extends Controller
-{
-    public function index(Request $request)
-    {
+class GeoController extends Controller {
+    public function index(Request $request) {
         if (1 == $request->routelist) {
             return ArtisanTrait::exe('route:list');
         }
@@ -26,8 +22,7 @@ class GeoController extends Controller
         return view($view)->with('rows', $rows);
     }
 
-    public function show(Request $request)
-    {
+    public function show(Request $request) {
         //$this->authorize('view', $post);
         //return view('blog::posts.show', ['post' => $post]);
         $params = \Route::current()->parameters();
@@ -37,8 +32,7 @@ class GeoController extends Controller
         return view($view)->with('row', $row);
     }
 
-    public function latlong(Request $request)
-    {
+    public function latlong(Request $request) {
         $params = \Route::current()->parameters();
         \extract($params);
         $orderby = '(('.$lat.'-latitude)*('.$lat.'-latitude))+(('.$long.'-longitude)*('.$long.'-longitude))';

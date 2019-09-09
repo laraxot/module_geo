@@ -1,6 +1,5 @@
 <?php
 
-
 use Modules\Xot\library\XOT;
 
 $namespace = $this->getNamespace().'\Controllers';

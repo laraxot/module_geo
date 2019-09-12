@@ -24,3 +24,7 @@ https://www.solodev.com/blog/web-design/adding-an-auto-complete-address-field-to
 
 !!!!!!!!!! SKEIII !!!!!!!!!
 https://laraveldaily.com/laravel-find-addresses-with-coordinates-via-google-maps-api/
+
+
+
+https://www.parthpatel.net/nearby-places-using-latitude-and-longitude-in-laravel-5/

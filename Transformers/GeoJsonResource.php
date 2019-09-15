@@ -15,8 +15,9 @@ class GeoJsonResource extends JsonResource{
         return [
         	'type'=>'Feature',
         	'properties'=>[
-        		'p'=>'vending_machine',
-        		'id'=>'node/31605830',
+        		'p'=>$this->post_type,
+        		'id'=>$this->post_id,
+                'url'=>'/'.$this->lang.'/'.$this->post_type.'/'.$this->guid,
         	],
         	'geometry'=>[
             	'type' => 'Point',

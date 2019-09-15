@@ -28,18 +28,21 @@ var farmMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'green-light',
     shape: 'square',
+    prefix: 'fa',
 });
 
 var machineMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'cyan',
-    shape: 'square'
+    shape: 'square',
+    prefix: 'fa',
 });
 
 var beekeeperMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'yellow',
-    shape: 'square'
+    shape: 'square',
+    prefix: 'fa'
 });
 
 var marketMarker = L.ExtraMarkers.icon({
@@ -53,7 +56,8 @@ var blackMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'black',
     shape: 'circle',
-    number: '?'
+    number: '?',
+    prefix: 'fa',
 });
 
 
@@ -100,9 +104,15 @@ function showMarker($data){
 
     onEachFeature: function onEachFeature(feature, layer) {
         layer.once("click", function () {
+            /*
             $.getJSON('../data/' + feature.properties.id + '/details.json', function (data) {
                 layer.bindPopup(popupcontent(data, layer)).openPopup();
             });
+            */
+            $.getJSON(feature.properties.url + '?format=json', function (data) {
+                layer.bindPopup(popupcontent(data, layer)).openPopup();
+            });
+
         });
     }
 }).addLayer(tiles);
@@ -146,7 +156,7 @@ var markers = L.markerClusterGroup({
 
               function farmsAreInCluster (farmsInCluster) {
                   if (farmsInCluster) {
-                      return "<img src='img/hof.png' style='height: 14px;'> "
+                      return "<img src='../img/hof.png' style='height: 14px;'> "
                   }
                   else {
                       return ""
@@ -155,7 +165,7 @@ var markers = L.markerClusterGroup({
 
               function marketsAreInCluster (marketsInCluster) {
                 if (marketsInCluster) {
-                    return "<img src='img/markt.png' style='height: 14px;'> "
+                    return "<img src='../img/markt.png' style='height: 14px;'> "
                 }
                 else {
                     return ""
@@ -164,7 +174,7 @@ var markers = L.markerClusterGroup({
 
             function beekeepersAreInCluster (beekeepersInCluster) {
                 if (beekeepersInCluster) {
-                    return "<img src='img/imker.png' style='height: 14px;'> "
+                    return "<img src='../img/imker.png' style='height: 14px;'> "
                 }
                 else {
                     return ""
@@ -173,7 +183,7 @@ var markers = L.markerClusterGroup({
 
             function machinesAreInCluster (machinesInCluster) {
                 if (machinesInCluster) {
-                    return "<img src='img/automat.png' style='height: 14px;'> "
+                    return "<img src='../img/automat.png' style='height: 14px;'> "
                 }
                 else {
                     return ""

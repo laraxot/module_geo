@@ -11,5 +11,5 @@ function popupcontent(feature, layer) {
 				</div>
 				<a class="wwone__map-infobox__inner__btn btn" href="##url##" target="_blank">View &raquo;</a>
 			</div>`;
-	return customPopup;
+	return customPopup; 
 }

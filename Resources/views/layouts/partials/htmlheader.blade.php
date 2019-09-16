@@ -1,4 +1,6 @@
 <head>
+    {!! Theme::metatags() !!}
+    {{--
     <link rel="shortcut icon" href="icons/favicon.ico">
     <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96">
@@ -14,6 +16,7 @@
     />
     <meta name="keywords" content="Hofladen, Hofläden, Bauernladen, Direktvermarkter, Verkauf ab Hof, Karte, Map, Farmshops, Bauernladen, Openstreetmap, Biologisch, Lokales Essen, Milchautomat, Eierautomat, Essensautomat, Open Knowledge, Freies Wissen, OKFN, Code for Karlsruhe, Code for Germany, Deutschland, Schweiz, Österreich"
     />
+    --}}
     {{--
     <link href="css/leaflet.css" type="text/css" rel=stylesheet>
     <link rel="stylesheet" href="css/leaflet-sidebar.css" />
@@ -36,6 +39,7 @@
         }
     @endphp
     {!! Theme::showStyles(false) !!}
+    {{--
     <title>farmshops.eu - Finde Hofläden, Märkte, Automaten und andere Direktvermarkter und hole dir lokale Nahrungsmittel, gesunde Produkte und gutes Essen</title>
     <meta property="og:image" content="https://raw.githubusercontent.com/CodeforKarlsruhe/direktvermarkter/master/img/direktvermarkter.png"
     />
@@ -44,4 +48,5 @@
     <meta name="country" content="Germany">
     <meta name="country" content="Austria">
     <meta name="country" content="Switzerland">
+    --}}
 </head>

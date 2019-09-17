@@ -4,13 +4,16 @@ var $ris=null;
 
 function loadMarkers($url){
     //console.log('loadMarkers :'+ $url);
-    
+    $('#map_progress').show();
     $.getJSON($url).done(function(response){
         var $next=response.links.next;
         $tmp=response.data;
         if($ris==null) $ris=$tmp;
         else $ris.features=$ris.features.concat($tmp);
-
+        var $current_page=response.meta.current_page;
+        var $last_page=response.meta.last_page;
+        var $perc=$current_page*100/$last_page;
+        $('#map_progress .progress-bar').animate({ "width": $perc+"%" }, { duration: 500, easing: 'linear' }).text( $perc +" % Complete"); 
         if($next!=null){
             loadMarkers($next);
             //$ris.features=$.merge($tmp.features,$ris.features);
@@ -19,6 +22,7 @@ function loadMarkers($url){
         }else{
             //console.log('FINIOOOOO');
             //console.log($ris);
+            $('#map_progress').hide()
             xotMarkers($ris);
             
         }

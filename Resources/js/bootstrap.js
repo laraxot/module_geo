@@ -33,7 +33,13 @@ require(pub_res+'/leaflet.permalink.min.js');
 //require(pub_res+'/leaflet-sidebar.js');
 //require(pub_res+'/L.Control.Locate.min.js');
 //require(pub_res+'/opening_hours+deps.min.js');
-require(pub_res+'/direktvermarkter.js');
+var json=$.getJSON(base_url_lang + '/restaurant?format=geoJson').done(function(response){
+    //console.log('da bootstrap');
+    //console.log(response);
+    var json=response;
+    require(pub_res+'/xot-markers.js')(json);
+    return json;
+});
 //require(pub_res+'/popupcontent.js'); //Uncaught ReferenceError: popupcontent is not defined
 
 

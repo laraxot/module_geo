@@ -11,6 +11,19 @@
     <script src="js/popupcontent.js"></script>
     <script src="js/direktvermarkter.js"></script>
 --}}
+<script>
+    var base_url='{{ asset('/') }}';
+    var lang='{{ \App::getLocale() }}';
+    var base_url_lang='{{ asset(\App::getLocale()) }}';
+    {{--  var google_maps_api='{{ config('xra.google.maps.api') }}'; --}}
+@if(\Request::has('address'))
+    var address ="{{ \Request::input('address') }}";
+@endif
+@if(\Request::has('lat') && \Request::has('lng'))
+    var lat ="{{ \Request::input('lat') }}";
+    var lng ="{{ \Request::input('lng') }}";
+@endif
+</script>
 @php
     if(0){
         Theme::add('geo::js/jquery-3.3.1.js');
@@ -29,3 +42,4 @@
     Theme::add('geo::js/popupcontent.js'); //Uncaught ReferenceError: popupcontent is not defined
 @endphp
 {!! Theme::showScripts(false) !!}
+@stack('scripts')

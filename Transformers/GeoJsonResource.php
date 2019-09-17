@@ -12,12 +12,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class GeoJsonResource extends JsonResource{
 
 	public function toArray($request){
+        $lang=\App::getLocale();
         return [
         	'type'=>'Feature',
         	'properties'=>[
         		'p'=>$this->post_type,
         		'id'=>$this->post_id,
-                'url'=>'/'.$this->lang.'/'.$this->post_type.'/'.$this->guid,
+                'url'=>'/'.$lang.'/'.$this->post_type.'/'.$this->guid,
         	],
         	'geometry'=>[
             	'type' => 'Point',

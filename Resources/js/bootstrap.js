@@ -33,15 +33,15 @@ require(pub_res+'/leaflet.permalink.min.js');
 //require(pub_res+'/leaflet-sidebar.js');
 //require(pub_res+'/L.Control.Locate.min.js');
 //require(pub_res+'/opening_hours+deps.min.js');
-var json=$.getJSON(base_url_lang + '/restaurant?format=geoJson').done(function(response){
+//var json=$.getJSON(base_url_lang + '/restaurant?format=geoJson').done(function(response){
     //console.log('da bootstrap');
     //console.log(response);
-    var json=response;
-    require(pub_res+'/xot-markers.js')(json);
-    return json;
-});
+//    var json=response;
+//    require(pub_res+'/xot-markers.js')(json);
+//    return json;
+//});
 //require(pub_res+'/popupcontent.js'); //Uncaught ReferenceError: popupcontent is not defined
-
+require(pub_res+'/xot-markers.js');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

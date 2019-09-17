@@ -1,6 +1,35 @@
-var $data;
-module.exports = function(var1) {
-    $data=var1.data;
+
+$t=loadMarkers(base_url_lang + '/restaurant?format=geoJson');
+var $ris=null;
+
+function loadMarkers($url){
+    //console.log('loadMarkers :'+ $url);
+    
+    $.getJSON($url).done(function(response){
+        var $next=response.links.next;
+        $tmp=response.data;
+        if($ris==null) $ris=$tmp;
+        else $ris.features=$ris.features.concat($tmp);
+
+        if($next!=null){
+            loadMarkers($next);
+            //$ris.features=$.merge($tmp.features,$ris.features);
+            //$ris.features.concat($tmp.features);
+            //console.log($ris);
+        }else{
+            //console.log('FINIOOOOO');
+            //console.log($ris);
+            xotMarkers($ris);
+            
+        }
+
+        //return $ris;
+
+    });
+    //return $ris;
+}
+
+function xotMarkers($data) {
 
 var mappos = L.Permalink.getMapLocation();
 var map = L.map('map', {

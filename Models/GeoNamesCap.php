@@ -16,7 +16,7 @@ class GeoNamesCap extends Model {
     use Searchable;
     use Updater;
     protected $table = 'geonames_cap';
-    protected $connection = 'liveuser_general';
+    //protected $connection = 'geo';
 
     /*
      * { function_description }

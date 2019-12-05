@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Geo\Transformers;
+
 /*
 *  GEOJSON e' uno standard
 * https://it.wikipedia.org/wiki/GeoJSON
@@ -8,13 +9,12 @@ namespace Modules\Geo\Transformers;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class GeoJsonCollection extends ResourceCollection{
+class GeoJsonCollection extends ResourceCollection {
+    public $collects = GeoJsonResource::class;
 
-	public $collects = GeoJsonResource::class;
-
-	public function toArray($request){
+    public function toArray($request) {
         return [
-        	'type'=>'FeatureCollection',
+            'type' => 'FeatureCollection',
             'features' => $this->collection,
             /*'links' => [
                 'self' => 'link-value',

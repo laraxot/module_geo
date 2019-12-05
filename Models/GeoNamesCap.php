@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**
- * {
+ * {.
     protected $fillable=[''];
  item_description }
  * da fare php artisan scout:import Modules\Blog\Models\Post.

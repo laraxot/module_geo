@@ -24,9 +24,13 @@ class getLatitudeLongitudeAction extends XotBasePanelAction {
         	->get();
         foreach($rows as $row){
         	$address=$row->getAddress();
-        	$addr_arr=ImportService::getAddressFields(['address'=>$address,'id'=>$row->id]);
-        	$row->fill($addr_arr);
-        	$row->save();
+        	try{
+        		$addr_arr=ImportService::getAddressFields(['address'=>$address,'id'=>$row->id]);
+        		$row->fill($addr_arr);
+        		$row->save();
+        	}catch(\Exception $e){
+
+        	}
 
         }
         

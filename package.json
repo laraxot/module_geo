@@ -52,7 +52,7 @@
     "leaflet.markercluster": "^1.4.1",
     "magnific-popup": "^1.1.0",
     "moment": "^2.24.0",
-    "npm": "^6.11.1",
+    "npm": "^6.13.4",
     "opening_hours": "^3.5.0",
     "sweetalert2": "^8.16.2",
     "typeahead.js": "^0.11.1"

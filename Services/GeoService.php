@@ -61,4 +61,13 @@ class GeoService {
     //echo GeoService::distance(32.9697, -96.80322, 29.46786, -98.53506, "M") . " Miles<br>";
 //echo GeoService::distance(32.9697, -96.80322, 29.46786, -98.53506, "K") . " Kilometers<br>";
 //echo GeoService::distance(32.9697, -96.80322, 29.46786, -98.53506, "N") . " Nautical Miles<br>";
+
+    public static function haversine($latitude,$longitude){
+        return '(6371 * acos(cos(radians(' . $latitude . ')) 
+        * cos(radians(`latitude`)) 
+        * cos(radians(`longitude`) 
+        - radians(' . $longitude . ')) 
+        + sin(radians(' . $latitude . ')) 
+        * sin(radians(`latitude`)))) *1.1515';
+    }
 }

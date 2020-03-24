@@ -3,7 +3,7 @@ $t=loadMarkers(base_url_lang + '/restaurant?format=geoJson');
 var $ris=null;
 
 function loadMarkers($url){
-    //console.log('loadMarkers :'+ $url);
+    console.log('loadMarkers :'+ $url);
     $('#map_progress').show();
     $.getJSON($url).done(function(response){
         var $next=response.links.next;
@@ -13,7 +13,7 @@ function loadMarkers($url){
         var $current_page=response.meta.current_page;
         var $last_page=response.meta.last_page;
         var $perc=$current_page*100/$last_page;
-        $('#map_progress .progress-bar').animate({ "width": $perc+"%" }, { duration: 500, easing: 'linear' }).text( $perc +" % Complete"); 
+        $('#map_progress .progress-bar').animate({ "width": $perc+"%" }, { duration: 500, easing: 'linear' }).text( $perc +" % Complete");
         if($next!=null){
             loadMarkers($next);
             //$ris.features=$.merge($tmp.features,$ris.features);
@@ -24,7 +24,7 @@ function loadMarkers($url){
             //console.log($ris);
             $('#map_progress').hide()
             xotMarkers($ris);
-            
+
         }
 
         //return $ris;
@@ -107,7 +107,7 @@ var blackMarker = L.ExtraMarkers.icon({
 
 //Darstellung
 
-//Marker 
+//Marker
 
 //console.log('marker');
 //console.log($data);
@@ -123,7 +123,7 @@ var geojson1 = L.geoJson($data, {
             case 'restaurant':       return L.marker(latlng, { icon: restaurantMarker });
             default: return L.marker(latlng, { icon: blackMarker });
         }
-        
+
     },
 
     onEachFeature: function onEachFeature(feature, layer) {
@@ -144,7 +144,7 @@ var geojson1 = L.geoJson($data, {
 }).addLayer(tiles);
 
 //Changing Cluster radius based on zoom level
-var GetClusterRadius = function (zoom) { 
+var GetClusterRadius = function (zoom) {
     if (zoom < 12){
         return 80;
     }
@@ -165,7 +165,7 @@ var markers = L.markerClusterGroup({
             var beekeepersInCluster = false;
             var restaurantInCluster = false;
 
-            
+
             for (var c = 0; c < markers.length; c++) {
                 var $p=markers[c].feature.properties.p;
                 switch($p){
@@ -178,7 +178,7 @@ var markers = L.markerClusterGroup({
                 }
 
                 //console.log("f " +farmsInCluster +" m " +marketsInCluster +" a " +machinesInCluster)
-              
+
               }
 
               function farmsAreInCluster (farmsInCluster) {
@@ -233,7 +233,7 @@ var markers = L.markerClusterGroup({
             else{
                 returnWert = "<div style='padding:8px;'>" +markers.length +"</div>";
             }
-        
+
             return returnWert;
         }
         // console.log("markerS: " +markers)
@@ -286,7 +286,7 @@ L.control.locate({
         maxZoom: 12
     },
     clickBehavior: {
-        inView: 'setView', 
+        inView: 'setView',
         outOfView: 'setView'
     }
 }

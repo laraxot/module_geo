@@ -43,6 +43,7 @@
     "leaflet-editable": "github:Leaflet/Leaflet.Editable",
     "leaflet-extra-markers": "^1.1.0",
     "leaflet-fullscreen": "github:Leaflet/Leaflet.fullscreen",
+    "leaflet-gesture-handling": "^1.1.8",
     "leaflet-sidebar": "^0.2.0",
     "leaflet-sidebar-v2": "^3.2.1",
     "leaflet-toolbar": "github:Leaflet/Leaflet.toolbar",
@@ -55,7 +56,9 @@
     "npm": "^6.11.1",
     "opening_hours": "^3.5.0",
     "sweetalert2": "^8.16.2",
-    "typeahead.js": "^0.11.1"
+    "typeahead.js": "^0.11.1",
+    "vue2-leaflet": "^2.5.2",
+    "vue2-leaflet-markercluster": "^3.1.0"
   },
   "name": "module-geo",
   "version": "1.0.0",

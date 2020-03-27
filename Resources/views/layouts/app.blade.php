@@ -1,4 +1,6 @@
 @extends('geo::layouts.plane')
 @section('body')
-	@yield('content')
+    <div id="app">
+    @yield('content')
+    </div>
 @endsection

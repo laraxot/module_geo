@@ -10,7 +10,7 @@ use Modules\Xot\Services\ArrayService;
 //-------- bases -----------
 use Modules\Xot\Services\ImportService;
 
-class getLatitudeLongitudeAction extends XotBasePanelAction {
+class GetLatitudeLongitudeAction extends XotBasePanelAction {
     public $name = 'get_lat_lng'; //name for calling Action
     public $onContainer = true; //onlyContainer
     public $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';

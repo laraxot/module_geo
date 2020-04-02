@@ -274,7 +274,7 @@ function popupcontent(feature, layer) {
     <div class="leaflet-popup-content-wrapper">
         <div class="leaflet-popup-content" style="width: 601px;">
             <div class="popup-venue">
-                <div class="image d-none d-md-block" style="background-image: url('img/photo/restaurant-1430931071372-38127bd472b8.jpg')"></div>
+                <div class="image d-none d-md-block" style="background-image: url(base_url+'/it/img/photo/restaurant-1430931071372-38127bd472b8.jpg')"></div>
                     <div class="text">
                         <h6>
                             <a href="detail.html">Blue Hill</a>

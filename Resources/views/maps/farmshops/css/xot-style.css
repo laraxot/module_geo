@@ -28,23 +28,9 @@ h1 {
 
 .leaflet-popup-content {
     margin: 0px 0px;
-    /* line-height: 1.4; */
 }
-/*
+
 .leaflet-container a.leaflet-popup-close-button {
-    background-color:white;
-    padding:4px;
-    border: 2px solid rgba(0,0,0,0.2);
-}
-
-.leaflet-container a.leaflet-popup-close-button:hover {
-    background-color:#999;
-    border: 2px solid rgba(0,0,0,0.2);
-    color: #c3c3c3;
-}
-*/
-
-a.leaflet-popup-close-button {
     display: inline-block;
     width: 30px !important;
     height: 30px !important;
@@ -56,10 +42,21 @@ a.leaflet-popup-close-button {
     background: #343a40 !important;
     font-weight: bold;
     line-height: 30px !important;
+}
+.leaflet-popup-content p {
+    margin: 0 0 1rem;
+  }
+
+  .leaflet-popup-content a {
+    color: #4E66F8;
   }
 
 
-
+.leaflet-container a.leaflet-popup-close-button:hover {
+    background-color:#999;
+    border: 2px solid rgba(0,0,0,0.2);
+    color: #c3c3c3;
+}
 .leaflet-popup-content-wrapper {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 	text-align: left;
@@ -67,7 +64,7 @@ a.leaflet-popup-close-button {
     font-size: 10px;
     padding: 0px;
     margin:0px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     }
 
     @media only screen and (max-height: 600px) {
@@ -196,7 +193,7 @@ a.leaflet-popup-close-button {
     }
 
     .leaflet-marker-icon.mycluster.leaflet-zoom-animated.leaflet-interactive {
-        /* außeres Div von markercluster */
+
     }
 
     .circle {
@@ -215,7 +212,7 @@ a.leaflet-popup-close-button {
         font-size: 16px;
     }
 
-    /* leaflet locate plugin */
+
     .leaflet-bar-part > span {
         line-height: 30px;
     }

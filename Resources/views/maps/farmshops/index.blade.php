@@ -24,12 +24,15 @@
     {{--
         <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/MarkerCluster.css') }}" />
         --}}
-    <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/fontawesome-all.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/fontawesome-all.min.css') }}" />
     {{--
     <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/L.Control.Locate.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/leaflet.extra-markers.min.css') }}">
     --}}
     <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/xot-style.css') }}" >
+    {{--
+        <link rel="stylesheet" type="text/css" href="{{ Theme::asset($ns.'/css/xot-map.css') }}" >
+        --}}
 
 
     <title>farmshops.eu - Finde Hofläden, Märkte, Automaten und andere Direktvermarkter und hole dir lokale Nahrungsmittel, gesunde Produkte und gutes Essen</title>
@@ -247,7 +250,7 @@
         </div>
     </div>
 
-    <div id="map" class="sidebar-map"></div>
+    <div id="map" class="sidebar-map map-full shadow-left"></div>
     <script>
         var base_url="{{ url('/') }}";
     </script>

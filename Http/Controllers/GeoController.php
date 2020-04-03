@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Geo\Controllers;
+namespace Modules\Geo\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

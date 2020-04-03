@@ -1,16 +1,10 @@
-/**
- * Directory – Directory & Listing Bootstrap 4 Theme v. 1.4.1
- * Homepage: https://themes.getbootstrap.com/product/directory-directory-listing-bootstrap-4-theme/
- * Copyright 2020, Bootstrapious - https://bootstrapious.com
- */
-
 'use strict';
 
 function createListingsMap(options) {
 
     var defaults = {
-        markerPath: 'img/marker.svg',
-        markerPathHighlight: 'img/marker-hover.svg',
+        markerPath: base_url+'img/marker.svg',
+        markerPathHighlight: base_url+'img/marker-hover.svg',
         imgBasePath: 'img/photo/',
         mapPopupType: 'venue',
         useTextIcon: false,
@@ -18,6 +12,7 @@ function createListingsMap(options) {
     }
 
     var settings = $.extend({}, defaults, options);
+    var markers = L.markerClusterGroup();
 
     var dragging = false,
         tap = false;
@@ -35,6 +30,7 @@ function createListingsMap(options) {
 
     var map = L.map(settings.mapId, {
         zoom: 14,
+        center: settings.mapCenter,
         scrollWheelZoom: false,
         dragging: dragging,
         tap: tap,
@@ -58,15 +54,15 @@ function createListingsMap(options) {
     ====================================================
     */
 
-    $.getJSON(settings.jsonFile).done(function (json) {
+   $.getJSON(settings.jsonFile).done(function (json) {
             L.geoJSON(json, {
                 pointToLayer: pointToLayer,
                 onEachFeature: onEachFeature
-            }).addTo(map);
+            }).addTo(markers);
 
             if (markersGroup) {
                 var featureGroup = new L.featureGroup(markersGroup);
-                map.fitBounds(featureGroup.getBounds());
+                //map.fitBounds(featureGroup.getBounds()); //leggendo i punti mi sfalsa il centro
             }
 
         })
@@ -98,12 +94,38 @@ function createListingsMap(options) {
     });
 
     function onEachFeature(feature, layer) {
+        layer.once("click",
+            function () {
+                var $json_url=base_url+feature.properties.url+'?format=geoJson';
+                console.log($json_url);
+                $.getJSON($json_url,
+                    function (res) {
+                        feature=res.data;
+                        layer.bindPopup(getPopupContent(feature.properties), {
+                            minwidth: 200,
+                            maxWidth: 600,
+                            className: 'map-custom-popup'
+                        }).openPopup();;
+
+                        if (settings.useTextIcon) {
+                            layer.bindTooltip('<div id="customTooltip-' + feature.properties.id + '">$' + feature.properties.price + '</div>', {
+                                direction: 'top',
+                                permanent: true,
+                                opacity: 1,
+                                interactive: true,
+                                className: 'map-custom-tooltip'
+                            });
+                        }
+                    }
+                );
+            }
+        );
 
         layer.on({
             mouseover: highlightMarker,
             mouseout: resetMarker
         });
-
+        /*
         if (feature.properties && feature.properties.about) {
             layer.bindPopup(getPopupContent(feature.properties), {
                 minwidth: 200,
@@ -122,6 +144,7 @@ function createListingsMap(options) {
             }
 
         }
+        */
         markersGroup.push(layer);
     }
 
@@ -168,6 +191,9 @@ function createListingsMap(options) {
         return $('#' + id).parents('.leaflet-tooltip')
     }
 
+
+    map.addLayer(markers);
+
     /*
     ====================================================
       Construct popup content based on the JSON data
@@ -195,8 +221,10 @@ function createListingsMap(options) {
             if (settings.mapPopupType == 'venue') {
                 imageClass += ' d-none d-md-block'
             }
-
+            /*
             var image = '<div class="' + imageClass + '" style="background-image: url(\'' + settings.imgBasePath + properties.image + '\')"></div>';
+            */
+           var image = '<div class="' + imageClass + '" style="background-image: url(\'' + properties.image + '\')"></div>';
         } else {
             image = '<div class="image"></div>'
         }

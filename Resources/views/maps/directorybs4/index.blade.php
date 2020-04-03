@@ -1,25 +1,35 @@
 @extends('pub_theme::layouts.app',['body_style'=>'padding-top: 72px;'])
 @php
-    /*
-    Theme::add('https://unpkg.com/leaflet@1.5.1/dist/leaflet.css');
-    Theme::add('https://unpkg.com/leaflet@1.5.1/dist/leaflet.js');
-    */
+
+    //geoip()->getClientIP();
+
     Theme::add($ns.'/dist/js/app.js');
+    Theme::add($ns.'/resources/js/xot-markers.js');
     Theme::add($ns.'/dist/css/app.css');
 
     $data=request()->all();
     $restaurants=[];
     if(isset($data['address'])){
+
+
         $address=json_decode($data['address']);
+        $city='...';
+        if($address->type=='city'){
+            $city=$address->name;
+        }
+        if(isset($address->city)){
+            $city=$address->city;
+        }
 
         $lat=$address->latlng->lat;
         $lng=$address->latlng->lng;
-        $city=$address->city;
         $restaurants=Theme::xotModel('restaurant')
                     ->where('locality',$city)
                     ->withDistance($lat,$lng)
                     //->inRandomOrder()
                     ->paginate(20);
+    }else{
+        die(redirect('/')); //se non metti un indirizzo ti sputa indietro
     }
 
 @endphp
@@ -33,17 +43,16 @@
     tileLayers[4] = {tiles: 'https://mapserver.mapy.cz/base-m/{z}-{x}-{y}', attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, <a href="https://seznam.cz">Seznam.cz, a.s.</a>'}
     tileLayers[5] = {tiles: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>', subdomains: 'abcd'}
     tileLayers[6] = {tiles: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a>'} // Originally used in the theme, but stopped working. Might be just temporary, though.
-  </script>
-<script src="{{ Theme::asset($ns.'/js/xot-markers.js') }}"></script>
-<script>
+
     createListingsMap({
         mapId: 'categorySideMap',
         mapZoom: 15,
-        mapCenter: [40.732346, -74.0014247],
+        mapCenter: [{{ $lat }}, {{ $lng }}],
        /*
         circleShow: true,
         circlePosition: [40.732346, -74.0014247]
         */
+
         jsonFile: '{{ asset('/json/restaurants-geojson.json') }}'
     });
 
@@ -63,7 +72,7 @@
           <hr class="my-4">
           <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
             <div class="mr-3">
-              <p class="mb-3 mb-md-0"><strong>{{-- $restaurants->total() --}}</strong> results found</p>
+              <p class="mb-3 mb-md-0"><strong>{{ $restaurants->total() }}</strong> results found</p>
             </div>
             <div>
               <label for="form_sort" class="form-label mr-2">Sort by</label>
@@ -80,11 +89,8 @@
             @foreach($restaurants as $restaurant)
             @include('pub_theme::restaurant.swiper.item',['row'=>$restaurant])
             @endforeach
-            @for($i=0;$i<100;$i++)
-            <br/>
-            @endfor
           </div>
-                {{-- $restaurants->links() --}}
+            {{ $restaurants->links() }}
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0">
           <div id="categorySideMap" class="map-full shadow-left"></div>

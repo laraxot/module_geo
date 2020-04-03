@@ -7,19 +7,37 @@ namespace Modules\Geo\Transformers;
 * https://it.wikipedia.org/wiki/GeoJSON
 **/
 
-//use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\JsonResource as ResCollection;
 
-class GeoJsonResource extends JsonResource {
+use Modules\Xot\Services\PanelService as Panel;
+
+class GeoJsonResource extends ResCollection {
     public function toArray($request) {
         $lang = \App::getLocale();
 
         return [
             'type' => 'Feature',
             'properties' => [
-                'p' => $this->post_type,
-                'id' => $this->post_id,
-                'url' => '/'.$lang.'/'.$this->post_type.'/'.$this->guid,
+                "id"=> $this->post_type.'-'.$this->post_id,
+                //"index"=> 0,
+                "isActive"=> true,
+                //"logo"=> "http://placehold.it/32x32",
+                "image"=> Panel::get($this)->imgSrc(['width'=>200,'height'=>200]),
+                "link"=> $this->url,
+                "url"=> "#",
+                "name"=> $this->title,
+                "category"=> $this->post_type,
+                "email"=> $this->email,
+                "stars"=> $this->ratings_avg,
+                "phone"=> $this->phone,
+                "address"=> $this->full_address,
+                "about"=> $this->subtitle."\r\n",
+                "tags"=> [
+                    $this->post_type,
+                    //"Restaurant",
+                    //"Contemporary"
+                ],
+
             ],
             'geometry' => [
                 'type' => 'Point',

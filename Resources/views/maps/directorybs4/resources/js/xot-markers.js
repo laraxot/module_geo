@@ -3,7 +3,7 @@
 function createListingsMap(options) {
 
     var defaults = {
-        markerPath: base_url+'img/marker.svg',
+        markerPath: base_url+'/img/marker.svg',
         markerPathHighlight: base_url+'img/marker-hover.svg',
         imgBasePath: 'img/photo/',
         mapPopupType: 'venue',

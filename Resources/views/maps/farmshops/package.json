@@ -17,7 +17,7 @@
         "country-language": "^0.1.7",
         "cross-env": "^7.0",
         "i18next-client": "^1.11.4",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "laravel-mix": "^5.0.1",
         "leaflet": "^1.6.0",
         "leaflet-extra-markers": "^1.2.1",

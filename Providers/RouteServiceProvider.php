@@ -2,11 +2,10 @@
 
 namespace Modules\Geo\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-
 //--- bases ---
+use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider {
+class RouteServiceProvider extends XotBaseRouteServiceProvider {
     /**
      * The module namespace to assume when generating URLs to actions.
      *

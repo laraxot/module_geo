@@ -23,8 +23,6 @@ class GeoController extends Controller {
     }
 
     public function show(Request $request) {
-        //$this->authorize('view', $post);
-        //return view('blog::posts.show', ['post' => $post]);
         $params = \Route::current()->parameters();
         $row = Post::where('guid', $params['guid_post'])->first();
         $view = ThemeService::getView();
@@ -36,7 +34,6 @@ class GeoController extends Controller {
         $params = \Route::current()->parameters();
         \extract($params);
         $orderby = '(('.$lat.'-latitude)*('.$lat.'-latitude))+(('.$long.'-longitude)*('.$long.'-longitude))';
-        //echo '<pre>'.$orderby.'</pre>';
         $row = GeoNamesCap::orderbyRaw($orderby)->first();
 
         return response()->json($row->toArray());

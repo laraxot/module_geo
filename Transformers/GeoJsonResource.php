@@ -13,7 +13,7 @@ use Modules\Xot\Services\PanelService as Panel;
 
 class GeoJsonResource extends ResCollection {
     public function toArray($request) {
-        $lang = \App::getLocale();
+        $lang = app()->getLocale();
 
         return [
             'type' => 'Feature',

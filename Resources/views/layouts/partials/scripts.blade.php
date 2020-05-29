@@ -13,8 +13,8 @@
 --}}
 <script>
     var base_url='{{ asset('/') }}';
-    var lang='{{ \App::getLocale() }}';
-    var base_url_lang='{{ asset(\App::getLocale()) }}';
+    var lang='{{ app()->getLocale() }}';
+    var base_url_lang='{{ asset(app()->getLocale()) }}';
     {{--  var google_maps_api='{{ config('xra.google.maps.api') }}'; --}}
 @if(\Request::has('address'))
     var address ="{{ \Request::input('address') }}";

@@ -20,6 +20,11 @@ trait GeoTrait {
         return $fillable;
     }
 
+    //--- functions ----
+    public function distance($lat, $lng) {
+        return GeoService::distance($this->latitude, $this->longitude, $lat, $lng, '');
+    }
+
     //---- Scopes ----
     public function scopeWithDistance($query, $lat, $lng) {
         $q = $query;

@@ -96,16 +96,29 @@ trait GeoTrait {
 
                 return $value;
             }
-            /*
-            $tmp=[];
-            $tmp[]=$route;
-            $tmp[]=$street_number;
-            $tmp[]=$postal_code;
-            $tmp[]=$administrative_area_level_3;
-            $tmp[]=$administrative_area_level_2_short;
-            $value= implode(', ', $tmp);
+        }
+        if (is_object($this->address)) {
+            $address = collect($this->address)->except(['value', 'latlng']);
+            $up = false;
+            foreach ($address->all() as $k => $v) {
+                if ($this->$k != $v) {
+                    $up = true;
+                    break;
+                }
+            }
+            if ($up) {
+                $this->update($address->all());
+            }
+
+            $tmp = [];
+            $tmp[] = $address->get('route');
+            $tmp[] = $address->get('street_number');
+            $tmp[] = $address->get('postal_code');
+            $tmp[] = $address->get('administrative_area_level_3');
+            $tmp[] = $address->get('administrative_area_level_2_short');
+            $value = implode(', ', $tmp);
+
             return $value;
-            */
         }
 
         $tmp = [];

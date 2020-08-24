@@ -2,6 +2,20 @@ mappa piu' carina con tanto di repository github
 https://farmshops.eu/
 https://github.com/CodeforKarlsruhe/direktvermarkter
 
+da studiare
+https://github.com/CodeforRuhrgebiet/schulradar
+https://github.com/meine-stadt-transparent/meine-stadt-transparent/
+
+//--- con pure aggiunta del punto
+https://codefor.de/projekte/ernteteilen/
+https://ernte-teilen.org/karte/#/
+https://github.com/teikei/teikei    !!!!!!
+
+
+--- multi marker "ios"
+https://github.com/Stolpersteine/stolpersteine-ios
+
+
 
 
 https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/

@@ -1,3 +1,9 @@
+mappa piu' carina con tanto di repository github
+https://farmshops.eu/
+https://github.com/CodeforKarlsruhe/direktvermarkter
+
+
+
 https://learn.jquery.com/using-jquery-core/faq/how-do-i-pull-a-native-dom-element-from-a-jquery-object/
 
 How do I pull a native DOM element from a jQuery object?

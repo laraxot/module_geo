@@ -19,6 +19,7 @@ class GeoNamesCap extends Model {
 
     /*
      * { function_description }
+     *
      */
     /*
     function __construct(){

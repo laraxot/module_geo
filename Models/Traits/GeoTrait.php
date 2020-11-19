@@ -21,7 +21,7 @@ trait GeoTrait {
     }
 
     //--- functions ----
-    public function distance($lat, $lng) {
+    public function distance($lat=null, $lng=null) {
         return GeoService::distance($this->latitude, $this->longitude, $lat, $lng, '');
     }
 

@@ -1,0 +1,63 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\HashiCorp\Vagrant\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\laragon\bin\php\php-7.4.4-Win32-vc15-x64;C:\laragon\bin\php\php-7.2.19-Win32-VC15-x64;C:\composer;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\PuTTY\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files\Git\cmd;C:\laragon\bin;C:\laragon\bin\apache\httpd-2.4.35-win64-VC15\bin;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\laragon\utils;C:\laragon\bin\mysql\mysql-5.7.24-winx64\bin;C:\laragon\bin\nginx\nginx-1.16.0;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v12;C:\laragon\bin\notepad++;C:\laragon\bin\php\php-7.4.4-Win32-vc15-x64;C:\laragon\bin\putty;C:\laragon\bin\redis\redis-x64-3.2.100;C:\laragon\bin\telnet;C:\laragon\usr\bin;C:\Users\Marco\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\Marco\AppData\Roaming\Composer\vendor\bin;C:\Users\Marco\AppData\Roaming\npm;C:\Users\Marco\AppData\Local\Microsoft\WindowsApps;C:\Users\Marco\AppData\Local\Yarn\bin;C:\Users\Marco\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files\Microsoft\VSCode\bin;
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  12.9.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\var\www\multi\laravel\Modules\Geo\Resources\views\package.json: Unexpected token } in JSON at position 1219
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:304:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:315:13
+
+npm manifest: 
+  {
+      "private": true,
+      "scripts": {
+          "dev": "npm run development",
+          "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "watch": "npm run development -- --watch",
+          "watch-poll": "npm run watch -- --watch-poll",
+          "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "prod": "npm run production",
+          "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+      },
+      "devDependencies": {
+          "axios": "^0.19",
+          "bootstrap": "^4.4.1",
+          "cross-env": "^7.0",
+          "i18next-client": "^1.11.4",
+          "jquery": "^3.4.1",
+          "laravel-mix": "^5.0.1",
+          "leaflet": "^1.6.0",
+          "leaflet-extra-markers": "^1.2.1",
+          "leaflet-fullscreen": "^1.0.2",
+          "leaflet.locatecontrol": "^0.71.0",
+          "leaflet.markercluster": "^1.4.1",
+          "lodash": "^4.17.13",
+          "opening_hours": "^3.5.0",
+          "resolve-url-loader": "^3.1.0",
+          "sass": "^1.15.2",
+          "sass-loader": "^8.0.0",
+          "sidebar-v2": "^0.4.0",
+          "vue2-leaflet": "^2.5.2"
+      },
+      "dependencies": {}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

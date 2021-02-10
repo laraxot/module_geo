@@ -1,0 +1,14 @@
+v8-compile-cache-0
+/Resources/views/maps/farmshops/data
+/Resources/views/maps/directorybs4/package-lock.json
+/Resources/views/package-lock.json
+/Resources/views/maps/farmshops/package-lock.json
+*.lock
+*.phar
+*.log
+.git-rewrite
+node_modules
+package-lock.json
+
+
+

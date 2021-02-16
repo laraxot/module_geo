@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\Geo\Repositories;
@@ -14,20 +13,3 @@ class GeoNamesCapRepository extends XotBaseRepository {
      */
     protected $model = 'Modules\Geo\Models\GeoNamesCap';
 }
-=======
-<?php
-
-namespace Modules\Geo\Repositories;
-
-//---base
-use Modules\Xot\Repositories\XotBaseRepository;
-
-class GeoNamesCapRepository extends XotBaseRepository {
-    /**
-     * Specify Model class name.
-     *
-     * @return string
-     */
-    protected $model = 'Modules\Geo\Models\GeoNamesCap';
-}
->>>>>>> 82af299c (first)

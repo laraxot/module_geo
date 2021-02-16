@@ -1,8 +1,24 @@
+<<<<<<< HEAD
 node_modules
 v8-compile-cache-0
 *.lock
 /package-lock.json
+=======
+v8-compile-cache-0
+>>>>>>> 82af299c (first)
 /Resources/views/maps/farmshops/data
 /Resources/views/maps/directorybs4/package-lock.json
 /Resources/views/package-lock.json
 /Resources/views/maps/farmshops/package-lock.json
+<<<<<<< HEAD
+=======
+*.lock
+*.phar
+*.log
+.git-rewrite
+node_modules
+package-lock.json
+
+
+
+>>>>>>> 82af299c (first)

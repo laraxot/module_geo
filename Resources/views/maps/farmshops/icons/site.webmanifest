@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "",
     "short_name": "",
@@ -12,3 +13,19 @@
     "background_color": "#ffffff",
     "display": "standalone"
 }
+=======
+{
+    "name": "",
+    "short_name": "",
+    "icons": [
+        {
+            "src": "/icons/android-chrome-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200

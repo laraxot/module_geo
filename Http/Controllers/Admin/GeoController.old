@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace Modules\Geo\Http\Controllers\Admin;
@@ -20,3 +21,27 @@ class GeoController extends Controller {
     //end function
  //
 }//end class
+=======
+<?php
+
+namespace Modules\Geo\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+//--- services
+use Modules\Theme\Services\ThemeService;
+
+class GeoController extends Controller {
+    public function index(Request $request) {
+        if (1 == $request->routelist) {
+            return ArtisanTrait::exe('route:list');
+        }
+        $view = ThemeService::getView();
+
+        return view($view);
+    }
+
+    //end function
+ //
+}//end class
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200

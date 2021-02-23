@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 {
     "/Resources/views/js/geo.js": "/Resources/views/js/geo.js",
     "/Resources/views/css/geo.css": "/Resources/views/css/geo.css"
 }
+=======
+{
+    "/Resources/views/js/geo.js": "/Resources/views/js/geo.js",
+    "/Resources/views/css/geo.css": "/Resources/views/css/geo.css"
+}
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200

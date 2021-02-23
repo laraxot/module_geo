@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "Geo",
     "alias": "geo",
@@ -11,4 +12,19 @@
     "aliases": [],
     "files": [],
     "requires": []
+=======
+{
+    "name": "Geo",
+    "alias": "geo",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Geo\\Providers\\GeoServiceProvider"
+    ],
+    "aliases": [],
+    "files": [],
+    "requires": []
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200
 }

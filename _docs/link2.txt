@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 quando clikki su elemento si mostra il dettaglio nella bar
 http://www.smartredfox.com/plugins/map-list-pro/
 
 
 bottone su mappa,
 http://danielmontague.com/projects/easyButton.js/v2/examples/
+=======
+quando clikki su elemento si mostra il dettaglio nella bar
+http://www.smartredfox.com/plugins/map-list-pro/
+
+
+bottone su mappa,
+http://danielmontague.com/projects/easyButton.js/v2/examples/
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200

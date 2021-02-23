@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 declare(strict_types=1);
@@ -19,3 +20,26 @@ Route::middleware('auth:api')->get('/geo', function (Request $request) {
     return $request->user();
 });
 */
+=======
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Http\Request;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+/*
+Route::middleware('auth:api')->get('/geo', function (Request $request) {
+    return $request->user();
+});
+*/
+>>>>>>> 6ab5d794940fc6a1e196f6ec040d0de450173200

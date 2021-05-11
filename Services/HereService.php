@@ -28,12 +28,14 @@ class HereService {
 
         $json = $response->json();
         if (! isset($json['routes'])) {
-            return $json;
+            dddx($json);
+            return null;
         }
-        /*
-        "error" => "Unauthorized"
-    "error_description" => "No credentials found"
-    */
+
+        if (! isset($json['routes'][0])) {
+           return null;
+        }
+
 
         $summary = $json['routes'][0]['sections']['0']['summary'];
         //dddx(['A' => $lat1.','.$lon1, 'B' => $lat2.','.$lon2, 'summary' => $summary]);

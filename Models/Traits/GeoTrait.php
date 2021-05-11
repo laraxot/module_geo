@@ -52,8 +52,8 @@ trait GeoTrait {
 
     //--- functions ----
 
-    public function distance(?float $lat = null, ?float $lng = null): float {
-        return GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
+    public function distance(?float $lat = null, ?float $lng = null): ?float {
+        return (float)GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
     }
 
     //---- Scopes ----
@@ -86,6 +86,20 @@ trait GeoTrait {
         }
 
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
+    }
+
+    public function setAddressAttribute($value) {
+        if(isJson($value)){
+            $json=(array)json_decode($value);
+            $json['latitude']=$json['latlng']->lat;
+            $json['longitude']=$json['latlng']->lng;
+            unset($json['latlng']);
+            unset($json['value']);
+            $this->attributes=array_merge($this->attributes,$json);
+            //dddx($this->attributes);
+        }
+        $this->attributes['address']=$value;
+        //dddx(['isJson'=>\isJson($value),'value'=>$value]);
     }
 
     /**

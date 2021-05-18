@@ -13,12 +13,16 @@ class HereService {
     //https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
     public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2) {
+
+        $api_key=TenantService::config('services.here.api_key');
+
+
         $data = [
             'transportMode' => 'car',
             'origin' => $lat1.','.$lon1,
             'destination' => $lat2.','.$lon2,
             'return' => 'summary',
-            'apiKey' => TenantService::config('services.here.api_key'),
+            'apiKey' => $api_key,
         ];
 
         //dddx(TenantService::config('services.here'));

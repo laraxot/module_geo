@@ -98,6 +98,9 @@ trait GeoTrait {
             $this->attributes=array_merge($this->attributes,$json);
             //dddx($this->attributes);
         }
+        if(is_array($value)){
+            $value=json_encode($value);
+        }
         $this->attributes['address']=$value;
         //dddx(['isJson'=>\isJson($value),'value'=>$value]);
     }

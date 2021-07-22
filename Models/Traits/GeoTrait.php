@@ -6,7 +6,7 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Str;
 //--- models ---
-use Modules\Blog\Models\Place;
+use Modules\Geo\Models\Place;
 //---- services --
 use Modules\Geo\Services\GeoService;
 
@@ -53,7 +53,7 @@ trait GeoTrait {
     //--- functions ----
 
     public function distance(?float $lat = null, ?float $lng = null): ?float {
-        return (float)GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
+        return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
     }
 
     //---- Scopes ----
@@ -89,19 +89,19 @@ trait GeoTrait {
     }
 
     public function setAddressAttribute($value) {
-        if(isJson($value)){
-            $json=(array)json_decode($value);
-            $json['latitude']=$json['latlng']->lat;
-            $json['longitude']=$json['latlng']->lng;
-            unset($json['latlng']);
-            unset($json['value']);
-            $this->attributes=array_merge($this->attributes,$json);
+        if (isJson($value)) {
+            $json = (array) json_decode($value);
+            $json['latitude'] = $json['latlng']->lat;
+            $json['longitude'] = $json['latlng']->lng;
+            unset($json['latlng'], $json['value']);
+
+            $this->attributes = array_merge($this->attributes, $json);
             //dddx($this->attributes);
         }
-        if(is_array($value)){
-            $value=json_encode($value);
+        if (is_array($value)) {
+            $value = json_encode($value);
         }
-        $this->attributes['address']=$value;
+        $this->attributes['address'] = $value;
         //dddx(['isJson'=>\isJson($value),'value'=>$value]);
     }
 

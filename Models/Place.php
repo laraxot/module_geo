@@ -7,71 +7,72 @@ namespace Modules\Geo\Models;
 //------services---------
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Blog\Database\Factories\PlaceFactory;
+use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Services\ImportService;
 
 //------ models --------
 
 /**
- * Modules\Geo\Models\Place
+ * Modules\Geo\Models\Place.
  *
- * @property int $id
- * @property string|null $post_type
- * @property int|null $post_id
- * @property string|null $formatted_address
- * @property string|null $latitude
- * @property string|null $longitude
- * @property string|null $premise
- * @property string|null $premise_short
- * @property string|null $locality
- * @property string|null $locality_short
- * @property string|null $postal_town
- * @property string|null $postal_town_short
- * @property string|null $administrative_area_level_3
- * @property string|null $administrative_area_level_3_short
- * @property string|null $administrative_area_level_2
- * @property string|null $administrative_area_level_2_short
- * @property string|null $administrative_area_level_1
- * @property string|null $administrative_area_level_1_short
- * @property string|null $country
- * @property string|null $country_short
- * @property string|null $street_number
- * @property string|null $street_number_short
- * @property string|null $route
- * @property string|null $route_short
- * @property string|null $postal_code
- * @property string|null $postal_code_short
- * @property string|null $googleplace_url
- * @property string|null $googleplace_url_short
- * @property string|null $point_of_interest
- * @property string|null $point_of_interest_short
- * @property string|null $political
- * @property string|null $political_short
- * @property string|null $campground
- * @property string|null $campground_short
- * @property string|null $nearest_street
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Favorite[] $favorites
- * @property-read int|null $favorites_count
- * @property string|null $guid
- * @property string|null $image_src
- * @property-read string|null $lang
- * @property-read string|null $subtitle
- * @property-read string|null $title
- * @property string|null $txt
- * @property-read string|null $user_handle
- * @property-read string $value
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Image[] $images
- * @property-read int|null $images_count
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $linked
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Favorite[] $myFavorites
- * @property-read int|null $my_favorites_count
- * @property-read \Modules\Blog\Models\Post|null $post
- * @property-write mixed $url
+ * @property int                                                                      $id
+ * @property string|null                                                              $post_type
+ * @property int|null                                                                 $post_id
+ * @property string|null                                                              $formatted_address
+ * @property string|null                                                              $latitude
+ * @property string|null                                                              $longitude
+ * @property string|null                                                              $premise
+ * @property string|null                                                              $premise_short
+ * @property string|null                                                              $locality
+ * @property string|null                                                              $locality_short
+ * @property string|null                                                              $postal_town
+ * @property string|null                                                              $postal_town_short
+ * @property string|null                                                              $administrative_area_level_3
+ * @property string|null                                                              $administrative_area_level_3_short
+ * @property string|null                                                              $administrative_area_level_2
+ * @property string|null                                                              $administrative_area_level_2_short
+ * @property string|null                                                              $administrative_area_level_1
+ * @property string|null                                                              $administrative_area_level_1_short
+ * @property string|null                                                              $country
+ * @property string|null                                                              $country_short
+ * @property string|null                                                              $street_number
+ * @property string|null                                                              $street_number_short
+ * @property string|null                                                              $route
+ * @property string|null                                                              $route_short
+ * @property string|null                                                              $postal_code
+ * @property string|null                                                              $postal_code_short
+ * @property string|null                                                              $googleplace_url
+ * @property string|null                                                              $googleplace_url_short
+ * @property string|null                                                              $point_of_interest
+ * @property string|null                                                              $point_of_interest_short
+ * @property string|null                                                              $political
+ * @property string|null                                                              $political_short
+ * @property string|null                                                              $campground
+ * @property string|null                                                              $campground_short
+ * @property string|null                                                              $nearest_street
+ * @property string|null                                                              $created_by
+ * @property string|null                                                              $updated_by
+ * @property string|null                                                              $deleted_by
+ * @property \Illuminate\Support\Carbon|null                                          $created_at
+ * @property \Illuminate\Support\Carbon|null                                          $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Favorite[] $favorites
+ * @property int|null                                                                 $favorites_count
+ * @property string|null                                                              $guid
+ * @property string|null                                                              $image_src
+ * @property string|null                                                              $lang
+ * @property string|null                                                              $subtitle
+ * @property string|null                                                              $title
+ * @property string|null                                                              $txt
+ * @property string|null                                                              $user_handle
+ * @property string                                                                   $value
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Image[]    $images
+ * @property int|null                                                                 $images_count
+ * @property \Illuminate\Database\Eloquent\Model|\Eloquent                            $linked
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Favorite[] $myFavorites
+ * @property int|null                                                                 $my_favorites_count
+ * @property \Modules\Blog\Models\Post|null                                           $post
+ * @property mixed                                                                    $url
+ *
  * @method static \Modules\Blog\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
@@ -122,6 +123,7 @@ use Modules\Xot\Services\ImportService;
  */
 class Place extends BaseModelLang {
     use HasFactory;
+
     /**
      * @var string[]
      */

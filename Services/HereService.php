@@ -12,10 +12,8 @@ class HereService {
 
     //https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
-    public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2) {
-
-        $api_key=TenantService::config('services.here.api_key');
-
+    public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array {
+        $api_key = TenantService::config('services.here.api_key');
 
         $data = [
             'transportMode' => 'car',
@@ -33,13 +31,13 @@ class HereService {
         $json = $response->json();
         if (! isset($json['routes'])) {
             dddx($json);
+
             return null;
         }
 
         if (! isset($json['routes'][0])) {
-           return null;
+            return null;
         }
-
 
         $summary = $json['routes'][0]['sections']['0']['summary'];
         //dddx(['A' => $lat1.','.$lon1, 'B' => $lat2.','.$lon2, 'summary' => $summary]);

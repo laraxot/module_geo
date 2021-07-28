@@ -29,7 +29,9 @@ class PlaceFactory extends Factory {
             //'description' => $this->faker->paragraph,
             //'auth_user_id' => factory(User::class)->create()->auth_user_id,
 
-            'latitude' => $this->faker->latitude(),
+            //'latitude' => $this->faker->latitude(),
+            /*
+            'latitude' => $this->faker->Address->latitude,
             'longitude' => $this->faker->longitude(),
             'route' => $this->faker->streetName(),
             'country' => $this->faker->country(),
@@ -37,6 +39,7 @@ class PlaceFactory extends Factory {
             'postal_code' => $this->faker->postcode(),
             'locality' => $this->faker->city(),
             'formatted_address' => $this->faker->streetAddress(),
+            */
         ];
     }
 }

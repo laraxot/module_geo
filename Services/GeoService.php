@@ -47,16 +47,16 @@ class GeoService {
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {
             return 0;
         }
-        if(is_null($lat1)){
+        if (is_null($lat1)) {
             return null;
         }
-        if(is_null($lon1)){
+        if (is_null($lon1)) {
             return null;
         }
-        if(is_null($lat2)){
+        if (is_null($lat2)) {
             return null;
         }
-        if(is_null($lon2)){
+        if (is_null($lon2)) {
             return null;
         }
         $theta = $lon1 - $lon2;
@@ -64,6 +64,9 @@ class GeoService {
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
+        if (null == $unit) {
+            $unit = 'K'; //default
+        }
         $unit = strtoupper($unit);
 
         switch ($unit) {

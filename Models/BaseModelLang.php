@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Laravel\Scout\Searchable;
+////use Laravel\Scout\Searchable;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Models\Traits\LinkedTrait;

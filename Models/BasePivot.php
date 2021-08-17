@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
-//use Laravel\Scout\Searchable;
+////use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**

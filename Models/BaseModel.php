@@ -7,7 +7,7 @@ namespace Modules\Geo\Models;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 //---------- traits
 use Illuminate\Database\Eloquent\Model;
-//use Laravel\Scout\Searchable;
+////use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**

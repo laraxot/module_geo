@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Geo\Models\Panels;
 
 //-------- Services -----
@@ -13,30 +15,22 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 class PlacePanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
-     *
-     * @var string
      */
     protected static string $model = 'Modules\Geo\Models\Place';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
      */
     protected static string $title = 'title';
 
     /**
      * The columns that should be searched.
-     *
-     * @var array
      */
     protected static array $search = [
     ];
 
     /**
      * The relationships that should be eager loaded on index queries.
-     *
-     * @return array
      *
      * @var array
      */
@@ -46,9 +40,6 @@ class PlacePanel extends XotBasePanel {
 
     /**
      * Get the fields displayed by the resource.
-     *
-
-     * @return array
      */
     public function fields(): array {
         return [

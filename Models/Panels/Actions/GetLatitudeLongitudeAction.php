@@ -26,6 +26,9 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
             ->inRandomOrder()
             ->get();
         foreach ($rows as $row) {
+            if (! \method_exists($row, 'getAddress')) {
+                throw new \Exception('in ['.get_class($row).'] not exists [getAddress] method');
+            }
             $address = $row->getAddress();
             try {
                 $addr_arr = ImportService::getAddressFields(['address' => $address, 'id' => $row->getAttributeValue('id')]);

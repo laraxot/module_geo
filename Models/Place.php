@@ -7,7 +7,7 @@ namespace Modules\Geo\Models;
 //------services---------
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Blog\Database\Factories\PlaceFactory;
+use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Services\ImportService;
 
 //------ models --------

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Transformers;
 
+/* TO FIX
+ 34     Call to an undefined method Modules\Xot\Contracts\PanelContract::imgSrc().
+ 34     Parameter #1 $model of static method Modules\Xot\Services\PanelService::get() expects Illuminate\Database\Eloquent\Model, $this(Modules\Geo\Transformers\GeoJsonResource) given.
+*/
+
 /*
 *  GEOJSON e' uno standard
 * https://it.wikipedia.org/wiki/GeoJSON

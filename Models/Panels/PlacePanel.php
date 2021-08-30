@@ -135,7 +135,7 @@ class PlacePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
+    public function actions():array {
         return [];
     }
 }

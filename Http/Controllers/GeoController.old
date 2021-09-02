@@ -23,7 +23,7 @@ class GeoController extends Controller {
     }
 
     public function show(Request $request) {
-        $params = \Route::current()->parameters();
+        $params = optional(\Route::current())->parameters();
         $row = Post::where('guid', $params['guid_post'])->first();
         $view = ThemeService::getView();
 
@@ -31,7 +31,7 @@ class GeoController extends Controller {
     }
 
     public function latlong(Request $request) {
-        $params = \Route::current()->parameters();
+        $params = optional(\Route::current())->parameters();
         \extract($params);
         $orderby = '(('.$lat.'-latitude)*('.$lat.'-latitude))+(('.$long.'-longitude)*('.$long.'-longitude))';
         $row = GeoNamesCap::orderbyRaw($orderby)->first();

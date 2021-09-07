@@ -77,10 +77,7 @@ trait GeoTrait {
 
     //---- mutators ----
 
-    /**
-     * @return string
-     */
-    public function getAddress() {
+    public function getAddress(): string {
         if ('' == $this->country) {
             $this->country = 'Italia';
         }
@@ -88,7 +85,7 @@ trait GeoTrait {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
-    public function setAddressAttribute($value) {
+    public function setAddressAttribute($value): void {
         if (isJson($value)) {
             $json = (array) json_decode($value);
             $json['latitude'] = $json['latlng']->lat;
@@ -111,7 +108,7 @@ trait GeoTrait {
      * @return bool|mixed|string
      */
     public function getAddressAttribute($value) {
-        if ('' != $value) {
+        if (null != $value) {
             return json_decode($value);
         }
 

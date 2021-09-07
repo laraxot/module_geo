@@ -20,7 +20,10 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
 
-    public function handle() {
+    public function handle(): void {
+        if (! method_exists($this->rows, 'whereRaw')) {
+            throw new \Exception('in ['.get_class($this->rows).'] method [whereRaw] not exists');
+        }
         $rows = $this->rows
             ->whereRaw('latitude is null or longitude is null')
             ->inRandomOrder()
@@ -29,6 +32,15 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
             if (! \method_exists($row, 'getAddress')) {
                 throw new \Exception('in ['.get_class($row).'] not exists [getAddress] method');
             }
+            if (! is_object($row)) {
+                throw new \Exception('row is not an object');
+            }
+            //
+            //  40     Call to an undefined method object::getAttributeValue().
+            //  41     Call to an undefined method object::fill().
+            //42     Call to an undefined method object::save().
+            //
+
             $address = $row->getAddress();
             try {
                 $addr_arr = ImportService::getAddressFields(['address' => $address, 'id' => $row->getAttributeValue('id')]);

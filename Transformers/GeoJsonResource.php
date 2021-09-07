@@ -36,7 +36,10 @@ class GeoJsonResource extends ResCollection {
                 //"index"=> 0,
                 'isActive' => true,
                 //"logo"=> "http://placehold.it/32x32",
-                'image' => Panel::get($this)->imgSrc(['width' => 200, 'height' => 200]),
+                // 39     Parameter #1 $model of static method Modules\Xot\Services\PanelService::get()
+                // expects Illuminate\Database\Eloquent\Model,
+                // $this(Modules\Geo\Transformers\GeoJsonResource) given.
+                //'image' => Panel::get($this)->imgSrc(['width' => 200, 'height' => 200]),
                 'link' => $this->url,
                 'url' => '#',
                 'name' => $this->title,

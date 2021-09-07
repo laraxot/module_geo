@@ -32,7 +32,7 @@ class FillplacesAction extends XotBasePanelAction {
         $rows = Place::factory()->count(10)->create();
 
         $rows = Place::get();
-        dddx($rows);
+        //dddx($rows);
 
         return $rows->count();
     }

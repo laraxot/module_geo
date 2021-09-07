@@ -23,6 +23,9 @@ class MakeGeoJsonFileAction extends XotBasePanelAction {
      * @return GeoJsonCollection
      */
     public function handle() {
+        if (! method_exists($this->rows, 'getModel')) {
+            throw new \Exception('method getModel is missing ['.__LINE__.']['.__FILE__.']');
+        }
         $model = $this->rows->getModel();
         $rows = $model->where('latitude', '!=', null)
             //->limit(10)

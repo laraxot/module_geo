@@ -85,6 +85,11 @@ trait GeoTrait {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @param mixed $value
+     */
     public function setAddressAttribute($value): void {
         if (isJson($value)) {
             $json = (array) json_decode($value);
@@ -146,6 +151,9 @@ trait GeoTrait {
             extract($addr);
 
             $value = str_ireplace(', Italia', '', $value);
+            if (is_array($value)) {
+                $value = implode(' ', $value);
+            }
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);

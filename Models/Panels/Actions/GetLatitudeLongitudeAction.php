@@ -27,8 +27,13 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
         // 46     Call to an undefined method object::getAttributeValue().
         // 47     Call to an undefined method object::fill().
         // 48     Call to an undefined method object::save().
-
+        /*
         $rows = $this->rows
+            ->whereRaw('latitude is null or longitude is null')
+            ->inRandomOrder()
+            ->get();
+        */
+        $rows = $this->panel->getBuilder()
             ->whereRaw('latitude is null or longitude is null')
             ->inRandomOrder()
             ->get();

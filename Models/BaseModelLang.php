@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 ////use Laravel\Scout\Searchable;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\ModelContract;
 use Modules\Xot\Models\Traits\LinkedTrait;
 use Modules\Xot\Traits\Updater;
 
 /**
  * Class BaseModelLang.
  */
-abstract class BaseModelLang extends Model /*implements ModelContract */
-{
+abstract class BaseModelLang extends Model {
     use Updater;
     //use Searchable;
     use LinkedTrait;

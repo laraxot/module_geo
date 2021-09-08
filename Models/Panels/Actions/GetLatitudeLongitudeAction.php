@@ -24,6 +24,10 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
         if (! method_exists($this->rows, 'whereRaw')) {
             throw new \Exception('in ['.get_class($this->rows).'] method [whereRaw] not exists');
         }
+        // 46     Call to an undefined method object::getAttributeValue().
+        // 47     Call to an undefined method object::fill().
+        // 48     Call to an undefined method object::save().
+
         $rows = $this->rows
             ->whereRaw('latitude is null or longitude is null')
             ->inRandomOrder()

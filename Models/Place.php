@@ -7,7 +7,7 @@ namespace Modules\Geo\Models;
 //------services---------
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Geo\Database\Factories\PlaceFactory;
+//use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Services\ImportService;
 
 //------ models --------
@@ -73,7 +73,7 @@ use Modules\Xot\Services\ImportService;
  * @property \Modules\Blog\Models\Post|null                                           $post
  * @property mixed                                                                    $url
  *
- * @method static \Modules\Blog\Database\Factories\PlaceFactory factory(...$parameters)
+ * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
@@ -123,6 +123,7 @@ use Modules\Xot\Services\ImportService;
  */
 class Place extends BaseModelLang {
     use HasFactory;
+
     /**
      * @var string[]
      */
@@ -161,7 +162,7 @@ class Place extends BaseModelLang {
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
     protected static function newFactory() {
-        return PlaceFactory::new();
+        return \Modules\Geo\Database\Factories\PlaceFactory::new();
     }
 
     //----- mutators -----

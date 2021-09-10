@@ -184,7 +184,7 @@ class Place extends BaseModelLang {
                 throw new Exception('tmp is not an array');
             }
             $this->attributes = array_merge($this->attributes, $tmp);
-            //ddd($this->attributes);
+            //dddx($this->attributes);
         }
     }
     */

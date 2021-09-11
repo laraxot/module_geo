@@ -72,7 +72,6 @@ use Modules\Xot\Services\ImportService;
  * @property int|null                                                                 $my_favorites_count
  * @property \Modules\Blog\Models\Post|null                                           $post
  * @property mixed                                                                    $url
- *
  * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
@@ -120,6 +119,8 @@ use Modules\Xot\Services\ImportService;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Post[] $posts
+ * @property-read int|null $posts_count
  */
 class Place extends BaseModelLang {
     use HasFactory;

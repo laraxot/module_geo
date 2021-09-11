@@ -10,7 +10,7 @@ use Modules\Xot\Traits\Updater;
 
 /**
  * {.
- *
+ * 
  * item_description }
  * da fare php artisan scout:import Modules\Blog\Models\Post.
  *

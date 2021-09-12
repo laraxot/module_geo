@@ -137,7 +137,7 @@ class Place extends BaseModelLang {
         'googleplace_url',
         'point_of_interest', 'political', 'campground',
         //-----
-        'latitude', 'longitude', 'formatted_address', 'nearest_street',
+        'latitude', 'longitude', 'formatted_address', 'nearest_street','address'
     ];
 
     /**
@@ -205,4 +205,27 @@ class Place extends BaseModelLang {
     public function linked() {
         return $this->morphTo('post');
     }
+
+    /**
+     * Undocumented function.
+     *
+     * @param mixed $value
+     */
+    public function setAddressAttribute($value): void {
+        if (isJson($value)) {
+            $json = (array) json_decode($value);
+            $json['latitude'] = $json['latlng']->lat;
+            $json['longitude'] = $json['latlng']->lng;
+            unset($json['latlng'], $json['value']);
+
+            $this->attributes = array_merge($this->attributes, $json);
+            //dddx($this->attributes);
+        }
+        if (is_array($value)) {
+            $value = json_encode($value);
+        }
+        $this->attributes['address'] = $value;
+        //dddx(['isJson'=>\isJson($value),'value'=>$value]);
+    }
+
 }

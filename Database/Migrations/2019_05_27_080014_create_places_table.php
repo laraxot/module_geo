@@ -22,7 +22,7 @@ class CreatePlacesTable extends XotBaseMigration {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post');
+                $table->nullableMorphs('post');                
                 $table->string('formatted_address')->nullable();
                 $table->decimal('latitude', 15, 10)->nullable();
                 $table->decimal('longitude', 15, 10)->nullable();
@@ -46,8 +46,12 @@ class CreatePlacesTable extends XotBaseMigration {
         }
         //----- update -----
         Schema::table($this->getTable(), function (Blueprint $table) {
-            if (! Schema::hasColumn($this->getTable(), 'post_type')) {
+            if (! Schema::hasColumn($this->getTable(), 'post_type')) {                
                 $table->string('post_type', 50)->index()->nullable();
+            }
+
+            if (! Schema::hasColumn($this->getTable(), 'address')) {
+                $table->text('address')->nullable();
             }
         });
     }

@@ -41,7 +41,7 @@ class PlacePanel extends XotBasePanel {
     /**
      * Get the fields displayed by the resource.
      */
-    public function fields(): array {
+    public function fieldsOld(): array {
         return [
             (object) [
                 'type' => 'Id',
@@ -126,6 +126,22 @@ class PlacePanel extends XotBasePanel {
             (object) [
                 'type' => 'Text',
                 'name' => 'nearest_street',
+            ],
+        ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     */
+    public function fields(): array {
+        return [
+            (object) [
+                'type' => 'Id',
+                'name' => 'id',
+            ],(object) [
+                'type' => 'AddressGoogle',
+                /* in sto caso si può mettere  il nome che si vuole, ma comunque va messo qualcosa */
+                'name' => 'address',
             ],
         ];
     }

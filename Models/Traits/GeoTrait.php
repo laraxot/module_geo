@@ -91,15 +91,17 @@ trait GeoTrait {
      * @param mixed $value
      */
     public function setAddressAttribute($value): void {
+        //*
         if (isJson($value)) {
             $json = (array) json_decode($value);
             $json['latitude'] = $json['latlng']->lat;
             $json['longitude'] = $json['latlng']->lng;
-            unset($json['latlng'], $json['value']);
 
-            $this->attributes = array_merge($this->attributes, $json);
+            //unset($json['latlng'], $json['value']);
+            //$this->attributes = array_merge($this->attributes, $json);
             //dddx($this->attributes);
         }
+
         if (is_array($value)) {
             $value = json_encode($value);
         }
@@ -112,6 +114,7 @@ trait GeoTrait {
      *
      * @return bool|mixed|string
      */
+    /*
     public function getAddressAttribute($value) {
         if (null != $value) {
             return json_decode($value);
@@ -135,6 +138,7 @@ trait GeoTrait {
         return json_encode($val1, 1);
         //return response()->json($val1);
     }
+    */
 
     /**
      * @param mixed $value

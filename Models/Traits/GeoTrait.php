@@ -116,7 +116,7 @@ trait GeoTrait {
      */
     /*
     public function getAddressAttribute($value) {
-        if (null != $value) {
+        if (null !== $value) {
             return json_decode($value);
         }
 

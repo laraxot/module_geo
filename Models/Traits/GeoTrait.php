@@ -85,6 +85,27 @@ trait GeoTrait {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
+
+    public function getLatitudeAttribute(?float $value):?float{
+        if($value!==null){ return $value;}
+        $address=$this->address;
+        if($address===null){
+            return null;
+        }
+        if (isJson($address)) {
+            $json = json_decode($address,true);
+            $lat=$json['latlng']['lat'];
+            $lng=$json['latlng']['lng'];
+            $this->update([
+                'latitude'=>$lat,
+                'longitude'=>$lng,
+            ]);
+            $this->save();
+            return $lat;
+        }
+        dddx($address);
+    }
+
     /**
      * Undocumented function.
      *

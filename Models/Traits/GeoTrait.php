@@ -130,14 +130,25 @@ trait GeoTrait {
      */
     public function setAddressAttribute($value): void {
         //*
-        if (isJson($value)) {
-            $json = (array) json_decode($value);
-            $json['latitude'] = $json['latlng']->lat;
-            $json['longitude'] = $json['latlng']->lng;
 
-            //unset($json['latlng'], $json['value']);
-            //$this->attributes = array_merge($this->attributes, $json);
-            //dddx($this->attributes);
+        if (isJson($value)) {
+            $json = json_decode($value, true);
+            $json['latitude'] = $json['latlng']['lat'];
+            $json['longitude'] = $json['latlng']['lng'];
+
+            unset($json['latlng'], $json['value']);
+            $this->attributes = array_merge($this->attributes, $json);
+            if (', , , , ' == $this->attributes['full_address']) {
+                $address = collect($json);
+                $tmp = [];
+                $tmp[] = $address->get('route');
+                $tmp[] = $address->get('street_number');
+                $tmp[] = $address->get('postal_code');
+                $tmp[] = $address->get('administrative_area_level_3');
+                $tmp[] = $address->get('administrative_area_level_2_short');
+
+                $this->attributes['full_address'] = implode(', ', $tmp);
+            }
         }
 
         if (is_array($value)) {

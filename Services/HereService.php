@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Services;
 
 use Illuminate\Support\Facades\Http;
-use Modules\Xot\Services\TenantService;
+use Modules\Tenant\Services\TenantService;
 
 class HereService {
     public string $base_url = 'https://router.hereapi.com/v8/routes';

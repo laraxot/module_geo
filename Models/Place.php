@@ -72,6 +72,7 @@ use Modules\Xot\Services\ImportService;
  * @property int|null                                                                 $my_favorites_count
  * @property \Modules\Blog\Models\Post|null                                           $post
  * @property mixed                                                                    $url
+ *
  * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
@@ -119,8 +120,9 @@ use Modules\Xot\Services\ImportService;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Post[] $posts
- * @property-read int|null $posts_count
+ *
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Post[] $posts
+ * @property int|null                                                             $posts_count
  */
 class Place extends BaseModelLang {
     use HasFactory;
@@ -137,7 +139,7 @@ class Place extends BaseModelLang {
         'googleplace_url',
         'point_of_interest', 'political', 'campground',
         //-----
-        'latitude', 'longitude', 'formatted_address', 'nearest_street','address'
+        'latitude', 'longitude', 'formatted_address', 'nearest_street', 'address',
     ];
 
     /**
@@ -227,5 +229,4 @@ class Place extends BaseModelLang {
         $this->attributes['address'] = $value;
         //dddx(['isJson'=>\isJson($value),'value'=>$value]);
     }
-
 }

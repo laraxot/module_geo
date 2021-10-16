@@ -10,7 +10,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateHomesTable.
  */
-class CreateCities extends XotBaseMigration {
+class CreateCitiesTable extends XotBaseMigration {
     /**
      * db up.
      *

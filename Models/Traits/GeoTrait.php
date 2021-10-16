@@ -258,4 +258,13 @@ trait GeoTrait {
 
         return $value;
     }
+
+    //---------------------------------------------------------
+    public function place() {
+        return $this->morphOne(Place::class, 'post');
+    }
+
+    public function places() {
+        return $this->morphMany(Place::class, 'post');
+    }
 }

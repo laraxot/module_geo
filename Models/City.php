@@ -18,4 +18,11 @@ class City extends BaseModelLang {
     protected $fillable = ['id'];
 
     //---------- RELATIONSHIPS -----------
+    public function place() {
+        return $this->morphOne(Place::class, 'post');
+    }
+
+    public function places() {
+        return $this->morphMany(Place::class, 'post');
+    }
 }

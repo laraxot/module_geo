@@ -27,29 +27,27 @@ class CityPanel extends XotBasePanel {
      *
      * @var array
      */
-    public static $search = array (
-);
+    public static $search = [
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
      *
      * @var array
      */
-    public function with():array {
-        return [];
+    public function with(): array {
+        return ['post'];
     }
 
-    public function search() :array {
-
+    public function search(): array {
         return [];
     }
 
     /**
-     * on select the option id
+     * on select the option id.
      *
-     * quando aggiungi un campo select, è il numero della chiave 
+     * quando aggiungi un campo select, è il numero della chiave
      * che viene messo come valore su value="id"
-     *
      */
     public function optionId(object $row) {
         return $row->getKey();
@@ -58,7 +56,7 @@ class CityPanel extends XotBasePanel {
     /**
      * on select the option label.
      */
-    public function optionLabel(object $row):string {
+    public function optionLabel(object $row): string {
         return $row->area_define_name;
     }
 
@@ -76,13 +74,10 @@ class CityPanel extends XotBasePanel {
      *
      * @return RowsContract
      */
-    public static function indexQuery(array $data, $query)
-    {
+    public static function indexQuery(array $data, $query) {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
         return $query;
     }
-
-
 
     /**
      * Get the fields displayed by the resource.
@@ -95,14 +90,13 @@ class CityPanel extends XotBasePanel {
         'value'=>'..',
      */
     public function fields(): array {
-        return array (
-  0 => 
-  (object) array(
-     'type' => 'Id',
-     'name' => 'id',
-     'comment' => NULL,
-  ),
-);
+        return [
+            0 => (object) [
+                'type' => 'Id',
+                'name' => 'id',
+                'comment' => null,
+            ],
+        ];
     }
 
     /**
@@ -110,7 +104,7 @@ class CityPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs():array {
+    public function tabs(): array {
         $tabs_name = [];
 
         return $tabs_name;
@@ -121,7 +115,7 @@ class CityPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request):array {
+    public function cards(Request $request): array {
         return [];
     }
 
@@ -132,7 +126,7 @@ class CityPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null):array {
+    public function filters(Request $request = null): array {
         return [];
     }
 
@@ -141,7 +135,7 @@ class CityPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request):array {
+    public function lenses(Request $request): array {
         return [];
     }
 
@@ -150,7 +144,7 @@ class CityPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions():array {
+    public function actions(): array {
         return [];
     }
 }

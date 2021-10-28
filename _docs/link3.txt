@@ -20,3 +20,13 @@ https://medium.com/@phil-johnson/solving-street-number-bug-in-google-address-aut
 
 
 https://lorisleiva.com/why-i-wrote-laravel-actions
+
+
+
+-----------------------------------------------------
+https://github.com/geocoder-php/GeocoderLaravel
+app('geocoder')->geocode('Los Angeles, CA')->get();
+app('geocoder')->geocode('8.8.8.8')->get();
+app('geocoder')->reverse(43.882587,-103.454067)->get();
+
+--------------------------------------------------------

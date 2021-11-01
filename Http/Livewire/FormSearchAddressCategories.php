@@ -54,5 +54,7 @@ class FormSearchAddressCategories extends Component {
         $lng = $ltlng->lng;
         //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
         $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+
+        session()->put('address', $data->value);
     }
 }

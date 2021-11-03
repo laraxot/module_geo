@@ -31,14 +31,14 @@ class CreatePlacesTable extends XotBaseMigration {
                     $address_components = MyModel::$address_components;
                     foreach ($address_components as $el) {
                         if (! Schema::hasColumn($this->getTable(), $el)) {
-                            $table->string($el)->nullable();
+                            $table->text($el)->nullable();
                         }
                         if (! Schema::hasColumn($this->getTable(), $el.'_short')) {
-                            $table->string($el.'_short')->nullable();
+                            $table->text($el.'_short')->nullable();
                         }
                     }
 
-                    $table->string('nearest_street')->nullable();
+                    $table->text('nearest_street')->nullable();
 
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();

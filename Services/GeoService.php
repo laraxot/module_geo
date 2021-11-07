@@ -16,6 +16,17 @@ namespace Modules\Geo\Services;
  * Class GeoService.
  */
 class GeoService {
+    public static string $latitude_field = 'latitude';
+    public static string $longitude_field = 'longitude';
+
+    public static function setLatitudeField($latitude_field) {
+        self::$latitude_field = $latitude_field;
+    }
+
+    public static function setLongitudeField($longitude_field) {
+        self::$longitude_field = $longitude_field;
+    }
+
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
     /*::                                                                         :*/
     /*::  This routine calculates the distance between two points (given the     :*/
@@ -89,8 +100,8 @@ class GeoService {
      */
     public static function haversine($latitude, $longitude) {
         return '(6371 * acos(cos(radians('.$latitude.'))
-        * cos(radians(`latitude`))
-        * cos(radians(`longitude`)
+        * cos(radians(`'.self::$latitude_field.'`))
+        * cos(radians(`'.self::$longitude_field.'`)
         - radians('.$longitude.'))
         + sin(radians('.$latitude.'))
         * sin(radians(`latitude`)))) *1.1515';

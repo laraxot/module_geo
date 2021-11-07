@@ -94,16 +94,5 @@ class GeoService {
         - radians('.$longitude.'))
         + sin(radians('.$latitude.'))
         * sin(radians(`latitude`)))) *1.1515';
-
-        //dovrebbero esserci 4 parametri (2 della posizione attuale e 2 del modello/attività)?
-        //https://www.py4u.net/discuss/34744
-        /*
-        return '(6371 * acos(cos(radians('.$latitude.'))
-        * cos(radians('.$model_latitude.'))
-        * cos(radians('.$model_longitude.')
-        - radians('.$longitude.'))
-        + sin(radians('.$latitude.'))
-        * sin(radians('.$model_latitude.')))) *1.1515';
-        */
     }
 }

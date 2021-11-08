@@ -48,6 +48,7 @@ class FormSearchAddressCategories extends Component {
     public function search() {
         $this->showActivityTypes = true;
         $data = json_decode($this->form_data['address']);
+        //dddx($data);
         $ltlng = $data->latlng;
         $city = $data->locality;
         $lat = $ltlng->lat;

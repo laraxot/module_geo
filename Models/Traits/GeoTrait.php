@@ -138,7 +138,11 @@ trait GeoTrait {
 
             unset($json['latlng'], $json['value']);
             $this->attributes = array_merge($this->attributes, $json);
-            if (', , , , ' == $this->attributes['full_address']) {
+            if(!isset($this->attributes['full_address'])){
+                $this->attributes['full_address']=',,';
+            }
+
+            if (strlen($this->attributes['full_address'])<10) {
                 $address = collect($json);
                 $tmp = [];
                 $tmp[] = $address->get('route');

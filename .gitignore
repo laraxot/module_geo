@@ -19,3 +19,4 @@ v8-compile-cache-0
 /Resources/views/maps/farmshops/data
 /Resources/views/maps/directorybs4/package-lock.json
 
+*.stackdump

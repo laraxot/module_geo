@@ -25,20 +25,20 @@ class CreatePlacesTable extends XotBaseMigration {
                 function (Blueprint $table) {
                     $table->increments('id');
                     $table->nullableMorphs('post');
-                    $table->string('formatted_address')->nullable();
+                    $table->text('formatted_address')->nullable();
                     $table->decimal('latitude', 15, 10)->nullable();
                     $table->decimal('longitude', 15, 10)->nullable();
                     $address_components = MyModel::$address_components;
                     foreach ($address_components as $el) {
                         if (! Schema::hasColumn($this->getTable(), $el)) {
-                            $table->string($el)->nullable();
+                            $table->text($el)->nullable();
                         }
                         if (! Schema::hasColumn($this->getTable(), $el.'_short')) {
-                            $table->string($el.'_short')->nullable();
+                            $table->text($el.'_short')->nullable();
                         }
                     }
 
-                    $table->string('nearest_street')->nullable();
+                    $table->text('nearest_street')->nullable();
 
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();
@@ -50,16 +50,6 @@ class CreatePlacesTable extends XotBaseMigration {
         $this->getConn()->table(
             $this->getTable(),
             function (Blueprint $table) {
-                /*
-                if (! Schema::hasColumn($this->getTable(), 'post_type')) {
-                    $table->string('post_type', 50)->index()->nullable();
-                }
-
-                if (! Schema::hasColumn($this->getTable(), 'address')) {
-                    $table->text('address')->nullable();
-                }
-                */
-
                 if (! $this->hasColumn('post_type')) {
                     $table->string('post_type', 50)->index()->nullable();
                 }

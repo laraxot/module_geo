@@ -27,7 +27,7 @@ class PlaceFactory extends Factory {
         return [
             //'title' => $this->faker->sentence,
             //'description' => $this->faker->paragraph,
-            //'auth_user_id' => factory(User::class)->create()->auth_user_id,
+            //'user_id' => factory(User::class)->create()->id,
 
             //'latitude' => $this->faker->latitude(),
             /*

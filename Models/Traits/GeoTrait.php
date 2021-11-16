@@ -75,6 +75,23 @@ trait GeoTrait {
         return $q;
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
+        $q = $query;
+        if (0 != $lat && 0 != $lng) {
+            $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
+
+            return $query->selectRaw("*,{$haversine} AS distance")
+                ->orderBy('distance');
+        }
+
+        return $q;
+    }
+
     //---- mutators ----
 
     public function getAddress(): string {
@@ -138,11 +155,11 @@ trait GeoTrait {
 
             unset($json['latlng'], $json['value']);
             $this->attributes = array_merge($this->attributes, $json);
-            if(!isset($this->attributes['full_address'])){
-                $this->attributes['full_address']=',,';
+            if (! isset($this->attributes['full_address'])) {
+                $this->attributes['full_address'] = ',,';
             }
 
-            if (strlen($this->attributes['full_address'])<10) {
+            if (strlen($this->attributes['full_address']) < 10) {
                 $address = collect($json);
                 $tmp = [];
                 $tmp[] = $address->get('route');
@@ -262,6 +279,4 @@ trait GeoTrait {
 
         return $value;
     }
-
-
 }

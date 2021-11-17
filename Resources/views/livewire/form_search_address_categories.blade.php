@@ -1,4 +1,7 @@
 <div>
+
+
+
     @php($name = 'address')
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
@@ -12,8 +15,10 @@
                         class="input home-address-input" autocomplete="off"
                         wire:model.lazy="form_data.{{ $name }}_value" />
 
-                    @if ($warningCivicNumber)
-                        <input type="text" name="civic" placeholder="N°" class="home-address-input home-civic-input" />
+
+                    @if ($warningCivicNumber >= 1)
+                        <input wire:model.lazy="form_data.street_number_value" type="text" name="street_number"
+                            placeholder="N°" class="home-address-input home-civic-input" />
                     @endif
 
                     <button class="home-address-button home-geolocalize-button" type="button">
@@ -26,7 +31,7 @@
                 <div style="clear:both;"></div>
             </form>
             <br />
-            @if ($warningCivicNumber)
+            @if ($warningCivicNumber === 2)
                 <div class="only-desktop home-error-popup home-address-messages home-error-popup-civic">
                     Per favore inserisci anche il numero civico
                 </div>
@@ -41,6 +46,9 @@
 
         </div>
     </div>
+
+
+
     @if ($showActivityTypes)
         <div class="activities-categories-home-container text-center fadeInUp animated">
             <div class="activities-categories-home">

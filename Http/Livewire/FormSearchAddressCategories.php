@@ -22,13 +22,14 @@ class FormSearchAddressCategories extends Component {
     public bool $showActivityTypes = false;
     public array $enabledTypes = [];
     public bool $warningSuggestedAddresses = false;
-    public bool $warningCivicNumber = false;
+    public int $warningCivicNumber = 0;
 
     public function mount($attributes, $slot) {
         $this->attributes = (string) $attributes;
         $this->slot = (string) $slot;
         $this->form_data[$this->name] = json_encode((object) []);
         $this->form_data[$this->name.'_value'] = null; //'via roma,2,mogliano veneto';
+        $this->form_data['street_number_value'] = null;
         /*
         dddx(
             [
@@ -39,32 +40,39 @@ class FormSearchAddressCategories extends Component {
         */
     }
 
+    public function search() {
+        $address = json_decode($this->form_data['address']);
+
+        if (empty($address->street_number) && empty($this->form_data['street_number_value'])) {
+            $this->warningCivicNumber = 2;
+        } else {
+            if (! empty($this->form_data['street_number_value'])) {
+                $this->warningCivicNumber = 1;
+            } else {
+                $this->warningCivicNumber = 0;
+            }
+            $this->showActivityTypes = true;
+
+            $ltlng = $address->latlng;
+            $city = $address->locality;
+            $lat = $ltlng->lat;
+            $lng = $ltlng->lng;
+            //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
+            $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+
+            session()->put('address', $address->value);
+        }
+    }
+
     public function render() {
+        \Debugbar::info($this);
+
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,
         ];
 
         return view()->make($view, $view_params);
-    }
-
-    public function search() {
-        if (empty($this->form_data['street_number'])) {
-            $this->warningCivicNumber = true;
-        } else {
-            $this->warningCivicNumber = false;
-            $this->showActivityTypes = true;
-            $data = json_decode($this->form_data['address']);
-
-            $ltlng = $data->latlng;
-            $city = $data->locality;
-            $lat = $ltlng->lat;
-            $lng = $ltlng->lng;
-            //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
-            $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
-
-            session()->put('address', $data->value);
-        }
     }
 }
 

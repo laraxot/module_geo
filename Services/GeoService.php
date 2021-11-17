@@ -16,15 +16,44 @@ namespace Modules\Geo\Services;
  * Class GeoService.
  */
 class GeoService {
+    private static ?self $_instance = null;
+
     public static string $latitude_field = 'latitude';
     public static string $longitude_field = 'longitude';
 
-    public static function setLatitudeField($latitude_field) {
-        self::$latitude_field = $latitude_field;
+    /**
+     * getInstance.
+     *
+     * this method will return instance of the class
+     */
+    public static function getInstance() {
+        if (! self::$_instance) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
     }
 
-    public static function setLongitudeField($longitude_field) {
-        self::$longitude_field = $longitude_field;
+    public static function setLatitudeField(string $latitude_field): self {
+        $instance = self::getInstance();
+        $instance::$latitude_field = $latitude_field;
+
+        return $instance;
+    }
+
+    public static function setLongitudeField(string $longitude_field): self {
+        $instance = self::getInstance();
+        $instance::$longitude_field = $longitude_field;
+
+        return $instance;
+    }
+
+    public static function setLatitudeLongitudeField(string $latitude_field, string $longitude_field): self {
+        $instance = self::getInstance();
+        $instance::$latitude_field = $latitude_field;
+        $instance::$longitude_field = $longitude_field;
+
+        return $instance;
     }
 
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
@@ -104,6 +133,6 @@ class GeoService {
         * cos(radians(`'.self::$longitude_field.'`)
         - radians('.$longitude.'))
         + sin(radians('.$latitude.'))
-        * sin(radians(`latitude`)))) *1.1515';
+        * sin(radians(`'.self::$latitude_field.'`)))) *1.1515';
     }
 }

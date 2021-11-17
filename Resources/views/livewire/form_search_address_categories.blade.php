@@ -7,13 +7,21 @@
 
                     <!--id="form_search_address_categories_json"-->
                     <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
+
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
                         wire:model.lazy="form_data.{{ $name }}_value" />
+<<<<<<< HEAD
                     @if ($streetNumberMissing)
                         <input type="text" name="civic" placeholder="N°"
                             class="home-address-input home-civic-input ng-pristine ng-valid ng-touched">
                     @endif
+=======
+
+                    <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.{{ $civic_number }}"
+                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
+
+>>>>>>> origin/master
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />
                     </button>
@@ -23,6 +31,20 @@
                 </button>
                 <div style="clear:both;"></div>
             </form>
+            <br />
+            @if ($warningCivicNumber)
+                <div class="only-desktop home-error-popup home-address-messages home-error-popup-civic">
+                    Per favore inserisci anche il numero civico
+                </div>
+            @endif
+
+
+            {{-- @if ($warningSuggestedAddresses)
+                <div class="only-desktop home-error-popup home-address-messages">
+                    Per favore inserisci la via e il comune, poi scegli tra gli indirizzi suggeriti
+                </div>
+            @endif --}}
+
         </div>
     </div>
     @if ($showActivityTypes)

@@ -87,6 +87,17 @@ https://gist.github.com/vzool/e5ee5fab6608c7a9e82e2c4b800a86e3
 -------------------------------------------------------------------------------------------
 
 
+Find Restaurants with Geospatial Queries - MONGO 
+https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/
 
+----------------------------------------------------------------------------------------------
+
+soldi api maps
+https://laraveldaily.com/laravel-find-addresses-with-coordinates-via-google-maps-api/
+---------------------------------------------------------------------------------------------
+
+
+
+https://css-tricks.com/lets-make-a-form-that-puts-current-location-to-use-in-a-map/
 
 

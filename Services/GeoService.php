@@ -135,4 +135,37 @@ class GeoService {
         + sin(radians('.$latitude.'))
         * sin(radians(`'.self::$latitude_field.'`)))) *1.1515';
     }
+
+    public static function is_in_polygon($latitude, $longitude, $polygon) {
+        $i = $j = $c = 0;
+        $points_polygon = count($polygon) - 1;
+
+        // dddx([$latitude, $longitude, $polygon]);
+
+        for ($i = 0, $j = $points_polygon; $i < $points_polygon; $j = $i++) {
+            $polygon[$i] = (object) $polygon[$i];
+            $polygon[$j] = (object) $polygon[$j];
+
+            if ((($polygon[$i]->lat > $latitude != ($polygon[$j]->lat > $latitude)) &&
+           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng))) {
+                $c = ! $c;
+            }
+        }
+
+        return $c;
+    }
+
+    public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool {
+        if (empty($polygon)) {
+            return false;
+        }
+
+        $original_data = json_decode($polygon, true);
+
+        if (self::is_in_polygon($lat, $lng, $original_data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

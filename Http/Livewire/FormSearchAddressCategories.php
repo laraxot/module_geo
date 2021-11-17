@@ -25,6 +25,8 @@ class FormSearchAddressCategories extends Component {
     public int $warningCivicNumber = 0;
 
     public function mount($attributes, $slot) {
+        $this->emitTo('vorrey::modals.dialog', 'showModal');
+
         $this->attributes = (string) $attributes;
         $this->slot = (string) $slot;
         $this->form_data[$this->name] = json_encode((object) []);

@@ -3,7 +3,7 @@
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
             <form name="address" wire:submit.prevent="search()">
-                <div class="home-address-group" id="address-group" wire:ignore>
+                <div class="home-address-group" id="address-group">
 
                     <!--id="form_search_address_categories_json"-->
                     <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
@@ -12,9 +12,8 @@
                         class="input home-address-input" autocomplete="off"
                         wire:model.lazy="form_data.{{ $name }}_value" />
 
-                    @if ($streetNumberMissing)
-                        <input type="text" name="civic" placeholder="N°"
-                            class="home-address-input home-civic-input ng-pristine ng-valid ng-touched">
+                    @if ($warningCivicNumber)
+                        <input type="text" name="civic" placeholder="N°" class="home-address-input home-civic-input" />
                     @endif
 
                     <button class="home-address-button home-geolocalize-button" type="button">
@@ -94,8 +93,16 @@
 
                 var $autocomplete = new google.maps.places.Autocomplete(
                     ($this[0]), {
-                        types: ['geocode']
-                    });
+                        componentRestrictions: {
+                            country: "IT"
+                        },
+                        types: ["address"],
+
+
+
+
+                    }
+                );
 
                 $autocomplete.addListener('place_changed', function fillInAddress() {
 

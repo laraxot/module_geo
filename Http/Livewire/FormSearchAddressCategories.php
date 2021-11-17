@@ -25,7 +25,6 @@ class FormSearchAddressCategories extends Component {
     public bool $warningCivicNumber = false;
 
     public function mount($attributes, $slot) {
-        $this->streetNumberMissing = false;
         $this->attributes = (string) $attributes;
         $this->slot = (string) $slot;
         $this->form_data[$this->name] = json_encode((object) []);
@@ -41,8 +40,6 @@ class FormSearchAddressCategories extends Component {
     }
 
     public function render() {
-        $this->streetNumberMissing = $this->streetNumberMissing();
-
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,
@@ -51,24 +48,8 @@ class FormSearchAddressCategories extends Component {
         return view()->make($view, $view_params);
     }
 
-    public function streetNumberMissing() {
-        //dddx($this->form_data);
-
-        if (! empty($this->form_data['address'])) {
-            $data = json_decode($this->form_data['address']);
-
-            if (empty($data->street_number)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
     public function search() {
-        if (! isset($this->form_data['street_number'])) {
+        if (empty($this->form_data['street_number'])) {
             $this->warningCivicNumber = true;
         } else {
             $this->warningCivicNumber = false;

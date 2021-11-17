@@ -11,17 +11,12 @@
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
                         wire:model.lazy="form_data.{{ $name }}_value" />
-<<<<<<< HEAD
+
                     @if ($streetNumberMissing)
                         <input type="text" name="civic" placeholder="N°"
                             class="home-address-input home-civic-input ng-pristine ng-valid ng-touched">
                     @endif
-=======
 
-                    <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.{{ $civic_number }}"
-                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
-
->>>>>>> origin/master
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />
                     </button>

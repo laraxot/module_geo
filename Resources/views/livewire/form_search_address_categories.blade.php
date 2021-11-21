@@ -1,7 +1,4 @@
 <div>
-
-
-
     @php($name = 'address')
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
@@ -61,9 +58,6 @@
             </div>
         </div>
     @endif
-
-
-
 </div>
 
 @push('styles')
@@ -94,18 +88,19 @@
                 var $field = $('[name="' + $addressConfig.field + '"]');
 
                 if ($field.val().length) {
-                    //console.log($field.val());
                     var existingData = JSON.parse($field.val());
                     $this.val(existingData.value);
                 }
 
+                var options = {
+                    componentRestrictions: {
+                        country: "IT"
+                    },
+                    types: ["address"],
+                };
+
                 var $autocomplete = new google.maps.places.Autocomplete(
-                    ($this[0]), {
-                        componentRestrictions: {
-                            country: "IT"
-                        },
-                        types: ["address"],
-                    }
+                    ($this[0]), options
                 );
 
                 $autocomplete.addListener('place_changed', function fillInAddress() {

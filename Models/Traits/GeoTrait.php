@@ -96,6 +96,45 @@ trait GeoTrait {
         return $q;
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfInPolygon($query, string $polygon_field, float $lat, float $lng) {
+        //(concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
+        //errore poligono non chiuso
+        /*
+
+ SELECT ID,zone_polygon
+,(
+concat('POLYGON((',
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+replace(CONCAT(
+replace(replace(zone_polygon,']',''),'[',''),
+',',JSON_extract(zone_polygon,'$[0]'))
+,'"lat":','')
+,',"lng":',' ')
+,'{',' ')
+,', "lng":',' ')
+,'}','')
+,'))')
+)
+
+,JSON_extract(zone_polygon,'$[0]')
+
+from vo_activities
+where zone_polygon IS NOT NULL
+ORDER BY RAND()
+LIMIT 2
+        */
+
+        return $query->whereNotNull($polygon_field);
+    }
+
     //---- mutators ----
 
     public function getAddress(): string {

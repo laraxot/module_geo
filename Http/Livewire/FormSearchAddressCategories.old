@@ -12,7 +12,6 @@ namespace Modules\Geo\Http\Livewire;
 use Livewire\Component;
 use Modules\Xot\Services\ActionService;
 
-// DA SPOSTARE NEL MODULO VORREY, insieme alla blade (nel tema vorrey)
 class FormSearchAddressCategories extends Component {
     public $attributes;
     public $slot;
@@ -23,13 +22,16 @@ class FormSearchAddressCategories extends Component {
     public bool $showActivityTypes = false;
     public array $enabledTypes = [];
     public bool $warningSuggestedAddresses = false;
-    public bool $warningCivicNumber = false;
+    public int $warningCivicNumber = 0;
 
     public function mount($attributes, $slot) {
+        $this->emitTo('vorrey::modals.dialog', 'showModal');
+
         $this->attributes = (string) $attributes;
         $this->slot = (string) $slot;
         $this->form_data[$this->name] = json_encode((object) []);
         $this->form_data[$this->name.'_value'] = null; //'via roma,2,mogliano veneto';
+        $this->form_data['street_number_value'] = null;
         /*
         dddx(
             [
@@ -40,64 +42,39 @@ class FormSearchAddressCategories extends Component {
         */
     }
 
+    public function search() {
+        $address = json_decode($this->form_data['address']);
+
+        if (empty($address->street_number) && empty($this->form_data['street_number_value'])) {
+            $this->warningCivicNumber = 2;
+        } else {
+            if (! empty($this->form_data['street_number_value'])) {
+                $this->warningCivicNumber = 1;
+            } else {
+                $this->warningCivicNumber = 0;
+            }
+            $this->showActivityTypes = true;
+
+            $ltlng = $address->latlng;
+            $city = $address->locality;
+            $lat = $ltlng->lat;
+            $lng = $ltlng->lng;
+            //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
+            $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+
+            session()->put('address', $address->value);
+        }
+    }
+
     public function render() {
+        \Debugbar::info($this);
+
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,
         ];
 
         return view()->make($view, $view_params);
-    }
-
-    //funzione test utilizzando il keydown
-    public function test() {
-        //se metto semplicemente questa riga, la funzione test si attiva al keydown
-        //$this->warningSuggestedAddresses = true;
-
-        $data = json_decode($this->form_data['address']);
-        //dddx([gettype($this->form_data), $this->form_data]);
-        //dddx([$this->form_data['address_value'], $this->form_data['address'], $this->form_data['address']['latlng']]);
-
-        //if (isset($this->form_data['locality']) && isset($this->form_data['value']) && isset($this->form_data['street_number'])) {
-        //if (isset($this->form_data['country']) || null == $this->form_data['country']) {
-        if (isset($data->latlng)) {
-            $this->warningSuggestedAddresses = true;
-        }
-
-        $this->warningSuggestedAddresses = false;
-    }
-
-    public function search() {
-        $data = json_decode($this->form_data['address']);
-
-        //controllo se è stato selezionato un suggerimento di google
-        if (! isset($data->latlng)) {
-            $this->warningSuggestedAddresses = true;
-        } else {
-            $this->warningSuggestedAddresses = false;
-
-            //controllo se è stato selezionato un suggerimento di google con numero civico
-            if (! isset($data->street_number) && ! isset($this->form_data['street_number'])) {
-                $this->warningCivicNumber = true;
-            } else {
-                $this->warningCivicNumber = false;
-                $this->showActivityTypes = true;
-                //$data = json_decode($this->form_data['address']);
-
-                if (! isset($data->street_number)) {
-                    $data->street_number = $this->form_data['street_number'];
-                }
-
-                $ltlng = $data->latlng;
-                $city = $data->locality;
-                $lat = $ltlng->lat;
-                $lng = $ltlng->lng;
-                //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
-                $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
-
-                //session()->put('address', $data->value);
-            }
-        }
     }
 }
 

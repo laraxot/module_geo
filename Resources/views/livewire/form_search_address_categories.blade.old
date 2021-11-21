@@ -3,17 +3,20 @@
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
             <form name="address" wire:submit.prevent="search()">
-                <div class="home-address-group" id="address-group" wire:ignore>
+                <div class="home-address-group" id="address-group">
 
                     <!--id="form_search_address_categories_json"-->
                     <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
 
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
-                        wire:model.lazy="form_data.{{ $name }}_value" {{-- wire:change="test" --}} />
+                        wire:model.lazy="form_data.{{ $name }}_value" />
 
-                    <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.{{ $civic_number }}"
-                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
+
+                    @if ($warningCivicNumber >= 1)
+                        <input wire:model.lazy="form_data.street_number_value" type="text" name="street_number"
+                            placeholder="N°" class="home-address-input home-civic-input" />
+                    @endif
 
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />
@@ -25,21 +28,24 @@
                 <div style="clear:both;"></div>
             </form>
             <br />
-            @if ($warningCivicNumber)
+            @if ($warningCivicNumber === 2)
                 <div class="only-desktop home-error-popup home-address-messages home-error-popup-civic">
                     Per favore inserisci anche il numero civico
                 </div>
             @endif
 
 
-            @if ($warningSuggestedAddresses)
+            {{-- @if ($warningSuggestedAddresses)
                 <div class="only-desktop home-error-popup home-address-messages">
                     Per favore inserisci la via e il comune, poi scegli tra gli indirizzi suggeriti
                 </div>
-            @endif
+            @endif --}}
 
         </div>
     </div>
+
+
+
     @if ($showActivityTypes)
         <div class="activities-categories-home-container text-center fadeInUp animated">
             <div class="activities-categories-home">
@@ -52,9 +58,6 @@
             </div>
         </div>
     @endif
-
-
-
 </div>
 
 @push('styles')
@@ -85,15 +88,20 @@
                 var $field = $('[name="' + $addressConfig.field + '"]');
 
                 if ($field.val().length) {
-                    //console.log($field.val());
                     var existingData = JSON.parse($field.val());
                     $this.val(existingData.value);
                 }
 
+                var options = {
+                    componentRestrictions: {
+                        country: "IT"
+                    },
+                    types: ["address"],
+                };
+
                 var $autocomplete = new google.maps.places.Autocomplete(
-                    ($this[0]), {
-                        types: ['geocode']
-                    });
+                    ($this[0]), options
+                );
 
                 $autocomplete.addListener('place_changed', function fillInAddress() {
 

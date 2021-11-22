@@ -9,8 +9,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Http\Livewire;
 
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\Xot\Services\ActionService;
+use Throwable;
 
 // DA SPOSTARE NEL MODULO VORREY, insieme alla blade (nel tema vorrey)
 class FormSearchAddressCategories extends Component {
@@ -23,6 +25,9 @@ class FormSearchAddressCategories extends Component {
     public array $enabledTypes = [];
     public bool $warningSuggestedAddresses = false;
     public bool $warningCivicNumber = false;
+
+    public string $email = '';
+    public string $cap = '';
 
     public function mount($attributes, $slot) {
         //$this->attributes = $attributes;
@@ -51,6 +56,10 @@ class FormSearchAddressCategories extends Component {
             return;
         }
 
+        // INSERIRE CONTROLLO
+        // se inserisco solo una città senza via
+        // Undefined property: stdClass::$locality
+
         //controllo se è stato selezionato un suggerimento di google con numero civico
         if (! isset($this->form_data['street_number'])) {
             $this->warningCivicNumber = true;
@@ -58,7 +67,7 @@ class FormSearchAddressCategories extends Component {
             return;
         }
 
-        $this->showActivityTypes = true;
+        //$this->showActivityTypes = true;
         /*
         if (! isset($data->street_number)) {
             $data->street_number = $this->form_data['street_number'];
@@ -67,6 +76,7 @@ class FormSearchAddressCategories extends Component {
         }
         */
 
+        /*
         $ltlng = $this->form_data['latlng'];
         $city = $this->form_data['locality'];
         //dddx(['form_data' => $this->form_data]);
@@ -74,6 +84,31 @@ class FormSearchAddressCategories extends Component {
         $lat = $ltlng['lat'];
         $lng = $ltlng['lng'];
         //dddx(['lat' => $lat, 'lng' => $lng, 'city' => $city]);
+
+        $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+
+        session()->put('address', $this->form_data['value']);
+        */
+
+        $this->isServed();
+    }
+
+    public function isServed() {
+        $ltlng = $this->form_data['latlng'];
+        $city = $this->form_data['locality'];
+        //dddx(['form_data' => $this->form_data]);
+
+        $lat = $ltlng['lat'];
+        $lng = $ltlng['lng'];
+        //dddx(['lat' => $lat, 'lng' => $lng, 'city' => $city]);
+
+        if (ActionService::getShopsByCityLatLng($city, $lat, $lng)->isEmpty()) {
+            $this->dispatchBrowserEvent('openModalNotServed');
+
+            return;
+        }
+
+        $this->showActivityTypes = true;
 
         $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
 
@@ -110,5 +145,40 @@ class FormSearchAddressCategories extends Component {
         if (strlen($val1) < 4) {
             $this->form_data[$this->name.'_value'] = $val2;
         }
+    }
+
+    public function saveNotServed() {
+        //la VALIDAZIONE rompe le scatole
+        //appena inizia a validare mi scompare il modal
+        /*
+        $validatedData = $this->validate([
+            'email' => 'required|email',
+            'cap' => 'required|integer|min:5|max:5',
+        ]);
+        */
+
+        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            //dddx('mail valida');
+        } else {
+            dddx('mail no valida');
+        }
+
+        try {
+            $cap = (int) $this->cap;
+        } catch (Throwable $e) {
+            dddx($this->cap);
+
+            return false;
+        }
+
+        /*
+        if (is_numeric($this->cap)) {
+            dddx(Str::length($this->cap));
+        } else {
+            dddx('cap non numerico');
+        }
+        */
+
+        dddx([$cap, $this->email, $this->cap]);
     }
 }

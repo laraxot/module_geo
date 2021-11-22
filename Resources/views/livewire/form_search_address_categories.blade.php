@@ -51,6 +51,8 @@
         </div>
     @endif
 
+    @include('pub_theme::livewire.form_search_address_categories.modals')
+
 
 
 </div>
@@ -137,6 +139,16 @@
             });
 
         }
+
+        window.addEventListener('openModalNotServed', event => {
+            $("#modalNotServed").modal('show');
+        })
+
+        /*
+        window.addEventListener('closePagamentoLongModal', event => {
+            $("#PagamentoLongModal").modal('hide');
+        })
+        */
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_key') }}&libraries=places&callback=initAutocomplete"

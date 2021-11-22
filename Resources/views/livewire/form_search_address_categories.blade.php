@@ -6,14 +6,15 @@
                 <div class="home-address-group" id="address-group" wire:ignore>
 
                     <!--id="form_search_address_categories_json"-->
-                    <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
+                    <input type="hidden" wire:model.lazy="form_data.{{ $name }}" {{-- wire:change="test" --}} />
 
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
-                        wire:model.lazy="form_data.{{ $name }}_value" {{-- wire:change="test" --}} />
+                        wire:model.lazy="form_data.{{ $name }}_value" {{-- wire:keydown="test"wire:change="test" --}} />
 
                     <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.{{ $civic_number }}"
-                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
+                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none"
+                        {{-- wire:keydown="test" --}}>
 
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />

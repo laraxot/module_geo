@@ -49,22 +49,27 @@ class FormSearchAddressCategories extends Component {
         return view()->make($view, $view_params);
     }
 
-    //funzione test utilizzando il keydown
+    //funzione test utilizzando il keydown o il change
     public function test() {
         //se metto semplicemente questa riga, la funzione test si attiva al keydown
         //$this->warningSuggestedAddresses = true;
 
-        $data = json_decode($this->form_data['address']);
-        //dddx([gettype($this->form_data), $this->form_data]);
-        //dddx([$this->form_data['address_value'], $this->form_data['address'], $this->form_data['address']['latlng']]);
+        //$data = json_decode($this->form_data['address']);
+        //dddx($this->form_data);
 
-        //if (isset($this->form_data['locality']) && isset($this->form_data['value']) && isset($this->form_data['street_number'])) {
-        //if (isset($this->form_data['country']) || null == $this->form_data['country']) {
-        if (isset($data->latlng)) {
+        if (! isset($this->form_data['latlng'])) {
             $this->warningSuggestedAddresses = true;
+        //dddx([$data, $data->latlng]);
+        } else {
+            $this->warningSuggestedAddresses = false;
+            //controllo se è stato selezionato un suggerimento di google con numero civico
+            if (! isset($this->form_data['street_number'])) {
+                $this->warningCivicNumber = true;
+            //dddx([$data, $data->street_number]);
+            } else {
+                $this->warningCivicNumber = false;
+            }
         }
-
-        $this->warningSuggestedAddresses = false;
     }
 
     public function search() {
@@ -95,7 +100,8 @@ class FormSearchAddressCategories extends Component {
                 //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
                 $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
 
-                //session()->put('address', $data->value);
+                // mi serve per portarmi dietro la via ricercata quando premerò su un type
+                session()->put('address', $data->value);
             }
         }
     }

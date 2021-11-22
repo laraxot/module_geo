@@ -107,14 +107,14 @@ trait GeoTrait {
         /*
 
  SELECT ID,zone_polygon
-,(
+,(ST_GeomFromText(
 concat('POLYGON((',
 REPLACE(
 REPLACE(
 REPLACE(
 REPLACE(
 replace(CONCAT(
-replace(replace(zone_polygon,']',''),'[',''),
+replace(replace(JSON_extract(zone_polygon,'$'),']',''),'[',''),
 ',',JSON_extract(zone_polygon,'$[0]'))
 ,'"lat":','')
 ,',"lng":',' ')
@@ -123,14 +123,32 @@ replace(replace(zone_polygon,']',''),'[',''),
 ,'}','')
 ,'))')
 )
-
-,JSON_extract(zone_polygon,'$[0]')
+)
+AS test
 
 from vo_activities
 where zone_polygon IS NOT NULL
-ORDER BY RAND()
-LIMIT 2
         */
+
+        $sql = "ST_Contains(
+        ST_GeomFromText(
+       concat('POLYGON((',
+       REPLACE(
+       REPLACE(
+       REPLACE(
+       REPLACE(
+       replace(CONCAT(
+       replace(replace(JSON_extract(zone_polygon,'$'),']',''),'[',''),
+       ',',JSON_extract(zone_polygon,'$[0]'))
+       ,'\"lat\":','')
+       ,',\"lng\":',' ')
+       ,'{',' ')
+       ,', \"lng\":',' ')
+       ,'}','')
+       ,'))')
+       ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
+       )";
+        dddx($sql);
 
         return $query->whereNotNull($polygon_field);
     }

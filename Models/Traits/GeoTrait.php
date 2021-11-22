@@ -148,9 +148,8 @@ where zone_polygon IS NOT NULL
        ,'))')
        ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
        )";
-        dddx($sql);
 
-        return $query->whereNotNull($polygon_field);
+        return $query->whereNotNull($polygon_field)->whereRaw($sql);
     }
 
     //---- mutators ----

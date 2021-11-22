@@ -3,7 +3,7 @@
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
             <form name="address" wire:submit.prevent="search()">
-                <div class="home-address-group" id="address-group" wire:ignore>
+                <div class="home-address-group" id="address-group" {{-- wire:ignore --}}>
 
                     <!--id="form_search_address_categories_json"-->
                     <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
@@ -11,10 +11,10 @@
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
                         wire:model.lazy="form_data.{{ $name }}_value" {{-- wire:change="test" --}} />
-
-                    <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.{{ $civic_number }}"
-                        class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
-
+                    @if ($warningCivicNumber)
+                        <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.street_number"
+                            class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
+                    @endif
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />
                     </button>
@@ -90,10 +90,17 @@
                     $this.val(existingData.value);
                 }
 
+                var options = {
+                    componentRestrictions: {
+                        country: "IT"
+                    },
+                    types: ["address"],
+                };
+
                 var $autocomplete = new google.maps.places.Autocomplete(
-                    ($this[0]), {
-                        types: ['geocode']
-                    });
+                    ($this[0]), options
+                );
+
 
                 $autocomplete.addListener('place_changed', function fillInAddress() {
 
@@ -116,9 +123,9 @@
 
                     $val = JSON.stringify(data);
                     $field.val($val);
-                    @this.set('form_data.' + $addressConfig.field, $val);
-                    @this.set('form_data.' + $addressConfig.field + '_value', value);
-
+                    //@this.set('form_data.' + $addressConfig.field, $val);
+                    //@this.set('form_data.' + $addressConfig.field + '_value', value);
+                    @this.placeChanged($val, value);
                     // $('#form_search_address_categories_json').trigger('change');
                 });
 

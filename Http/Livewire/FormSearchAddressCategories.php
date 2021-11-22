@@ -14,10 +14,9 @@ use Modules\Xot\Services\ActionService;
 
 // DA SPOSTARE NEL MODULO VORREY, insieme alla blade (nel tema vorrey)
 class FormSearchAddressCategories extends Component {
-    public $attributes;
-    public $slot;
-    public $name = 'address';
-    public $civic_number = 'street_number';
+    //public \Illuminate\View\ComponentAttributeBag $attributes;
+    //public \Illuminate\Support\HtmlString $slot;
+    public string $name = 'address';
     public array $form_data = [];
 
     public bool $showActivityTypes = false;
@@ -26,18 +25,10 @@ class FormSearchAddressCategories extends Component {
     public bool $warningCivicNumber = false;
 
     public function mount($attributes, $slot) {
-        $this->attributes = (string) $attributes;
-        $this->slot = (string) $slot;
+        //$this->attributes = $attributes;
+        //$this->slot = $slot;
         $this->form_data[$this->name] = json_encode((object) []);
         $this->form_data[$this->name.'_value'] = null; //'via roma,2,mogliano veneto';
-        /*
-        dddx(
-            [
-                //'a' => view()->composers(),
-                'methods' => get_class_methods(view()),
-            ]
-        );
-        */
     }
 
     public function render() {
@@ -49,95 +40,75 @@ class FormSearchAddressCategories extends Component {
         return view()->make($view, $view_params);
     }
 
-    //funzione test utilizzando il keydown
-    public function test() {
-        //se metto semplicemente questa riga, la funzione test si attiva al keydown
-        //$this->warningSuggestedAddresses = true;
+    public function search() {
+        $this->warningSuggestedAddresses = false;
+        $this->warningCivicNumber = false;
+        $this->showActivityTypes = false;
 
-        $data = json_decode($this->form_data['address']);
-        //dddx([gettype($this->form_data), $this->form_data]);
-        //dddx([$this->form_data['address_value'], $this->form_data['address'], $this->form_data['address']['latlng']]);
-
-        //if (isset($this->form_data['locality']) && isset($this->form_data['value']) && isset($this->form_data['street_number'])) {
-        //if (isset($this->form_data['country']) || null == $this->form_data['country']) {
-        if (isset($data->latlng)) {
+        if (! isset($this->form_data['latlng'])) {
             $this->warningSuggestedAddresses = true;
+
+            return;
         }
 
-        $this->warningSuggestedAddresses = false;
+        //controllo se è stato selezionato un suggerimento di google con numero civico
+        if (! isset($this->form_data['street_number'])) {
+            $this->warningCivicNumber = true;
+
+            return;
+        }
+
+        $this->showActivityTypes = true;
+        /*
+        if (! isset($data->street_number)) {
+            $data->street_number = $this->form_data['street_number'];
+            $address = $this->formatAddress($data->street_number);
+            $this->form_data[$this->name.'_value'] = $address;
+        }
+        */
+
+        $ltlng = $this->form_data['latlng'];
+        $city = $this->form_data['locality'];
+        //dddx(['form_data' => $this->form_data]);
+
+        $lat = $ltlng['lat'];
+        $lng = $ltlng['lng'];
+        //dddx(['lat' => $lat, 'lng' => $lng, 'city' => $city]);
+
+        $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+
+        session()->put('address', $this->form_data['value']);
     }
 
-    public function search() {
-        $data = json_decode($this->form_data['address']);
+    public function formatAddress() {
+        $data = (object) $this->form_data;
 
-        //controllo se è stato selezionato un suggerimento di google
-        if (! isset($data->latlng)) {
-            $this->warningSuggestedAddresses = true;
-        } else {
-            $this->warningSuggestedAddresses = false;
+        if (! isset($data->street_number)) {
+            $data->street_number = '';
+            $this->warningCivicNumber = true;
+        }
+        $val = collect([
+            $data->route,
+            $data->street_number,
+            $data->locality,
+        ])->implode(', ');
 
-            //controllo se è stato selezionato un suggerimento di google con numero civico
-            if (! isset($data->street_number) && ! isset($this->form_data['street_number'])) {
-                $this->warningCivicNumber = true;
-            } else {
-                $this->warningCivicNumber = false;
-                $this->showActivityTypes = true;
-                //$data = json_decode($this->form_data['address']);
+        return $val;
+    }
 
-                if (! isset($data->street_number)) {
-                    $data->street_number = $this->form_data['street_number'];
-                }
+    public function placeChanged(string $val0, string $val1) {
+        $this->warningSuggestedAddresses = false;
+        $this->warningCivicNumber = false;
+        $this->showActivityTypes = false;
 
-                $ltlng = $data->latlng;
-                $city = $data->locality;
-                $lat = $ltlng->lat;
-                $lng = $ltlng->lng;
-                //$this->enabledTypes = ActionService::getShopsCatsByLatLng($lat, $lng);
-                $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+        $data = json_decode($val0, true);
+        $this->form_data = array_merge($this->form_data, $data);
+        $this->form_data[$this->name] = $val0;
+        $this->form_data[$this->name.'_value'] = $val1;
 
-                //session()->put('address', $data->value);
-            }
+        $val2 = $this->formatAddress();
+        if (strlen($val1) < 4) {
+            $this->form_data[$this->name.'_value'] = $val2;
         }
     }
 }
-
-/*
-
-    +"value": "Via Melegnano, Udine, UD, Italia"
-    +"latlng": {#1915 ▶}
-    +"route": "Via Melegnano"
-    +"route_short": "Via Melegnano"
-    +"locality": "Udine"
-    +"locality_short": "Udine"
-    +"administrative_area_level_3": "Udine"
-    +"administrative_area_level_3_short": "Udine"
-    +"administrative_area_level_2": "Provincia di Udine"
-    +"administrative_area_level_2_short": "UD"
-    +"administrative_area_level_1": "Friuli-Venezia Giulia"
-    +"administrative_area_level_1_short": "Friuli-Venezia Giulia"
-    +"country": "Italia"
-    +"country_short": "IT"
-    +"postal_code": "33100"
-    +"postal_code_short": "33100"
-*/
-
-/*
-    +"value": "Via Alessandro Manzoni, 5, Mogliano Veneto, TV, Italia"
-    +"latlng": {#1915 ▶}
-    +"street_number": "5"
-    +"street_number_short": "5"
-    +"route": "Via A. Manzoni"
-    +"route_short": "Via A. Manzoni"
-    +"locality": "Mogliano Veneto"
-    +"locality_short": "Mogliano Veneto"
-    +"administrative_area_level_3": "Mogliano Veneto"
-    +"administrative_area_level_3_short": "Mogliano Veneto"
-    +"administrative_area_level_2": "Provincia di Treviso"
-    +"administrative_area_level_2_short": "TV"
-    +"administrative_area_level_1": "Veneto"
-    +"administrative_area_level_1_short": "Veneto"
-    +"country": "Italia"
-    +"country_short": "IT"
-    +"postal_code": "31021"
-    +"postal_code_short": "31021"
-*/

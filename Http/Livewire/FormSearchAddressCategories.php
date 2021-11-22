@@ -40,6 +40,7 @@ class FormSearchAddressCategories extends Component {
         return view()->make($view, $view_params);
     }
 
+<<<<<<< HEAD
     public function search() {
         $this->warningSuggestedAddresses = false;
         $this->warningCivicNumber = false;
@@ -78,6 +79,29 @@ class FormSearchAddressCategories extends Component {
         $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
 
         session()->put('address', $this->form_data['value']);
+=======
+    //funzione test utilizzando il keydown o il change
+    public function test() {
+        //se metto semplicemente questa riga, la funzione test si attiva al keydown
+        //$this->warningSuggestedAddresses = true;
+
+        //$data = json_decode($this->form_data['address']);
+        //dddx($this->form_data);
+
+        if (! isset($this->form_data['latlng'])) {
+            $this->warningSuggestedAddresses = true;
+        //dddx([$data, $data->latlng]);
+        } else {
+            $this->warningSuggestedAddresses = false;
+            //controllo se è stato selezionato un suggerimento di google con numero civico
+            if (! isset($this->form_data['street_number'])) {
+                $this->warningCivicNumber = true;
+            //dddx([$data, $data->street_number]);
+            } else {
+                $this->warningCivicNumber = false;
+            }
+        }
+>>>>>>> fb04b313608e208f72fc6c60169f6f513d2a8035
     }
 
     public function formatAddress() {
@@ -106,9 +130,15 @@ class FormSearchAddressCategories extends Component {
         $this->form_data[$this->name] = $val0;
         $this->form_data[$this->name.'_value'] = $val1;
 
+<<<<<<< HEAD
         $val2 = $this->formatAddress();
         if (strlen($val1) < 4) {
             $this->form_data[$this->name.'_value'] = $val2;
+=======
+                // mi serve per portarmi dietro la via ricercata quando premerò su un type
+                session()->put('address', $data->value);
+            }
+>>>>>>> fb04b313608e208f72fc6c60169f6f513d2a8035
         }
     }
 }

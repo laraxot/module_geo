@@ -11,8 +11,8 @@ namespace Modules\Geo\Http\Livewire;
 
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Modules\Vorrey\Models\NotServed;
 use Modules\Xot\Services\ActionService;
-use Throwable;
 
 // DA SPOSTARE NEL MODULO VORREY, insieme alla blade (nel tema vorrey)
 class FormSearchAddressCategories extends Component {
@@ -157,28 +157,24 @@ class FormSearchAddressCategories extends Component {
         ]);
         */
 
-        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            //dddx('mail valida');
-        } else {
-            dddx('mail no valida');
+        //dddx([$this->email, filter_var($this->email, FILTER_VALIDATE_EMAIL)]);
+
+        if (false == filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            dddx('mail non valida');
         }
 
-        try {
-            $cap = (int) $this->cap;
-        } catch (Throwable $e) {
-            dddx($this->cap);
+        //dddx([$this->cap, ctype_digit($this->cap)]);
 
-            return false;
+        if (false == ctype_digit($this->cap) && 5 != Str::lenght($this->cap)) {
+            dddx('cap non valido');
         }
 
-        /*
-        if (is_numeric($this->cap)) {
-            dddx(Str::length($this->cap));
-        } else {
-            dddx('cap non numerico');
-        }
-        */
+        $not_served = new NotServed();
+        $not_served->cap = $this->cap;
+        $not_served->email = $this->email;
+        //$not_served->creation_date =
+        $not_served->save();
 
-        dddx([$cap, $this->email, $this->cap]);
+        //$this->dispatchBrowserEvent('openWrongEmailCap');
     }
 }

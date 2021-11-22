@@ -1,16 +1,14 @@
 <div>
-    @php($name = 'address')
     <div class="home-address-container delay-1s fadeInUp animated">
         <div class="home-address">
             <form name="address" wire:submit.prevent="search()">
                 <div class="home-address-group" id="address-group" {{-- wire:ignore --}}>
 
-                    <!--id="form_search_address_categories_json"-->
-                    <input type="hidden" wire:model.lazy="form_data.{{ $name }}" {{-- wire:change="test" --}} />
+                    <input type="hidden" wire:model.lazy="form_data.{{ $name }}" />
 
                     <input type="text" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;}"
                         class="input home-address-input" autocomplete="off"
-                        wire:model.lazy="form_data.{{ $name }}_value" {{-- wire:change="test" --}} />
+                        wire:model.lazy="form_data.{{ $name }}_value" />
                     @if ($warningCivicNumber)
                         <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.street_number"
                             class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">

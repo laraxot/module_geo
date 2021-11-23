@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Http\Livewire;
 
-use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\Vorrey\Models\NotServed;
 use Modules\Xot\Services\ActionService;
@@ -158,15 +157,24 @@ class FormSearchAddressCategories extends Component {
         */
 
         //dddx([$this->email, filter_var($this->email, FILTER_VALIDATE_EMAIL)]);
+        //sembra andare bene
 
         if (false == filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->dispatchBrowserEvent('closeModalNotServed');
+            //$this->dispatchBrowserEvent('openModalWrongEmailCap');
             dddx('mail non valida');
+
+            return;
         }
 
-        //dddx([$this->cap, ctype_digit($this->cap)]);
+        //dddx([$this->cap, preg_match('/[a-z]/i', $this->cap)]);
 
-        if (false == ctype_digit($this->cap) && 5 != Str::lenght($this->cap)) {
-            dddx('cap non valido');
+        if (preg_match('/[a-z]/i', $this->cap)) {
+            //dddx('it has alphabet!');
+            $this->dispatchBrowserEvent('closeModalNotServed');
+            //$this->dispatchBrowserEvent('openModalWrongEmailCap');
+
+            return;
         }
 
         $not_served = new NotServed();

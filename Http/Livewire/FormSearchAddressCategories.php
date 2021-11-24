@@ -14,7 +14,9 @@ use Livewire\Component;
 use Modules\Vorrey\Models\NotServed;
 use Modules\Xot\Services\ActionService;
 
-// DA SPOSTARE NEL MODULO VORREY, insieme alla blade (nel tema vorrey)
+/**
+ * Undocumented class.
+ */
 class FormSearchAddressCategories extends Component {
     //public \Illuminate\View\ComponentAttributeBag $attributes;
     //public \Illuminate\Support\HtmlString $slot;
@@ -22,20 +24,33 @@ class FormSearchAddressCategories extends Component {
     public array $form_data = [];
 
     public bool $showActivityTypes = false;
-    public array $enabledTypes = [];
+    public \Illuminate\Support\Collection $enabledTypes;
     public bool $warningSuggestedAddresses = false;
     public bool $warningCivicNumber = false;
 
     public string $email = '';
     public string $cap = '';
 
+    /**
+     * Mount function.
+     *
+     * @param \Illuminate\View\ComponentAttributeBag $attributes
+     * @param \Illuminate\Support\HtmlString         $slot
+     *
+     * @return void
+     */
     public function mount($attributes, $slot) {
         //$this->attributes = $attributes;
         //$this->slot = $slot;
         $this->form_data[$this->name] = json_encode((object) []);
-        $this->form_data[$this->name.'_value'] = null; //'via roma,2,mogliano veneto';
+        $this->form_data[$this->name.'_value'] = null;
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @return Renderable
+     */
     public function render() {
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
@@ -45,6 +60,11 @@ class FormSearchAddressCategories extends Component {
         return view()->make($view, $view_params);
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @return void
+     */
     public function search() {
         $this->warningSuggestedAddresses = false;
         $this->warningCivicNumber = false;
@@ -56,53 +76,20 @@ class FormSearchAddressCategories extends Component {
             return;
         }
 
-        // INSERIRE CONTROLLO
-        // se inserisco solo una città senza via
-        // Undefined property: stdClass::$locality
-
-        //controllo se è stato selezionato un suggerimento di google con numero civico
         if (! isset($this->form_data['street_number'])) {
             $this->warningCivicNumber = true;
 
             return;
         }
 
-        //$this->showActivityTypes = true;
-        /*
-        if (! isset($data->street_number)) {
-            $data->street_number = $this->form_data['street_number'];
-            $address = $this->formatAddress($data->street_number);
-            $this->form_data[$this->name.'_value'] = $address;
-        }
-        */
-
-        /*
         $ltlng = $this->form_data['latlng'];
         $city = $this->form_data['locality'];
-        //dddx(['form_data' => $this->form_data]);
-
         $lat = $ltlng['lat'];
         $lng = $ltlng['lng'];
-        //dddx(['lat' => $lat, 'lng' => $lng, 'city' => $city]);
 
         $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
 
-        session()->put('address', $this->form_data['value']);
-        */
-
-        $this->isServed();
-    }
-
-    public function isServed() {
-        $ltlng = $this->form_data['latlng'];
-        $city = $this->form_data['locality'];
-        //dddx(['form_data' => $this->form_data]);
-
-        $lat = $ltlng['lat'];
-        $lng = $ltlng['lng'];
-        //dddx(['lat' => $lat, 'lng' => $lng, 'city' => $city]);
-
-        if (ActionService::getShopsByCityLatLng($city, $lat, $lng)->isEmpty()) {
+        if ($this->enabledTypes->isEmpty()) {
             $this->dispatchBrowserEvent('openModalNotServed');
 
             return;
@@ -110,12 +97,13 @@ class FormSearchAddressCategories extends Component {
 
         $this->showActivityTypes = true;
 
-        $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
-
         session()->put('address', $this->form_data['value']);
     }
 
-    public function formatAddress() {
+    /**
+     * Undocumented function.
+     */
+    public function formatAddress(): string {
         $data = (object) $this->form_data;
 
         if (! isset($data->street_number)) {
@@ -131,6 +119,11 @@ class FormSearchAddressCategories extends Component {
         return $val;
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @return void
+     */
     public function placeChanged(string $val0, string $val1) {
         $this->warningSuggestedAddresses = false;
         $this->warningCivicNumber = false;
@@ -147,6 +140,11 @@ class FormSearchAddressCategories extends Component {
         }
     }
 
+    /**
+     * Undocumented function.
+     *
+     * @return void
+     */
     public function saveNotServed() {
         //la VALIDAZIONE rompe le scatole
         //appena inizia a validare mi scompare il modal

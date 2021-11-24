@@ -42,14 +42,15 @@
         <div class="activities-categories-home-container text-center fadeInUp animated">
             <div class="activities-categories-home">
                 @foreach ($enabledTypes as $type)
-                    <a class="activities-categories-home-item" href="{{ $type['url'] }}">
-                        <img src="{{ $type['img_src'] }}" /><br />
-                        <p>{{ $type['title'] }}</p>
+                    <a class="activities-categories-home-item" href="{{ $type->url }}">
+                        <img src="{{ $type->img_src }}" /><br />
+                        <p>{{ $type->title }}</p>
                     </a>
                 @endforeach
             </div>
         </div>
     @endif
+
 
     {{-- inizio modal  modalNotServed --}}
     <div wire.ignore.self class="modal fade" id="modalNotServed" tabindex="-1" role="dialog"
@@ -201,10 +202,7 @@
 
                     $val = JSON.stringify(data);
                     $field.val($val);
-                    //@this.set('form_data.' + $addressConfig.field, $val);
-                    //@this.set('form_data.' + $addressConfig.field + '_value', value);
                     @this.placeChanged($val, value);
-                    // $('#form_search_address_categories_json').trigger('change');
                 });
 
                 $this.change(function() {

@@ -132,6 +132,84 @@
     </div>
     {{-- fine modal  modalNotServed --}}
 
+    {{-- inizio modal wrongEmailCap --}}
+    <div wire.ignore.self class="modal fade" id="modalWrongEmailCap" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalWrongEmailCap" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body" class="max-width" style="text-align: center;">
+                    {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px"
+                            viewBox="0 0 512 512" xml:space="preserve" width="16px" height="16px">
+                            <g>
+                                <path
+                                    d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249    C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306    C514.019,27.23,514.019,14.135,505.943,6.058z"
+                                    fill="currentColor"></path>
+                            </g>
+                            <g>
+                                <path
+                                    d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636    c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"
+                                    fill="currentColor"></path>
+                            </g>
+                        </svg>
+                    </button> --}}
+                    <h3>Ci dispiace, non siamo ancora presenti nella tua zona!</h3>
+
+                    <form {{-- class="needs-validation" --}} wire:submit.prevent="saveNotServed">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>
+                                    Inserisci il tuo indirizzo email e il CAP, ti
+                                    informeremo non appena la tua zona sarà coperta dal nostro
+                                    servizio.
+                                </p>
+                                <img src="{{ Theme::asset('pub_theme::assets/img/svg/missing_cap.svg') }}"
+                                    width="100" />
+                                <br /><br />
+                                <div class="row" style="text-align: left;">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><img
+                                                        src="{{ Theme::asset('pub_theme::assets/img/svg/email.svg') }}"
+                                                        width="24" /></span>
+                                                <input type="text" name="email" class="form-control"
+                                                    wire:model.defer="email" placeholder="Email"
+                                                    {{-- required --}} />
+                                            </div>
+                                            @error('email') <span class="text-danger error">Inserisci una mail
+                                                valida</span>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><img
+                                                        src="{{ Theme::asset('pub_theme::assets/img/svg/cap.svg') }}"
+                                                        width="24" /></span>
+                                                <input type="text" name="cap" class="form-control"
+                                                    wire:model.defer="cap" placeholder="CAP" {{-- required --}} />
+                                            </div>
+                                            @error('cap') <span class="text-danger error">Inserisci il
+                                                Cap</span>@enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" style="text-align: center;">
+                                <br />
+                                <button class="btn btn-default">
+                                    Conferma
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{-- fine modal wrongEmailCap --}}
 
 
 </div>
@@ -220,11 +298,19 @@
             $("#modalNotServed").modal('show');
         })
 
-        /*
-        window.addEventListener('closePagamentoLongModal', event => {
-            $("#PagamentoLongModal").modal('hide');
+
+        window.addEventListener('closeModalNotServed', event => {
+            $("#modalNotServed").modal('hide');
         })
-        */
+
+        window.addEventListener('openModalWrongEmailCap', event => {
+            $("#modalWrongEmailCap").modal('show');
+        })
+
+
+        window.addEventListener('closeModalWrongEmailCap', event => {
+            $("#modalWrongEmailCap").modal('hide');
+        })
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_key') }}&libraries=places&callback=initAutocomplete"

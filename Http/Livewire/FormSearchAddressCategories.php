@@ -30,6 +30,8 @@ class FormSearchAddressCategories extends Component {
     public string $email = '';
     public string $cap = '';
 
+    public bool $messageError = false;
+
     /**
      * Mount function.
      *
@@ -145,21 +147,23 @@ class FormSearchAddressCategories extends Component {
      * @return void
      */
     public function saveNotServed() {
+        //dddx('aaa');
         //la VALIDAZIONE rompe le scatole
         //appena inizia a validare mi scompare il modal
-        /*
         $validatedData = $this->validate([
-            'email' => 'required|email',
-            'cap' => 'required|integer|min:5|max:5',
+            'email' => 'required|email|unique:not_served',
+            'cap' => 'required|not_regex:/[a-z]/i|min:5|max:5',
         ]);
-        */
+        /*
+
 
         //dddx([$this->email, filter_var($this->email, FILTER_VALIDATE_EMAIL)]);
         //sembra andare bene
 
         if (false == filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->dispatchBrowserEvent('closeModalNotServed');
+            //$this->dispatchBrowserEvent('closeModalNotServed');
             //$this->dispatchBrowserEvent('openModalWrongEmailCap');
+            $this->messageError = true;
             dddx('mail non valida');
 
             return;
@@ -168,13 +172,14 @@ class FormSearchAddressCategories extends Component {
         //dddx([$this->cap, preg_match('/[a-z]/i', $this->cap)]);
 
         if (preg_match('/[a-z]/i', $this->cap)) {
-            //dddx('it has alphabet!');
-            $this->dispatchBrowserEvent('closeModalNotServed');
+            $this->messageError = true;
+            dddx('it has alphabet!');
+            //$this->dispatchBrowserEvent('closeModalNotServed');
             //$this->dispatchBrowserEvent('openModalWrongEmailCap');
 
             return;
         }
-
+        */
         $not_served = new NotServed();
         $not_served->cap = $this->cap;
         $not_served->email = $this->email;
@@ -182,5 +187,7 @@ class FormSearchAddressCategories extends Component {
         $not_served->save();
 
         //$this->dispatchBrowserEvent('openWrongEmailCap');
+
+        $this->dispatchBrowserEvent('closeModalNotServed');
     }
 }

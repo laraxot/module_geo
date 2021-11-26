@@ -1,5 +1,5 @@
 <div>
-    <div class="home-address-container delay-1s fadeInUp animated">
+    <div class="home-address-container delay-1s animate__fadeInUp animate__animated">
         <div class="home-address">
             <form name="address" wire:submit.prevent="search()">
                 <div class="home-address-group" id="address-group" {{-- wire:ignore --}}>
@@ -39,7 +39,7 @@
         </div>
     </div>
     @if ($showActivityTypes)
-        <div class="activities-categories-home-container text-center fadeInUp animated">
+        <div class="activities-categories-home-container text-center animate__fadeInUp animate__animated">
             <div class="activities-categories-home">
                 @foreach ($enabledTypes as $type)
                     <a class="activities-categories-home-item" href="{{ $type->url }}">

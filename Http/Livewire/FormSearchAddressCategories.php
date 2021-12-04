@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Http\Livewire;
 
 use Livewire\Component;
-use Modules\Cocai\Models\NotServed;
+//use Modules\Cocai\Models\NotServed;
 use Modules\Xot\Services\ActionService;
 
 /**
@@ -98,7 +98,9 @@ class FormSearchAddressCategories extends Component {
 
         $this->showActivityTypes = true;
 
-        session()->put('address', $this->form_data['value']);
+        //session()->put('address', $this->form_data['value']);
+        //forse meglio portarmi tutto per utilizzarlo poi nella gestione checkout
+        session()->put('address', $this->form_data);
     }
 
     /**
@@ -180,7 +182,10 @@ class FormSearchAddressCategories extends Component {
             return;
         }
         */
-        $not_served = new NotServed();
+
+        $not_served = xotModel('not_served');
+
+        $not_served = new $not_served();
         $not_served->cap = $this->cap;
         $not_served->email = $this->email;
         //$not_served->creation_date =

@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Http\Livewire;
 
 use Livewire\Component;
-//use Modules\Cocai\Models\NotServed;
 use Modules\Xot\Services\ActionService;
 
 /**

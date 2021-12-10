@@ -39,7 +39,7 @@ class FormSearchAddressCategories extends Component {
      *
      * @return void
      */
-    public function mount($attributes, $slot) {
+    public function mount(/*$attributes, $slot*/) {
         //$this->attributes = $attributes;
         //$this->slot = $slot;
         $this->form_data[$this->name] = json_encode((object) []);
@@ -113,9 +113,9 @@ class FormSearchAddressCategories extends Component {
             $this->warningCivicNumber = true;
         }
         $val = collect([
-            $data->route,
-            $data->street_number,
-            $data->locality,
+            $data->route ?? '',
+            $data->street_number ?? '',
+            $data->locality ?? '',
         ])->implode(', ');
 
         return $val;
@@ -132,12 +132,15 @@ class FormSearchAddressCategories extends Component {
         $this->showActivityTypes = false;
 
         $data = json_decode($val0, true);
+        if (! is_array($data)) {
+            $data = [];
+        }
         $this->form_data = array_merge($this->form_data, $data);
         $this->form_data[$this->name] = $val0;
         $this->form_data[$this->name.'_value'] = $val1;
 
-        $val2 = $this->formatAddress();
         if (strlen($val1) < 4) {
+            $val2 = $this->formatAddress();
             $this->form_data[$this->name.'_value'] = $val2;
         }
     }

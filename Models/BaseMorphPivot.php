@@ -46,7 +46,8 @@ abstract class BaseMorphPivot extends MorphPivot {
         'id',
         'post_id', 'post_type',
         'related_type',
-        'user_id', //in amenity no, in rating si
+        'user_id',
         'note',
     ];
+    protected $connection = 'geo';
 }

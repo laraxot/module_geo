@@ -36,4 +36,5 @@ abstract class BasePivot extends Pivot {
      * @var bool
      */
     public $incrementing = true;
+    protected $connection = 'geo';
 }

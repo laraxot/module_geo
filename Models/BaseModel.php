@@ -51,4 +51,5 @@ abstract class BaseModel extends Model {
      * @var bool
      */
     public $timestamps = true;
+    protected $connection = 'geo';
 }

@@ -65,4 +65,5 @@ abstract class BaseModelLang extends Model {
     protected $post;
     protected $lang;
     */
+    protected $connection = 'geo';
 }

@@ -18,7 +18,7 @@ abstract class BasePivot extends Pivot {
     /**
      * @var string
      */
-    protected $connection = 'liveuser_general'; // this will use the specified database conneciton
+    protected $connection = 'geo'; // this will use the specified database conneciton
     /**
      * @var array
      */
@@ -31,10 +31,14 @@ abstract class BasePivot extends Pivot {
      * @var string[]
      */
     protected $dates = ['created_at', 'updated_at'];
-    //protected $primaryKey = 'id';
+    /**
+     * Undocumented variable.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
     /**
      * @var bool
      */
     public $incrementing = true;
-    protected $connection = 'geo';
 }

@@ -13,6 +13,6 @@ use Illuminate\View\Component;
  */
 class Item extends Component {
     public function render() {
-        return 'ciao';
+        return '';
     }
 }

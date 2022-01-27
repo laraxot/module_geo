@@ -28,63 +28,39 @@ var farmMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'green-light',
     shape: 'square',
-    prefix: 'fa',
 });
 
 var machineMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'cyan',
-    shape: 'square',
-    prefix: 'fa',
+    shape: 'square'
 });
 
 var beekeeperMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'yellow',
-    shape: 'square',
-    prefix: 'fa'
+    shape: 'square'
 });
 
 var marketMarker = L.ExtraMarkers.icon({
-    icon: 'fa-coffee',
+    icon: 'fa-number',
     markerColor: 'orange',
-    shape: 'square',
-    prefix: 'fa'
+    shape: 'square'
 });
 
 var blackMarker = L.ExtraMarkers.icon({
     icon: 'fa-number',
     markerColor: 'black',
     shape: 'circle',
-    number: '?',
-    prefix: 'fa',
+    number: '?'
 });
 
 
 //Darstellung
 
 //Marker 
-var geojson1;
-var json = require('./resto.json'); 
-console.log(json);
-showMarker(json.data);
-///showMarker(farmshopGeoJson);
-/*
-axios.get("http://multih.local/it/restaurant?format=transform&name=map")
-.then(function (response) {
-    console.log('farmshopGeoJson');
-    console.log(farmshopGeoJson);
-    console.log('response.data.data')
-    console.log(response.data.data);
-    //showMarker(response.data.data);
-}).catch(function (err){
-    console.log(err);
-});
-*/
-//var data = L.GeoJSON.AJAX("data.json");
 
-function showMarker($data){
-    geojson1 = L.geoJson($data, {
+var geojson1 = L.geoJson(farmshopGeoJson, {
     pointToLayer: function pointToLayer(feature, latlng) {
         if (feature.properties.p === 'beekeeper') {
             return L.marker(latlng, { icon: beekeeperMarker });
@@ -104,19 +80,13 @@ function showMarker($data){
 
     onEachFeature: function onEachFeature(feature, layer) {
         layer.once("click", function () {
-            /*
-            $.getJSON('../data/' + feature.properties.id + '/details.json', function (data) {
+            $.getJSON('data/' + feature.properties.id + '/details.json', function (data) {
                 layer.bindPopup(popupcontent(data, layer)).openPopup();
             });
-            */
-            $.getJSON(feature.properties.url + '?format=json', function (data) {
-                layer.bindPopup(popupcontent(data, layer)).openPopup();
-            });
-
         });
     }
 }).addLayer(tiles);
-}
+
 //Changing Cluster radius based on zoom level
 var GetClusterRadius = function (zoom) { 
     if (zoom < 12){
@@ -140,14 +110,27 @@ var markers = L.markerClusterGroup({
 
            
             for (var c = 0; c < markers.length; c++) {
-                switch(markers[c].feature.properties.p){
-                    case 'farm': farmsInCluster = true; break;
-                    case 'beekeeper': beekeepersInCluster = true; break;
-                    case 'marketplace': marketsInCluster = true; break;
-                    case 'vending_machine':machinesInCluster = true; break;
-                    default:
-                        console.log("else schleife");
-                    break;
+                
+                
+                if (markers[c].feature.properties.p ==="farm"){
+
+                    farmsInCluster = true;
+                }
+                else if (markers[c].feature.properties.p ==="beekeeper"){
+
+                    beekeepersInCluster = true;
+                }
+                else if (markers[c].feature.properties.p ==="marketplace"){
+
+                    marketsInCluster = true;
+                }
+                else if (markers[c].feature.properties.p ==="vending_machine"){
+
+                    machinesInCluster = true;
+                }
+                else {
+                    console.log("else schleife")
+
                 }
 
                 //console.log("f " +farmsInCluster +" m " +marketsInCluster +" a " +machinesInCluster)
@@ -156,7 +139,7 @@ var markers = L.markerClusterGroup({
 
               function farmsAreInCluster (farmsInCluster) {
                   if (farmsInCluster) {
-                      return "<img src='../img/hof.png' style='height: 14px;'> "
+                      return "<img src='img/hof.png' style='height: 14px;'> "
                   }
                   else {
                       return ""
@@ -165,7 +148,7 @@ var markers = L.markerClusterGroup({
 
               function marketsAreInCluster (marketsInCluster) {
                 if (marketsInCluster) {
-                    return "<img src='../img/markt.png' style='height: 14px;'> "
+                    return "<img src='img/markt.png' style='height: 14px;'> "
                 }
                 else {
                     return ""
@@ -174,7 +157,7 @@ var markers = L.markerClusterGroup({
 
             function beekeepersAreInCluster (beekeepersInCluster) {
                 if (beekeepersInCluster) {
-                    return "<img src='../img/imker.png' style='height: 14px;'> "
+                    return "<img src='img/imker.png' style='height: 14px;'> "
                 }
                 else {
                     return ""
@@ -183,7 +166,7 @@ var markers = L.markerClusterGroup({
 
             function machinesAreInCluster (machinesInCluster) {
                 if (machinesInCluster) {
-                    return "<img src='../img/automat.png' style='height: 14px;'> "
+                    return "<img src='img/automat.png' style='height: 14px;'> "
                 }
                 else {
                     return ""

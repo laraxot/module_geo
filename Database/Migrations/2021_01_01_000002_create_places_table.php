@@ -22,10 +22,8 @@ class CreatePlacesTable extends XotBaseMigration {
      */
     public function up() {
         //-- CREATE --
-        if (! $this->tableExists()) {
-            $this->getConn()->create(
-                $this->getTable(),
-                function (Blueprint $table) {
+        $this->tableCreate(
+            function (Blueprint $table) {
                     $table->increments('id');
                     $table->nullableMorphs('post');
                     $table->text('address')->nullable();
@@ -34,10 +32,10 @@ class CreatePlacesTable extends XotBaseMigration {
                     $table->decimal('longitude', 15, 10)->nullable();
                     $address_components = MyModel::$address_components;
                     foreach ($address_components as $el) {
-                        if (! Schema::hasColumn($this->getTable(), $el)) {
+                        if (! $this->hasColumn( $el)) {
                             $table->text($el)->nullable();
                         }
-                        if (! Schema::hasColumn($this->getTable(), $el.'_short')) {
+                        if (! $this->hasColumn( $el.'_short')) {
                             $table->text($el.'_short')->nullable();
                         }
                     }
@@ -48,11 +46,12 @@ class CreatePlacesTable extends XotBaseMigration {
                     $table->string('updated_by')->nullable();
                     $table->string('deleted_by')->nullable();
                     $table->timestamps();
-                });
-        }
+               }
+            );
+
+
         //-- UPDATE --
-        $this->getConn()->table(
-            $this->getTable(),
+        $this->tableUpdate(
             function (Blueprint $table) {
                 if (! $this->hasColumn('post_type')) {
                     $table->string('post_type', 50)->index()->nullable();

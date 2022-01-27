@@ -1,5 +1,6 @@
 //Popups
 function popupcontent(feature, layer) {
+
     var popupcontent = [];
     for (var prop in feature.properties) {
 
@@ -209,6 +210,3 @@ function popupcontent(feature, layer) {
 
     return htmlInhalt
 };
-
-
-//https://www.wrld3d.com/wrld.js/latest/docs/examples/adding-a-leaflet-marker-with-popup/

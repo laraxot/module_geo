@@ -18,20 +18,18 @@ class CreateCitiesTable extends XotBaseMigration {
      */
     public function up() {
         //-- CREATE --
-        if (! $this->tableExists()) {
-            $this->getConn()->create(
-                $this->getTable(),
-                function (Blueprint $table) {
+        $this->tableCreate(
+            function (Blueprint $table) {
                     $table->increments('id'); //->primary();
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();
                     $table->timestamps();
                 }
             );
-        }
+
+
         //-- UPDATE --
-        $this->getConn()->table(
-            $this->getTable(),
+        $this->tableUpdate(
             function (Blueprint $table) {
                 /*
                 if ($this->hasColumn('post_id')) {

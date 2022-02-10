@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 ////use Laravel\Scout\Searchable;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Models\Traits\LinkedTrait;
+use Modules\Lang\Models\Traits\LinkedTrait;
 use Modules\Xot\Traits\Updater;
 
 /**

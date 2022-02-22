@@ -31,8 +31,6 @@ class PlacePanel extends XotBasePanel {
 
     /**
      * The relationships that should be eager loaded on index queries.
-     *
-     * @var array
      */
     public function with(): array {
         return [];
@@ -138,7 +136,7 @@ class PlacePanel extends XotBasePanel {
             (object) [
                 'type' => 'Id',
                 'name' => 'id',
-            ],(object) [
+            ], (object) [
                 'type' => 'AddressGoogle',
                 /* in sto caso si può mettere  il nome che si vuole, ma comunque va messo qualcosa */
                 'name' => 'address',
@@ -151,7 +149,7 @@ class PlacePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions():array {
+    public function actions(): array {
         return [];
     }
 }

@@ -83,7 +83,7 @@ class CityPanel extends XotBasePanel {
      * Get the fields displayed by the resource.
      *
      * @return array
-        'col_bs_size' => 6,
+        'col_size' => 6,
         'sortable' => 1,
         'rules' => 'required',
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],

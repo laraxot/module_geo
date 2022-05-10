@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-//---------- traits
+// ---------- traits
 use Illuminate\Database\Eloquent\Model;
-////use Laravel\Scout\Searchable;
+// //use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**
@@ -15,8 +15,8 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseModel extends Model {
     use Updater;
-    //use Searchable;
-    //use Cachable;
+    // use Searchable;
+    // use Cachable;
 
     /**
      * @var string[]
@@ -26,7 +26,7 @@ abstract class BaseModel extends Model {
      * @var array
      */
     protected $casts = [
-        //'published_at' => 'datetime:Y-m-d', // da verificare
+        // 'published_at' => 'datetime:Y-m-d', // da verificare
     ];
 
     /**
@@ -45,7 +45,7 @@ abstract class BaseModel extends Model {
      * @var array
      */
     protected $hidden = [
-        //'password'
+        // 'password'
     ];
     /**
      * @var bool

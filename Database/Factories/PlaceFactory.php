@@ -25,11 +25,11 @@ class PlaceFactory extends Factory {
      */
     public function definition() {
         return [
-            //'title' => $this->faker->sentence,
-            //'description' => $this->faker->paragraph,
-            //'user_id' => factory(User::class)->create()->id,
+            // 'title' => $this->faker->sentence,
+            // 'description' => $this->faker->paragraph,
+            // 'user_id' => factory(User::class)->create()->id,
 
-            //'latitude' => $this->faker->latitude(),
+            // 'latitude' => $this->faker->latitude(),
             /*
             'latitude' => $this->faker->Address->latitude,
             'longitude' => $this->faker->longitude(),

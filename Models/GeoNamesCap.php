@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Model;
-////use Laravel\Scout\Searchable;
+// //use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**
  * {.
- * 
+ *
  * item_description }
  * da fare php artisan scout:import Modules\Blog\Models\Post.
  *
@@ -21,14 +21,14 @@ use Modules\Xot\Traits\Updater;
  * @mixin IdeHelperGeoNamesCap
  */
 class GeoNamesCap extends Model {
-    //use Searchable;
+    // use Searchable;
     use Updater;
 
     /**
      * @var string
      */
     protected $table = 'geonames_cap';
-    //protected $connection = 'geo';
+    // protected $connection = 'geo';
 
     /*
      * { function_description }

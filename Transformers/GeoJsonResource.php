@@ -33,13 +33,13 @@ class GeoJsonResource extends ResCollection {
             'type' => 'Feature',
             'properties' => [
                 'id' => $this->post_type.'-'.$this->post_id,
-                //"index"=> 0,
+                // "index"=> 0,
                 'isActive' => true,
-                //"logo"=> "http://placehold.it/32x32",
+                // "logo"=> "http://placehold.it/32x32",
                 // 39     Parameter #1 $model of static method Modules\Xot\Services\PanelService::make()->get()
                 // expects Illuminate\Database\Eloquent\Model,
                 // $this(Modules\Geo\Transformers\GeoJsonResource) given.
-                //'image' => Panel::make()->get($this)->imgSrc(['width' => 200, 'height' => 200]),
+                // 'image' => Panel::make()->get($this)->imgSrc(['width' => 200, 'height' => 200]),
                 'link' => $this->url,
                 'url' => '#',
                 'name' => $this->title,
@@ -51,8 +51,8 @@ class GeoJsonResource extends ResCollection {
                 'about' => $this->subtitle."\r\n",
                 'tags' => [
                     $this->post_type,
-                    //"Restaurant",
-                    //"Contemporary"
+                    // "Restaurant",
+                    // "Contemporary"
                 ],
             ],
             'geometry' => [

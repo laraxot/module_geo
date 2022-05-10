@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models;
 
-//------services---------
+// ------services---------
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Modules\Geo\Database\Factories\PlaceFactory;
+// use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Services\ImportService;
 
-//------ models --------
+// ------ models --------
 
 /**
  * Modules\Geo\Models\Place.
@@ -72,6 +72,7 @@ use Modules\Xot\Services\ImportService;
  * @property int|null                                                                 $my_favorites_count
  * @property \Modules\Blog\Models\Post|null                                           $post
  * @property mixed                                                                    $url
+ *
  * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
@@ -119,9 +120,10 @@ use Modules\Xot\Services\ImportService;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
  * @mixin \Eloquent
+ *
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Blog\Models\Post[] $posts
  * @property int|null                                                             $posts_count
- * @property-write mixed $address
+ * @property mixed                                                                $address
  * @mixin IdeHelperPlace
  */
 class Place extends BaseModelLang {
@@ -131,14 +133,14 @@ class Place extends BaseModelLang {
      * @var string[]
      */
     protected $fillable = ['id', 'post_id', 'post_type',
-        //---- address_components----
+        // ---- address_components----
         'premise', 'locality', 'postal_town',
         'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
         'country',
         'street_number', 'route', 'postal_code',
         'googleplace_url',
         'point_of_interest', 'political', 'campground',
-        //-----
+        // -----
         'latitude', 'longitude', 'formatted_address', 'nearest_street', 'address',
     ];
 
@@ -168,9 +170,11 @@ class Place extends BaseModelLang {
         return \Modules\Geo\Database\Factories\PlaceFactory::new();
     }
 
-    //----- mutators -----
+    // ----- mutators -----
 
     /**
+     * @param mixed $value
+     *
      * @throws \Exception
      */
     /*
@@ -221,12 +225,12 @@ class Place extends BaseModelLang {
             unset($json['latlng'], $json['value']);
 
             $this->attributes = array_merge($this->attributes, $json);
-            //dddx($this->attributes);
+            // dddx($this->attributes);
         }
-        if (is_array($value)) {
+        if (\is_array($value)) {
             $value = json_encode($value);
         }
         $this->attributes['address'] = $value;
-        //dddx(['isJson'=>\isJson($value),'value'=>$value]);
+        // dddx(['isJson'=>\isJson($value),'value'=>$value]);
     }
 }

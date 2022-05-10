@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Providers;
 
-//--- bases ---
+// --- bases ---
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
 /**

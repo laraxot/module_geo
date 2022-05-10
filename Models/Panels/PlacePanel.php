@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Panels;
 
-//-------- Services -----
+// -------- Services -----
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-//---- bases --
+// ---- bases --
 
 /**
  * Class PlacePanel.
@@ -146,8 +146,6 @@ class PlacePanel extends XotBasePanel {
 
     /**
      * Get the actions available for the resource.
-     *
-     * @return array
      */
     public function actions(): array {
         return [];

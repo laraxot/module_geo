@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <livewire:form-search-address-categories :attributes="$attributes" :slot="$slot" />
 =======
 <livewire:geo::form-search-address-categories :attributes="$attributes" :slot="$slot" />
@@ -11,3 +12,6 @@
 =======
 <livewire:form-search-address-categories :attributes="$attributes" :slot="$slot" />
 >>>>>>> 29d17ef1 (.)
+=======
+<livewire:geo::form-search-address-categories :attributes="$attributes" :slot="$slot" />
+>>>>>>> bbe83faf (first)

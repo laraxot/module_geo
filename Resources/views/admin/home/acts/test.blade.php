@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 4b45107f (up)
     <livewire:test class="pluto">
@@ -45,3 +46,9 @@
 </livewire:geo::test>
 @endsection
 >>>>>>> 20ca6709 (first)
+=======
+<livewire:test class="pluto">
+    <x-slot name="slot1"> nonna papera </x-slot>
+</livewire:test>
+@endsection
+>>>>>>> 29d17ef1 (.)

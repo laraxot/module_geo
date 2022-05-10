@@ -2,6 +2,7 @@
 @section('content')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <livewire:test class="pluto">
         <x-slot name="slot1"> nonna papera </x-slot>
     </livewire:test>
@@ -18,3 +19,9 @@
 </livewire:geo::test>
 @endsection
 >>>>>>> 20ca6709 (first)
+=======
+<livewire:test class="pluto">
+    <x-slot name="slot1"> nonna papera </x-slot>
+</livewire:test>
+@endsection
+>>>>>>> 29d17ef1 (.)

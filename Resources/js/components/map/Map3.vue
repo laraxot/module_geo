@@ -1,7 +1,7 @@
 <template>
   <section>
       <div>
-      CIAO
+      MAPS3 VUE
       </div>
   </section>
 </template>

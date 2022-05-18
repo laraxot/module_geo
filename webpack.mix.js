@@ -21,7 +21,7 @@ require('laravel-mix-merge-manifest');
 
 //mix.setPublicPath('../../public').mergeManifest();
 var src=__dirname + '/Resources';
-var dest= 'Resources/views'
+var dest= 'Resources/dist'
 
 mix.js(src+'/js/app.js', dest+'/js/geo.js')
     .sass( src + '/sass/app.scss', dest+'/css/geo.css')

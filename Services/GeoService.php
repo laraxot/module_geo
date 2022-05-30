@@ -26,7 +26,7 @@ class GeoService {
      *
      * this method will return instance of the class
      */
-    public static function getInstance() {
+    public static function getInstance():self {
         if (! self::$_instance) {
             self::$_instance = new self();
         }
@@ -136,7 +136,15 @@ class GeoService {
         * sin(radians(`'.self::$latitude_field.'`)))) *1.1515';
     }
 
-    public static function is_in_polygon($latitude, $longitude, $polygon) {
+    /**
+     * Undocumented function
+     *
+     * @param float $latitude
+     * @param float $longitude
+     * @param array $polygon
+     * @return boolean
+     */
+    public static function is_in_polygon(float $latitude,float $longitude,array $polygon):bool {
         $i = $j = $c = 0;
         $points_polygon = \count($polygon) - 1;
 
@@ -152,7 +160,7 @@ class GeoService {
             }
         }
 
-        return $c;
+        return (bool)$c;
     }
 
     public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool {

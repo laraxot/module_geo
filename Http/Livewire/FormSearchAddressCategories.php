@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Http\Livewire;
 
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Session\SessionManager;
 use Livewire\Component;
 use Modules\Xot\Services\ActionService;
 
@@ -30,16 +32,18 @@ class FormSearchAddressCategories extends Component {
     public string $cap = '';
 
     public bool $messageError = false;
+    public SessionManager $session;
 
     /**
      * Mount function.
      *
-     * @param \Illuminate\View\ComponentAttributeBag $attributes
-     * @param \Illuminate\Support\HtmlString         $slot
+     * param \Illuminate\View\ComponentAttributeBag $attributes
+     * param \Illuminate\Support\HtmlString         $slot
      *
      * @return void
      */
-    public function mount(/* $attributes, $slot */) {
+    public function mount(SessionManager $session/* $attributes, $slot */) {
+        $this->session = $session;
         // $this->attributes = $attributes;
         // $this->slot = $slot;
         $this->form_data[$this->name] = json_encode((object) []);
@@ -48,10 +52,8 @@ class FormSearchAddressCategories extends Component {
 
     /**
      * Undocumented function.
-     *
-     * @return Renderable
      */
-    public function render() {
+    public function render(): Renderable {
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,
@@ -87,7 +89,8 @@ class FormSearchAddressCategories extends Component {
         $lat = $ltlng['lat'];
         $lng = $ltlng['lng'];
 
-        $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+        // $this->enabledTypes = ActionService::getShopsCatsByCityLatLng($city, $lat, $lng);
+        $this->enabledTypes = collect([]);
 
         if ($this->enabledTypes->isEmpty()) {
             $this->dispatchBrowserEvent('openModalNotServed');
@@ -99,7 +102,9 @@ class FormSearchAddressCategories extends Component {
 
         // session()->put('address', $this->form_data['value']);
         // forse meglio portarmi tutto per utilizzarlo poi nella gestione checkout
-        session()->put('address', $this->form_data);
+        // Cannot call method put() on mixed
+        // session()->put('address', $this->form_data);
+        $this->session->put('address', $this->form_data);
     }
 
     /**
@@ -186,13 +191,18 @@ class FormSearchAddressCategories extends Component {
         */
 
         $not_served = xotModel('not_served');
-
+        /*
         $not_served = new $not_served();
         $not_served->cap = $this->cap;
         $not_served->email = $this->email;
         // $not_served->creation_date =
         $not_served->save();
-
+        */
+        $data = [
+            'cap' => $this->cap,
+            'email' => $this->email,
+        ];
+        $not_served->create($data);
         // $this->dispatchBrowserEvent('openWrongEmailCap');
 
         $this->dispatchBrowserEvent('closeModalNotServed');

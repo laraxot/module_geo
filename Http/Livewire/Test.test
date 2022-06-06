@@ -20,6 +20,9 @@ class Test extends Component {
     public $lookup;
 
     public function render() {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'geo::livewire.test';
         $view_params = [
             'view' => $view,

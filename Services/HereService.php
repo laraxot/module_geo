@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 use Modules\Tenant\Services\TenantService;
 
@@ -29,6 +30,10 @@ class HereService {
         $response = Http::get($base_url, $data);
 
         $json = $response->json();
+        if (! is_array($json)) {
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         if (! isset($json['routes'])) {
             dddx($json);
 

@@ -13,6 +13,9 @@ class FormSearchAddressCategories extends Component {
      *
      */
     public function render():Renderable {
+        /** 
+        * @phpstan-var view-string
+        */
         $view = 'geo::components.form_search_address_categories';
         $view_params = [
             'view' => $view,

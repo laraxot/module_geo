@@ -38,7 +38,7 @@
           <td>
             <label
               ><strong
-                >Sincronizzazione di dati on change SENZA v-model e CON
+                >Sincronizzazione di dati con INVIO SENZA v-model e CON
                 metodo</strong
               ></label
             >

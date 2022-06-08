@@ -36,7 +36,7 @@ use Modules\Geo\Services\GeoService;
  * @property string $administrative_area_level_2_short.
  */
 trait GeoTrait {
-    /**
+    /*
      * @return array
      */
     /*public function getFillable() {

@@ -294,10 +294,11 @@ where zone_polygon IS NOT NULL
 
             extract($addr);
 
-            $value = str_ireplace(', Italia', '', $value);
-            if (\is_array($value)) {
-                $value = implode(' ', $value);
-            }
+            $value = str_ireplace(', Italia', '', (string)$value);
+            //Call to function is_array() with string will always evaluate to false.
+            //if (\is_array($value)) {
+            //    $value = implode(' ', $value);
+            //}
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);

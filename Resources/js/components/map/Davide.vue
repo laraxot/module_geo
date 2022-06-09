@@ -2,52 +2,48 @@
 
     <div class="container">
 
-        <div id="mapid" class="center-block" style="width: 100%; height: 400px;"></div>
+        <div id="map" class="sidebar-map"></div>
+
     </div>
+    
 </template>
 
+
 <script>
-/**
- * @link http://www.learnlaravel.net/1258/adding-interactive-maps-to-laravel-with-leaflet-js-step-3-adding-markers-to-the-map-based-on-json/
- */
-//import {L,Icon} from 'leaflet';
-//var L = require('leaflet');
-//import "leaflet/dist/leaflet.css";
-import * as L from 'leaflet';
-import 'leaflet-fullscreen/dist/Leaflet.fullscreen';
-import 'leaflet-extra-markers';
-import 'leaflet.markercluster';
+
+import '../../leaflet.js';
+import '../../leaflet.permalink.min.js';
+import '../../leaflet-sidebar.js';
+import '../../leaflet.extra-markers.min.js';
+import '../../leaflet.markercluster.js';
+import '../../leaflet-sidebar.js';
+import '../../L.Control.Locate.min.js';
+import '../../opening_hours+deps.min.js';
+import '../../popupcontent.js';
+import '../../direktvermarkter.js';
 
 export default {
-    data() {
-        return {
-            map: null
-        };
-    },
+
     mounted() {
-        //var mappos = L.Permalink.getMapLocation();
-        var map = L.map('mapid').fitWorld();
-        this.map = map;
-        this.map.addControl(new window.L.Control.Fullscreen());
-        //this.map.setView([51.505, -0.09], 13);
-        /*
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(this.map);
-        //*/
-
-        var tiles = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(this.map);
-
-        //*
-
-        delete L.Icon.Default.prototype._getIconUrl;
-        L.Icon.Default.mergeOptions({
-            iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default,
-            iconUrl: require('leaflet/dist/images/marker-icon.png').default,
-            shadowUrl: require('leaflet/dist/images/marker-shadow.png').default,
+        var mappos = L.Permalink.getMapLocation();
+        var map = L.map('map', {
+            center: mappos.center,
+            zoom: mappos.zoom,
+            minZoom: 2,
+            maxZoom: 18,
+            zoomControl: false
         });
+        L.Permalink.setup(map);
+
+        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+
+
 
         var farmMarker = L.ExtraMarkers.icon({
             icon: 'fa-number',
@@ -80,7 +76,10 @@ export default {
             number: '?'
         });
 
-        //Marker
+
+        //Darstellung
+
+        //Marker 
 
         var geojson1 = L.geoJson(farmshopGeoJson, {
             pointToLayer: function pointToLayer(feature, latlng) {
@@ -217,30 +216,48 @@ export default {
         });
 
         markers.addLayer(geojson1);
-        this.map.addLayer(markers);
+        map.addLayer(markers);
         console.log(lastUpdate);
 
+        var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-        this.map.on('locationfound', (e) => {
-            console.log('onLocationFound');
-            var radius = e.accuracy / 2;
-            console.log(this.map);
-            var locationMarker = L.marker(e.latlng).addTo(this.map)
-                .bindPopup('You are within ' + radius + ' meters from this point').openPopup();
+        var tilesAuswahl = {
+            "Openstreetmap": tiles,
+            "Satelit": Esri_WorldImagery,
+        };
 
-            var locationCircle = L.circle(e.latlng, radius).addTo(this.map);
-        });
-        this.map.on('locationerror', (e) => {
-            alert(e.message);
-        });
+        var overlays = {
+            "Marker": markers,
+        };
+        L.control.scale({ position: 'topright' }).addTo(map);
 
-        this.map.locate({ setView: true, maxZoom: 16 });
+        L.control.layers(tilesAuswahl, overlays).addTo(map);
 
-    },
-    beforeDestroy() {
-        if (this.map) {
-            this.map.remove();
+
+
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(map);
+
+
+        L.control.locate({
+            position: 'bottomright',
+            drawMarker: true,
+            drawCircle: true,
+            flyTo: true,
+            keepCurrentZoomLevel: false,
+            strings: {
+                title: "Karte auf meine aktuelle Position zentrieren!"
+            },
+            locateOptions: {
+                maxZoom: 12
+            },
+            clickBehavior: {
+                inView: 'setView',
+                outOfView: 'setView'
+            }
         }
+        ).addTo(map);
     }
 }
 </script>

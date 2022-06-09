@@ -69,7 +69,7 @@ trait GeoTrait {
      */
     public function scopeWithDistance($query, float $lat, float $lng) {
         $q = $query;
-        if (0 !== $lat && 0 !== $lng) {
+        if ($lat>0 && $lng>0) {
             $haversine = GeoService::haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -86,7 +86,7 @@ trait GeoTrait {
      */
     public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
         $q = $query;
-        if (0 !== $lat && 0 !== $lng) {
+        if ($lat>0 && $lng>0) {
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -184,9 +184,12 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
-        if (\is_object($address)) {
-            dddx($address);
-        }
+        //call to function is_object() with string will always evaluate to false
+        //if (\is_object($address)) {
+        //    dddx($address);
+        //}
+        //Call to function is_array() with string will always evaluate to false
+        /*
         if (\is_array($address)) {
             $lat = $address['latlng']['lat'];
             $lng = $address['latlng']['lng'];
@@ -198,6 +201,7 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
+        */
 
         return null;
     }
@@ -307,6 +311,8 @@ where zone_polygon IS NOT NULL
                 return $value;
             }
         }
+        //Call to function is_object() with string|null will always evaluate to false.
+        /*
         if (\is_object($this->address)) {
             $address = collect($this->address)->except(['value', 'latlng']);
             $up = false;
@@ -330,7 +336,7 @@ where zone_polygon IS NOT NULL
 
             return $value;
         }
-
+        */
         $tmp = [];
         $tmp[] = $this->route;
         $tmp[] = $this->street_number;

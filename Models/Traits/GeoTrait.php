@@ -215,6 +215,9 @@ where zone_polygon IS NOT NULL
         // *
 
         if (isJson($value)) {
+            /**
+             * @var array<string, mixed>
+             */
             $json = json_decode($value, true);
             $json['latitude'] = $json['latlng']['lat'];
             $json['longitude'] = $json['latlng']['lng'];
@@ -277,11 +280,12 @@ where zone_polygon IS NOT NULL
     */
 
     /**
-     * @param mixed $value
-     *
-     * @return string
+     * ---
      */
-    public function getFullAddressAttribute($value) {
+    public function getFullAddressAttribute(?string $value):?string {
+        if($this->address==null){
+            return null;
+        }
         if (isJson($this->address)) {
             $addr = json_decode($this->address);
             if (\is_object($addr)) {
@@ -290,10 +294,11 @@ where zone_polygon IS NOT NULL
 
             extract($addr);
 
-            $value = str_ireplace(', Italia', '', $value);
-            if (\is_array($value)) {
-                $value = implode(' ', $value);
-            }
+            $value = str_ireplace(', Italia', '', (string)$value);
+            //Call to function is_array() with string will always evaluate to false.
+            //if (\is_array($value)) {
+            //    $value = implode(' ', $value);
+            //}
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);

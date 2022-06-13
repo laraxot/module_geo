@@ -174,8 +174,9 @@ where zone_polygon IS NOT NULL
         }
         if (isJson($address)) {
             $json = json_decode($address, true);
-            $lat = $json['latlng']['lat'];
-            $lng = $json['latlng']['lng'];
+            $latlng= $json['latlng'];
+            $lat = $latlng['lat'];
+            $lng = $latlng['lng'];
             $this->update([
                 'latitude' => $lat,
                 'longitude' => $lng,

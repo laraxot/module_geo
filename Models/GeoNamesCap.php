@@ -9,16 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Traits\Updater;
 
 /**
- * {.
- * 
- * item_description }
- * da fare php artisan scout:import Modules\Blog\Models\Post.
+ * Modules\Geo\Models\GeoNamesCap
  *
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap query()
  * @mixin \Eloquent
- * @mixin IdeHelperGeoNamesCap
  */
 class GeoNamesCap extends Model {
     //use Searchable;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Panels;
 
-//--- Services --
+// --- Services --
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 

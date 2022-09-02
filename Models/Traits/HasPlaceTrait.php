@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Traits;
 
-use Modules\Geo\Models\Place;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Modules\Geo\Models\Place;
 
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  */
 trait HasPlaceTrait {
-    //----- relationship -----
+    // ----- relationship -----
 
     public function address(): MorphOne {
         $row = $this->morphOne(Place::class, 'post');

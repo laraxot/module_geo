@@ -7,27 +7,27 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
+    //window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    window.L = window.leaflet = leaflet = require('leaflet');
-    require('leaflet-extra-markers');
-    require('leaflet.markercluster');
-    require('leaflet.locatecontrol');
+    //window.L = window.leaflet = leaflet = require('leaflet');
+    //require('leaflet-extra-markers');
+    //require('leaflet.markercluster');
+    //require('leaflet.locatecontrol');
     //require('leaflet.locatecontrol/src/L.Control.Locate.js');
     //require('leaflet.locatecontrol/dist/L.Control.Locate.min.js');
     //require('leaflet-sidebar/src/L.Control.Sidebar.js');
-    require('leaflet-sidebar-v2');
+    //require('leaflet-sidebar-v2');
     //require('leaflet.Permalink/leaflet.permalink.js');
 
-    require('opening_hours');
+    //require('opening_hours');
 
     require('bootstrap');
 } catch (e) {}
 
 
 var pub_res = '.';
-require(pub_res + '/leaflet.permalink.min.js');
+//require(pub_res + '/leaflet.permalink.min.js');
 //require(pub_res+'/leaflet.extra-markers.min.js');
 //require(pub_res+'/leaflet.markercluster.js');
 //require(pub_res+'/leaflet-sidebar.js');
@@ -41,7 +41,7 @@ require(pub_res + '/leaflet.permalink.min.js');
 //    return json;
 //});
 //require(pub_res+'/popupcontent.js'); //Uncaught ReferenceError: popupcontent is not defined
-require(pub_res + '/xot-markers.js');
+//require(pub_res + '/xot-markers.js');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

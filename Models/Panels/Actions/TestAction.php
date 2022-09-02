@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Panels\Actions;
 
-//-------- models -----------
+// -------- models -----------
 
-//-------- services --------
+// -------- services --------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class TestAction.
  */
 class TestAction extends XotBasePanelAction {
-    public bool $onItem = true; //onlyContainer
+    public bool $onItem = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
 
@@ -21,5 +21,5 @@ class TestAction extends XotBasePanelAction {
         return $this->panel->out();
     }
 
-    //end handle
-}//end class
+    // end handle
+}// end class

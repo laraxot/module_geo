@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Model;
-////use Laravel\Scout\Searchable;
+// //use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**
@@ -21,14 +21,24 @@ use Modules\Xot\Traits\Updater;
  * @mixin IdeHelperGeoNamesCap
  */
 class GeoNamesCap extends Model {
-    //use Searchable;
+    // use Searchable;
     use Updater;
+    /**
+     * Indicates whether attributes are snake cased on arrays.
+     *
+     * @see  https://laravel-news.com/6-eloquent-secrets
+     *
+     * @var bool
+     */
+    public static $snakeAttributes = true;
+
+    protected $perPage = 30;
 
     /**
      * @var string
      */
     protected $table = 'geonames_cap';
-    //protected $connection = 'geo';
+    // protected $connection = 'geo';
 
     /*
      * { function_description }

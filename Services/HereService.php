@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 use Modules\Tenant\Services\TenantService;
 
 class HereService {
     public string $base_url = 'https://router.hereapi.com/v8/routes';
 
-    //https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
+    // https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
     public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array {
         $api_key = TenantService::config('services.here.api_key');
@@ -23,12 +24,16 @@ class HereService {
             'apiKey' => $api_key,
         ];
 
-        //dddx(TenantService::config('services.here'));
+        // dddx(TenantService::config('services.here'));
 
         $base_url = 'https://router.hereapi.com/v8/routes';
         $response = Http::get($base_url, $data);
 
         $json = $response->json();
+        if (! is_array($json)) {
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        }
+
         if (! isset($json['routes'])) {
             dddx($json);
 
@@ -40,7 +45,7 @@ class HereService {
         }
 
         $summary = $json['routes'][0]['sections']['0']['summary'];
-        //dddx(['A' => $lat1.','.$lon1, 'B' => $lat2.','.$lon2, 'summary' => $summary]);
+        // dddx(['A' => $lat1.','.$lon1, 'B' => $lat2.','.$lon2, 'summary' => $summary]);
         /*
          "duration" => 0
         "length" => 0

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Panels\Actions;
 
-//-------- models -----------
+// -------- models -----------
 
-//-------- services --------
+// -------- services --------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
-//-------- bases -----------
+// -------- bases -----------
 
 /**
  * Class FindNeighborsActions.

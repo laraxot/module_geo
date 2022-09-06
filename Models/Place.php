@@ -123,7 +123,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property int $id
  * @property string|null $post_type
  * @property int|null $post_id
- * @property string|null $address
  * @property string|null $formatted_address
  * @property string|null $latitude
  * @property string|null $longitude
@@ -175,13 +174,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
+ * @property-write mixed $address
  * @property-write mixed $url
  * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
  * @method static \Illuminate\Database\Eloquent\Builder|Place query()
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1Short($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel2($value)

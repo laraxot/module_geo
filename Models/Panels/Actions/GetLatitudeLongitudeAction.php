@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Panels\Actions;
 
-//-------- models -----------
+// -------- models -----------
 
-//-------- services --------
+// -------- services --------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
-//use Modules\Xot\Services\ArrayService;
-//-------- bases -----------
+// use Modules\Xot\Services\ArrayService;
+// -------- bases -----------
 use Modules\Xot\Services\ImportService;
 
 /**
  * Class GetLatitudeLongitudeAction.
  */
 class GetLatitudeLongitudeAction extends XotBasePanelAction {
-    public bool $onContainer = true; //onlyContainer
+    public bool $onContainer = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
 
@@ -47,7 +47,7 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
             //
             //  40     Call to an undefined method object::getAttributeValue().
             //  41     Call to an undefined method object::fill().
-            //42     Call to an undefined method object::save().
+            // 42     Call to an undefined method object::save().
             //
 
             $address = $row->getAddress();

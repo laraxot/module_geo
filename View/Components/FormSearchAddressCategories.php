@@ -10,12 +10,11 @@ use Illuminate\View\Component;
 class FormSearchAddressCategories extends Component {
     /**
      * Undocumented function.
-     *
      */
-    public function render():Renderable {
-        /** 
-        * @phpstan-var view-string
-        */
+    public function render(): Renderable {
+        /**
+         * @phpstan-var view-string
+         */
         $view = 'geo::components.form_search_address_categories';
         $view_params = [
             'view' => $view,

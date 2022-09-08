@@ -46,7 +46,7 @@ class CreatePlacesTable extends XotBaseMigration {
                 $table->string('deleted_by')->nullable();
                 $table->timestamps();
             }
-            );
+        );
 
         // -- UPDATE --
         $this->tableUpdate(
@@ -63,6 +63,7 @@ class CreatePlacesTable extends XotBaseMigration {
                     $table->decimal('latitude', 15, 10)->nullable();
                     $table->decimal('longitude', 15, 10)->nullable();
                 }
-            });
+            }
+        );
     }
 }

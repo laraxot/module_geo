@@ -17,10 +17,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property int $id
  * @property string|null $post_type
  * @property int|null $post_id
-<<<<<<< HEAD
- * @property string|null $address
-=======
->>>>>>> 5a5ebe078a5127d2e7a2db8da9b945bfee2d4ab3
  * @property string|null $formatted_address
  * @property string|null $latitude
  * @property string|null $longitude
@@ -72,20 +68,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property-read \Modules\Lang\Models\Post|null $post
  * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
  * @property-read int|null $posts_count
-<<<<<<< HEAD
-=======
  * @property-write mixed $address
->>>>>>> 5a5ebe078a5127d2e7a2db8da9b945bfee2d4ab3
  * @property-write mixed $url
  * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
  * @method static \Illuminate\Database\Eloquent\Builder|Place query()
-<<<<<<< HEAD
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAddress($value)
-=======
->>>>>>> 5a5ebe078a5127d2e7a2db8da9b945bfee2d4ab3
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1Short($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel2($value)

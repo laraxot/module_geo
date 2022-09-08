@@ -5,26 +5,27 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Model;
-////use Laravel\Scout\Searchable;
+// //use Laravel\Scout\Searchable;
 use Modules\Xot\Traits\Updater;
 
 /**
- * Modules\Geo\Models\GeoNamesCap
+ * Modules\Geo\Models\GeoNamesCap.
  *
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|GeoNamesCap query()
+ *
  * @mixin \Eloquent
  */
 class GeoNamesCap extends Model {
-    //use Searchable;
+    // use Searchable;
     use Updater;
 
     /**
      * @var string
      */
     protected $table = 'geonames_cap';
-    //protected $connection = 'geo';
+    // protected $connection = 'geo';
 
     /*
      * { function_description }

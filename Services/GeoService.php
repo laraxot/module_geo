@@ -152,12 +152,17 @@ class GeoService {
             $polygon[$j] = (object) $polygon[$j];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
            ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
 =======
             if ((($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
            ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng))) {
 >>>>>>> f2b13f11 (.)
+=======
+            if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
+           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
+>>>>>>> 9de2ec4b (up)
                 $c = ! $c;
             }
         }

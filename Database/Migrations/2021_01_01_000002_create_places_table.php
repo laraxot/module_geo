@@ -47,10 +47,14 @@ class CreatePlacesTable extends XotBaseMigration {
                 $table->timestamps();
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
         );
 =======
             );
 >>>>>>> f2b13f11 (.)
+=======
+        );
+>>>>>>> 9de2ec4b (up)
 
         // -- UPDATE --
         $this->tableUpdate(

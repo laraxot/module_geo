@@ -20,6 +20,9 @@ use Modules\Xot\Services\PanelService as Panel;
 /**
  * Class GeoJsonResource.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9de2ec4b (up)
  *
  * @property int         $id
  * @property string|null $post_type
@@ -33,6 +36,7 @@ use Modules\Xot\Services\PanelService as Panel;
  * @property string|null $email
  * @property float       $latitude
  * @property float       $longitude
+<<<<<<< HEAD
 =======
  * 
  * @property int                             $id
@@ -48,6 +52,8 @@ use Modules\Xot\Services\PanelService as Panel;
  * @property float                      $latitude
  * @property float                      $longitude
 >>>>>>> f2b13f11 (.)
+=======
+>>>>>>> 9de2ec4b (up)
  */
 class GeoJsonResource extends ResCollection {
     /**

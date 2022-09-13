@@ -69,35 +69,8 @@ trait GeoTrait {
      */
     public function scopeWithDistance($query, float $lat, float $lng) {
         $q = $query;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         if ($lat > 0 && $lng > 0) {
-=======
-        if ($lat>0 && $lng>0) {
->>>>>>> f2b13f11 (.)
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 9de2ec4b (up)
-=======
-=======
->>>>>>> cd852c9 (rebase)
-        if ($lat > 0 && $lng > 0) {
-=======
-        if ($lat>0 && $lng>0) {
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 4cc354ba (up)
             $haversine = GeoService::haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -114,35 +87,8 @@ trait GeoTrait {
      */
     public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
         $q = $query;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         if ($lat > 0 && $lng > 0) {
-=======
-        if ($lat>0 && $lng>0) {
->>>>>>> f2b13f11 (.)
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 9de2ec4b (up)
-=======
-=======
->>>>>>> cd852c9 (rebase)
-        if ($lat > 0 && $lng > 0) {
-=======
-        if ($lat>0 && $lng>0) {
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
-        if ($lat > 0 && $lng > 0) {
->>>>>>> 4cc354ba (up)
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")

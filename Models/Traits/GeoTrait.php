@@ -285,50 +285,12 @@ where zone_polygon IS NOT NULL
     */
 
     /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d4fc524 (rebase)
-=======
->>>>>>> cd852c9 (rebase)
-=======
      * ---.
->>>>>>> 4cc354ba (up)
+
      * ---.
      */
     public function getFullAddressAttribute(?string $value): ?string {
         if (null == $this->address) {
-<<<<<<< HEAD
-=======
-     * ---
-     */
-    public function getFullAddressAttribute(?string $value):?string {
-        if($this->address==null){
-<<<<<<< HEAD
->>>>>>> f2b13f11 (.)
-=======
-     * ---.
-     */
-    public function getFullAddressAttribute(?string $value): ?string {
-        if (null == $this->address) {
->>>>>>> 9de2ec4b (up)
-=======
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-     * ---.
-     */
-    public function getFullAddressAttribute(?string $value): ?string {
-        if (null == $this->address) {
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
->>>>>>> 4cc354ba (up)
             return null;
         }
         if (isJson($this->address)) {
@@ -339,53 +301,11 @@ where zone_polygon IS NOT NULL
 
             extract($addr);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d4fc524 (rebase)
-=======
->>>>>>> cd852c9 (rebase)
-=======
->>>>>>> 4cc354ba (up)
             $value = str_ireplace(', Italia', '', (string) $value);
             // Call to function is_array() with string will always evaluate to false.
             // if (\is_array($value)) {
             //    $value = implode(' ', $value);
             // }
-<<<<<<< HEAD
-=======
-            $value = str_ireplace(', Italia', '', (string)$value);
-            //Call to function is_array() with string will always evaluate to false.
-            //if (\is_array($value)) {
-            //    $value = implode(' ', $value);
-            //}
-<<<<<<< HEAD
->>>>>>> f2b13f11 (.)
-=======
-            $value = str_ireplace(', Italia', '', (string) $value);
-            // Call to function is_array() with string will always evaluate to false.
-            // if (\is_array($value)) {
-            //    $value = implode(' ', $value);
-            // }
->>>>>>> 9de2ec4b (up)
-=======
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-            $value = str_ireplace(', Italia', '', (string) $value);
-            // Call to function is_array() with string will always evaluate to false.
-            // if (\is_array($value)) {
-            //    $value = implode(' ', $value);
-            // }
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
->>>>>>> 4cc354ba (up)
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);
@@ -403,35 +323,8 @@ where zone_polygon IS NOT NULL
                 return $value;
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         // Call to function is_object() with string|null will always evaluate to false.
-=======
-        //Call to function is_object() with string|null will always evaluate to false.
->>>>>>> f2b13f11 (.)
-=======
-        // Call to function is_object() with string|null will always evaluate to false.
->>>>>>> 9de2ec4b (up)
-=======
-=======
->>>>>>> cd852c9 (rebase)
-        // Call to function is_object() with string|null will always evaluate to false.
-=======
-        //Call to function is_object() with string|null will always evaluate to false.
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-        // Call to function is_object() with string|null will always evaluate to false.
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
-        // Call to function is_object() with string|null will always evaluate to false.
->>>>>>> 4cc354ba (up)
         /*
         if (\is_object($this->address)) {
             $address = collect($this->address)->except(['value', 'latlng']);

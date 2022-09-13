@@ -151,40 +151,8 @@ class GeoService {
             $polygon[$i] = (object) $polygon[$i];
             $polygon[$j] = (object) $polygon[$j];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d4fc524 (rebase)
-=======
->>>>>>> cd852c9 (rebase)
             if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
            ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
-=======
-            if ((($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
-           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng))) {
-<<<<<<< HEAD
->>>>>>> f2b13f11 (.)
-=======
-            if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
-           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
->>>>>>> 9de2ec4b (up)
-=======
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-            if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
-           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
-            if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
-           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
->>>>>>> 4cc354ba (up)
                 $c = ! $c;
             }
         }

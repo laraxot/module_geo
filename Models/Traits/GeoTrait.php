@@ -176,35 +176,8 @@ where zone_polygon IS NOT NULL
         }
         if (isJson($address)) {
             $json = json_decode($address, true);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             $latlng = $json['latlng'];
-=======
-            $latlng= $json['latlng'];
->>>>>>> f2b13f11 (.)
-=======
-            $latlng = $json['latlng'];
->>>>>>> 9de2ec4b (up)
-=======
-=======
->>>>>>> cd852c9 (rebase)
-            $latlng = $json['latlng'];
-=======
-            $latlng= $json['latlng'];
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-            $latlng = $json['latlng'];
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
-            $latlng = $json['latlng'];
->>>>>>> 4cc354ba (up)
             $lat = $latlng['lat'];
             $lng = $latlng['lng'];
             $this->update([
@@ -215,59 +188,12 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d4fc524 (rebase)
-=======
->>>>>>> cd852c9 (rebase)
-=======
->>>>>>> 4cc354ba (up)
+
         // call to function is_object() with string will always evaluate to false
         // if (\is_object($address)) {
         //    dddx($address);
         // }
         // Call to function is_array() with string will always evaluate to false
-<<<<<<< HEAD
-=======
-        //call to function is_object() with string will always evaluate to false
-        //if (\is_object($address)) {
-        //    dddx($address);
-        //}
-        //Call to function is_array() with string will always evaluate to false
-<<<<<<< HEAD
->>>>>>> f2b13f11 (.)
-=======
-=======
->>>>>>> 4cc354ba (up)
-        // call to function is_object() with string will always evaluate to false
-        // if (\is_object($address)) {
-        //    dddx($address);
-        // }
-        // Call to function is_array() with string will always evaluate to false
-<<<<<<< HEAD
->>>>>>> 9de2ec4b (up)
-=======
->>>>>>> f2b13f1 (.)
-<<<<<<< HEAD
->>>>>>> d4fc524 (rebase)
-=======
-=======
-=======
->>>>>>> 4cc354ba (up)
-        // call to function is_object() with string will always evaluate to false
-        // if (\is_object($address)) {
-        //    dddx($address);
-        // }
-        // Call to function is_array() with string will always evaluate to false
-<<<<<<< HEAD
->>>>>>> 9de2ec4 (up)
->>>>>>> cd852c9 (rebase)
-=======
->>>>>>> 4cc354ba (up)
         /*
         if (\is_array($address)) {
             $lat = $address['latlng']['lat'];

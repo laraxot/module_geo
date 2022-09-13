@@ -14,15 +14,19 @@ class FormSearchAddressCategories extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
 =======
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
      */
     public function render(): Renderable {
         /**
          * @phpstan-var view-string
          */
+<<<<<<< HEAD
 =======
      *
      */
@@ -52,6 +56,8 @@ class FormSearchAddressCategories extends Component {
          */
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
         $view = 'geo::components.form_search_address_categories';
         $view_params = [
             'view' => $view,

@@ -155,6 +155,7 @@ class GeoService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
 =======
@@ -180,6 +181,10 @@ class GeoService {
            ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+            if (($polygon[$i]->lat > $latitude !== ($polygon[$j]->lat > $latitude)) &&
+           ($longitude < ($polygon[$j]->lng - $polygon[$i]->lng) * ($latitude - $polygon[$i]->lat) / ($polygon[$j]->lat - $polygon[$i]->lat) + $polygon[$i]->lng)) {
+>>>>>>> 4cc354ba (up)
                 $c = ! $c;
             }
         }

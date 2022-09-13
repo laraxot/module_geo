@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Geo\Database\Factories\PlaceFactory;
 // use Modules\Xot\Services\ImportService;
 
+<<<<<<< HEAD
 /**
  * Modules\Geo\Models\Place.
  *
@@ -352,6 +353,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 >>>>>>> cd852c9 (rebase)
  * @mixin \Eloquent
  */
+=======
+>>>>>>> 4cc354ba (up)
 class Place extends BaseModelLang {
     use HasFactory;
 

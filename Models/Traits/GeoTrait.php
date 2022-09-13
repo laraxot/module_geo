@@ -73,6 +73,7 @@ trait GeoTrait {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ($lat > 0 && $lng > 0) {
 =======
         if ($lat>0 && $lng>0) {
@@ -94,6 +95,9 @@ trait GeoTrait {
         if ($lat > 0 && $lng > 0) {
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+        if ($lat > 0 && $lng > 0) {
+>>>>>>> 4cc354ba (up)
             $haversine = GeoService::haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -114,6 +118,7 @@ trait GeoTrait {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ($lat > 0 && $lng > 0) {
 =======
         if ($lat>0 && $lng>0) {
@@ -135,6 +140,9 @@ trait GeoTrait {
         if ($lat > 0 && $lng > 0) {
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+        if ($lat > 0 && $lng > 0) {
+>>>>>>> 4cc354ba (up)
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -226,6 +234,7 @@ where zone_polygon IS NOT NULL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $latlng = $json['latlng'];
 =======
             $latlng= $json['latlng'];
@@ -247,6 +256,9 @@ where zone_polygon IS NOT NULL
             $latlng = $json['latlng'];
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+            $latlng = $json['latlng'];
+>>>>>>> 4cc354ba (up)
             $lat = $latlng['lat'];
             $lng = $latlng['lng'];
             $this->update([
@@ -261,15 +273,19 @@ where zone_polygon IS NOT NULL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
 =======
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
         // call to function is_object() with string will always evaluate to false
         // if (\is_object($address)) {
         //    dddx($address);
         // }
         // Call to function is_array() with string will always evaluate to false
+<<<<<<< HEAD
 =======
         //call to function is_object() with string will always evaluate to false
         //if (\is_object($address)) {
@@ -279,11 +295,14 @@ where zone_polygon IS NOT NULL
 <<<<<<< HEAD
 >>>>>>> f2b13f11 (.)
 =======
+=======
+>>>>>>> 4cc354ba (up)
         // call to function is_object() with string will always evaluate to false
         // if (\is_object($address)) {
         //    dddx($address);
         // }
         // Call to function is_array() with string will always evaluate to false
+<<<<<<< HEAD
 >>>>>>> 9de2ec4b (up)
 =======
 >>>>>>> f2b13f1 (.)
@@ -291,13 +310,18 @@ where zone_polygon IS NOT NULL
 >>>>>>> d4fc524 (rebase)
 =======
 =======
+=======
+>>>>>>> 4cc354ba (up)
         // call to function is_object() with string will always evaluate to false
         // if (\is_object($address)) {
         //    dddx($address);
         // }
         // Call to function is_array() with string will always evaluate to false
+<<<<<<< HEAD
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
         /*
         if (\is_array($address)) {
             $lat = $address['latlng']['lat'];
@@ -393,14 +417,19 @@ where zone_polygon IS NOT NULL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
 =======
 >>>>>>> cd852c9 (rebase)
+=======
+     * ---.
+>>>>>>> 4cc354ba (up)
      * ---.
      */
     public function getFullAddressAttribute(?string $value): ?string {
         if (null == $this->address) {
+<<<<<<< HEAD
 =======
      * ---
      */
@@ -426,6 +455,8 @@ where zone_polygon IS NOT NULL
         if (null == $this->address) {
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
             return null;
         }
         if (isJson($this->address)) {
@@ -440,15 +471,19 @@ where zone_polygon IS NOT NULL
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
 =======
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
             $value = str_ireplace(', Italia', '', (string) $value);
             // Call to function is_array() with string will always evaluate to false.
             // if (\is_array($value)) {
             //    $value = implode(' ', $value);
             // }
+<<<<<<< HEAD
 =======
             $value = str_ireplace(', Italia', '', (string)$value);
             //Call to function is_array() with string will always evaluate to false.
@@ -477,6 +512,8 @@ where zone_polygon IS NOT NULL
             // }
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+>>>>>>> 4cc354ba (up)
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);
@@ -494,6 +531,7 @@ where zone_polygon IS NOT NULL
                 return $value;
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -519,6 +557,9 @@ where zone_polygon IS NOT NULL
         // Call to function is_object() with string|null will always evaluate to false.
 >>>>>>> 9de2ec4 (up)
 >>>>>>> cd852c9 (rebase)
+=======
+        // Call to function is_object() with string|null will always evaluate to false.
+>>>>>>> 4cc354ba (up)
         /*
         if (\is_object($this->address)) {
             $address = collect($this->address)->except(['value', 'latlng']);

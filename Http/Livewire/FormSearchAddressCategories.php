@@ -57,8 +57,11 @@ class FormSearchAddressCategories extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
+=======
+>>>>>>> cd852c9 (rebase)
         /**
          * @phpstan-var view-string
          */
@@ -75,7 +78,15 @@ class FormSearchAddressCategories extends Component {
 >>>>>>> 9de2ec4b (up)
 =======
 >>>>>>> f2b13f1 (.)
+<<<<<<< HEAD
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+        /**
+         * @phpstan-var view-string
+         */
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,

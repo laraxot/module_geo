@@ -22,10 +22,15 @@ use Modules\Xot\Services\PanelService as Panel;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9de2ec4b (up)
 =======
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
  *
  * @property int         $id
  * @property string|null $post_type
@@ -41,8 +46,11 @@ use Modules\Xot\Services\PanelService as Panel;
  * @property float       $longitude
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> d4fc524 (rebase)
+=======
+>>>>>>> cd852c9 (rebase)
 =======
  * 
  * @property int                             $id
@@ -63,7 +71,12 @@ use Modules\Xot\Services\PanelService as Panel;
 >>>>>>> 9de2ec4b (up)
 =======
 >>>>>>> f2b13f1 (.)
+<<<<<<< HEAD
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
  */
 class GeoJsonResource extends ResCollection {
     /**

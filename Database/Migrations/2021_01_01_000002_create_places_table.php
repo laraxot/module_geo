@@ -49,6 +49,7 @@ class CreatePlacesTable extends XotBaseMigration {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         );
 =======
             );
@@ -57,11 +58,19 @@ class CreatePlacesTable extends XotBaseMigration {
         );
 >>>>>>> 9de2ec4b (up)
 =======
+=======
+>>>>>>> cd852c9 (rebase)
         );
 =======
             );
 >>>>>>> f2b13f1 (.)
+<<<<<<< HEAD
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+        );
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
 
         // -- UPDATE --
         $this->tableUpdate(

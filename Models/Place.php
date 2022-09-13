@@ -12,8 +12,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Xot\Services\ImportService;
 
 /**
- * Modules\Geo\Models\Place
+ * Modules\Geo\Models\Place.
  *
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21,6 +22,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 >>>>>>> 9de2ec4b (up)
 =======
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
  * @property int                                                                  $id
  * @property string|null                                                          $post_type
  * @property int|null                                                             $post_id
@@ -194,6 +199,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9de2ec4b (up)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
@@ -288,9 +294,62 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereStreetNumberShort($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedBy($value)
+=======
+=======
+>>>>>>> 9de2ec4 (up)
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel1Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel2Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel3Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCampground($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCampgroundShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCountryShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereFormattedAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereGoogleplaceUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereGoogleplaceUrlShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLocality($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLocalityShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLongitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereNearestStreet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePointOfInterest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePointOfInterestShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePolitical($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePoliticalShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalCodeShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalTown($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalTownShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePremise($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePremiseShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereRoute($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereRouteShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereStreetNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereStreetNumberShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedBy($value)
+>>>>>>> cd852c9 (rebase)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
+<<<<<<< HEAD
 >>>>>>> f2b13f1 (.)
+<<<<<<< HEAD
 >>>>>>> d4fc524 (rebase)
+=======
+=======
+ *
+>>>>>>> 9de2ec4 (up)
+>>>>>>> cd852c9 (rebase)
  * @mixin \Eloquent
  */
 class Place extends BaseModelLang {

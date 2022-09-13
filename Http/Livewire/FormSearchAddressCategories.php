@@ -54,9 +54,15 @@ class FormSearchAddressCategories extends Component {
      * Undocumented function.
      */
     public function render(): Renderable {
+<<<<<<< HEAD
         /**
          * @phpstan-var view-string
          */
+=======
+        /** 
+        * @phpstan-var view-string
+        */
+>>>>>>> f2b13f11 (.)
         $view = 'geo::livewire.form_search_address_categories';
         $view_params = [
             'view' => $view,

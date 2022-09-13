@@ -46,7 +46,11 @@ class CreatePlacesTable extends XotBaseMigration {
                 $table->string('deleted_by')->nullable();
                 $table->timestamps();
             }
+<<<<<<< HEAD
         );
+=======
+            );
+>>>>>>> f2b13f11 (.)
 
         // -- UPDATE --
         $this->tableUpdate(

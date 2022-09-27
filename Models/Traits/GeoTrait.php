@@ -69,13 +69,6 @@ trait GeoTrait {
      */
     public function scopeWithDistance($query, float $lat, float $lng) {
         $q = $query;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::haversine($lat, $lng);
 
@@ -93,13 +86,6 @@ trait GeoTrait {
      */
     public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
         $q = $query;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
@@ -188,13 +174,6 @@ where zone_polygon IS NOT NULL
         }
         if (isJson($address)) {
             $json = json_decode($address, true);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
             $latlng = $json['latlng'];
             $lat = $latlng['lat'];
             $lng = $latlng['lng'];
@@ -206,13 +185,6 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
         // call to function is_object() with string will always evaluate to false
         // if (\is_object($address)) {
         //    dddx($address);
@@ -310,14 +282,6 @@ where zone_polygon IS NOT NULL
 
     /**
      * ---.
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-     * ---.
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
      */
     public function getFullAddressAttribute(?string $value): ?string {
         if (null == $this->address) {
@@ -353,13 +317,6 @@ where zone_polygon IS NOT NULL
                 return $value;
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 148685e (up)
-=======
->>>>>>> 148685e (up)
         // Call to function is_object() with string|null will always evaluate to false.
         /*
         if (\is_object($this->address)) {

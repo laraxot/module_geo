@@ -17,8 +17,6 @@ namespace Modules\Geo\Transformers;
 use Illuminate\Http\Resources\Json\JsonResource as ResCollection;
 use Modules\Xot\Services\PanelService as Panel;
 
-<<<<<<< HEAD
-=======
 /**
  * Class GeoJsonResource.
  *
@@ -35,7 +33,6 @@ use Modules\Xot\Services\PanelService as Panel;
  * @property float       $latitude
  * @property float       $longitude
  */
->>>>>>> 148685e (up)
 class GeoJsonResource extends ResCollection {
     /**
      * @param \Illuminate\Http\Request $request

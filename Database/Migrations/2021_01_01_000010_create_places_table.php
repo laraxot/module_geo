@@ -24,7 +24,7 @@ class CreatePlacesTable extends XotBaseMigration {
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post');
+                $table->nullableMorphs('model');
                 $table->text('address')->nullable();
                 $table->text('formatted_address')->nullable();
                 $table->decimal('latitude', 15, 10)->nullable();
@@ -62,6 +62,10 @@ class CreatePlacesTable extends XotBaseMigration {
                 if (! $this->hasColumn('latitude')) {
                     $table->decimal('latitude', 15, 10)->nullable();
                     $table->decimal('longitude', 15, 10)->nullable();
+                }
+
+                if (! $this->hasColumn('model_id')) {
+                    $table->nullableMorphs('model');
                 }
             }
         );

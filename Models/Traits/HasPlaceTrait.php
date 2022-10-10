@@ -14,8 +14,6 @@ trait HasPlaceTrait {
     // ----- relationship -----
 
     public function address(): MorphOne {
-        $row = $this->morphOne(Place::class, 'post');
-
-        return $row;
+        return $this->morphOne(Place::class, 'post');
     }
 }

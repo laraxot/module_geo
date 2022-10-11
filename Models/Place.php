@@ -18,6 +18,7 @@ class Place extends BaseModelLang {
      * @var string[]
      */
     protected $fillable = ['id', 'post_id', 'post_type',
+        'model_id','model_type',
         // ---- address_components----
         'premise', 'locality', 'postal_town',
         'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
@@ -25,6 +26,9 @@ class Place extends BaseModelLang {
         'street_number', 'route', 'postal_code',
         'googleplace_url',
         'point_of_interest', 'political', 'campground',
+        //-------------
+        'locality_short','administrative_area_level_2_short','administrative_area_level_1_short','country_short','latlng',
+
         // -----
         'latitude', 'longitude', 'formatted_address', 'nearest_street', 'address',
     ];
@@ -96,6 +100,14 @@ class Place extends BaseModelLang {
     public function linked() {
         return $this->morphTo('post');
     }
+
+    public function setLatlngAttribute(array $value):void {
+        
+        $this->attributes['latitude']=$value['lat'];
+        $this->attributes['longitude']=$value['lng'];
+        unset($this->attributes['latlng']);
+    }
+
 
     /**
      * Undocumented function.

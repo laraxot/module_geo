@@ -22,7 +22,7 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
 
     public function handle(): void {
         if (! method_exists($this->rows, 'whereRaw')) {
-            throw new \Exception('in ['.get_class($this->rows).'] method [whereRaw] not exists');
+            throw new \Exception('in ['.\get_class($this->rows).'] method [whereRaw] not exists');
         }
         // 46     Call to an undefined method object::getAttributeValue().
         // 47     Call to an undefined method object::fill().
@@ -38,10 +38,10 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
             ->inRandomOrder()
             ->get();
         foreach ($rows as $row) {
-            if (! \method_exists($row, 'getAddress')) {
-                throw new \Exception('in ['.get_class($row).'] not exists [getAddress] method');
+            if (! method_exists($row, 'getAddress')) {
+                throw new \Exception('in ['.\get_class($row).'] not exists [getAddress] method');
             }
-            if (! is_object($row)) {
+            if (! \is_object($row)) {
                 throw new \Exception('row is not an object');
             }
             //

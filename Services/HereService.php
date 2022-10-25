@@ -30,7 +30,7 @@ class HereService {
         $response = Http::get($base_url, $data);
 
         $json = $response->json();
-        if (! is_array($json)) {
+        if (! \is_array($json)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 

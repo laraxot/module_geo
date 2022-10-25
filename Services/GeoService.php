@@ -166,7 +166,7 @@ class GeoService {
         }
 
         $original_data = json_decode($polygon, true);
-        if (! is_array($original_data)) {
+        if (! \is_array($original_data)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 

@@ -14,8 +14,6 @@ use Livewire\Component;
 class Test extends Component {
     /**
      * Lookup intermediary.
-     *
-     * @var
      */
     public $lookup;
 

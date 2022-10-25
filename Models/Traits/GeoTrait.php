@@ -36,7 +36,7 @@ use Modules\Geo\Services\GeoService;
  * @property string $administrative_area_level_2_short.
  */
 trait GeoTrait {
-    /*
+    /**
      * @return array
      */
     /*public function getFillable() {
@@ -284,7 +284,7 @@ where zone_polygon IS NOT NULL
      * ---.
      */
     public function getFullAddressAttribute(?string $value): ?string {
-        if (null == $this->address) {
+        if (null === $this->address) {
             return null;
         }
         if (isJson($this->address)) {

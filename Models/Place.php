@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Xot\Services\ImportService;
 
 /**
- * Modules\Geo\Models\Place
+ * Modules\Geo\Models\Place.
  *
  * @property int                                                                  $id
  * @property string|null                                                          $post_type

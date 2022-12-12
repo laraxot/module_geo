@@ -1,3 +1,12 @@
+---
+title: About Geo
+description: About Geo
+extends: _layouts.documentation
+section: content
+---
+
+# About Geo {#about-geo}
+
 Il modulo "module_geo" è un pacchetto per Laravel che fornisce funzionalità per la gestione delle informazioni geografiche all'interno di un'applicazione Laravel. Il modulo include metodi per gestire le informazioni geografiche, come le nazioni, le regioni, le città e gli indirizzi, nonché per utilizzare servizi di geocodifica per ottenere informazioni geografiche a partire da coordinate geografiche o indirizzi.
 
 Per utilizzare il modulo, è necessario installarlo tramite Composer con il comando composer require laraxot/module_geo. Una volta installato, il modulo può essere utilizzato nell'applicazione Laravel tramite il seguente codice:

@@ -17,12 +17,8 @@ error_log
 
 v8-compile-cache-0
 /Resources/views/maps/farmshops/data
-<<<<<<< HEAD
-/Resources/views/maps/directorybs4/package-lock.json
+package-lock.json
 
 *.stackdump
-=======
 
-*.stackdump
 *.cache
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848

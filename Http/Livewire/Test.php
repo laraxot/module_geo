@@ -14,11 +14,6 @@ use Livewire\Component;
 class Test extends Component {
     /**
      * Lookup intermediary.
-<<<<<<< HEAD
-     *
-     * @var
-=======
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
      */
     public $lookup;
 
@@ -30,8 +25,4 @@ class Test extends Component {
 
         return view()->make($view, $view_params);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848

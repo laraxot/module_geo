@@ -14,11 +14,7 @@ class PlaceFactory extends Factory {
     /**
      * The name of the factory's corresponding model.
      *
-<<<<<<< HEAD
-     * @var string
-=======
      * @var class-string<\Illuminate\Database\Eloquent\Model>
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
      */
     protected $model = Model::class;
 
@@ -29,19 +25,11 @@ class PlaceFactory extends Factory {
      */
     public function definition() {
         return [
-<<<<<<< HEAD
-            //'title' => $this->faker->sentence,
-            //'description' => $this->faker->paragraph,
-            //'user_id' => factory(User::class)->create()->id,
-
-            //'latitude' => $this->faker->latitude(),
-=======
             // 'title' => $this->faker->sentence,
             // 'description' => $this->faker->paragraph,
             // 'user_id' => factory(User::class)->create()->id,
 
             // 'latitude' => $this->faker->latitude(),
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             /*
             'latitude' => $this->faker->Address->latitude,
             'longitude' => $this->faker->longitude(),

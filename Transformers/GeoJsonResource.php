@@ -19,8 +19,6 @@ use Modules\Xot\Services\PanelService as Panel;
 
 /**
  * Class GeoJsonResource.
-<<<<<<< HEAD
-=======
  *
  * @property int         $id
  * @property string|null $post_type
@@ -34,7 +32,6 @@ use Modules\Xot\Services\PanelService as Panel;
  * @property string|null $email
  * @property float       $latitude
  * @property float       $longitude
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
  */
 class GeoJsonResource extends ResCollection {
     /**
@@ -49,15 +46,6 @@ class GeoJsonResource extends ResCollection {
             'type' => 'Feature',
             'properties' => [
                 'id' => $this->post_type.'-'.$this->post_id,
-<<<<<<< HEAD
-                //"index"=> 0,
-                'isActive' => true,
-                //"logo"=> "http://placehold.it/32x32",
-                // 39     Parameter #1 $model of static method Modules\Xot\Services\PanelService::make()->get()
-                // expects Illuminate\Database\Eloquent\Model,
-                // $this(Modules\Geo\Transformers\GeoJsonResource) given.
-                //'image' => Panel::make()->get($this)->imgSrc(['width' => 200, 'height' => 200]),
-=======
                 // "index"=> 0,
                 'isActive' => true,
                 // "logo"=> "http://placehold.it/32x32",
@@ -65,7 +53,6 @@ class GeoJsonResource extends ResCollection {
                 // expects Illuminate\Database\Eloquent\Model,
                 // $this(Modules\Geo\Transformers\GeoJsonResource) given.
                 // 'image' => Panel::make()->get($this)->imgSrc(['width' => 200, 'height' => 200]),
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                 'link' => $this->url,
                 'url' => '#',
                 'name' => $this->title,
@@ -77,13 +64,8 @@ class GeoJsonResource extends ResCollection {
                 'about' => $this->subtitle."\r\n",
                 'tags' => [
                     $this->post_type,
-<<<<<<< HEAD
-                    //"Restaurant",
-                    //"Contemporary"
-=======
                     // "Restaurant",
                     // "Contemporary"
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                 ],
             ],
             'geometry' => [

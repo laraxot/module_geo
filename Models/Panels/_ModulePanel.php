@@ -12,8 +12,4 @@ class _ModulePanel extends XotBasePanel {
             new Actions\TestAction(),
         ];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848

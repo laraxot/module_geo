@@ -12,8 +12,6 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseMorphPivot extends MorphPivot {
     use Updater;
-<<<<<<< HEAD
-=======
     /**
      * Indicates whether attributes are snake cased on arrays.
      *
@@ -24,7 +22,6 @@ abstract class BaseMorphPivot extends MorphPivot {
     public static $snakeAttributes = true;
 
     protected $perPage = 30;
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
     /**
      * @var array
@@ -42,11 +39,7 @@ abstract class BaseMorphPivot extends MorphPivot {
      * @var bool
      */
     public $timestamps = true;
-<<<<<<< HEAD
-    //protected $attributes = ['related_type' => 'cuisine_cat'];
-=======
     // protected $attributes = ['related_type' => 'cuisine_cat'];
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
     /**
      * @var string[]
      */
@@ -67,8 +60,4 @@ abstract class BaseMorphPivot extends MorphPivot {
         'note',
     ];
     protected $connection = 'geo';
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848

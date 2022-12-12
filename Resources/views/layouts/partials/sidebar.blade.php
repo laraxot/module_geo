@@ -34,11 +34,7 @@
                 </h1>
                 <h3>Was ist das hier?</h3>
 
-<<<<<<< HEAD
-                <p>farmshops.eu ist eine Übersichtskarte, die Dir hilft die Adressen von Wochenmärkten, Hofläden, bäuerlichen Milch, -Eier- oder Essensautomaten und vielen anderen lokalen Direktvermarktern in Deiner Region zu finden. 
-=======
                 <p>farmshops.eu ist eine Übersichtskarte, die Dir hilft die Adressen von Wochenmärkten, Hofläden, bäuerlichen Milch, -Eier- oder Essensautomaten und vielen anderen lokalen Direktvermarktern in Deiner Region zu finden.
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                     Die Karte basiert auf den Daten von
                     <a href="https://www.openstreetmap.org"
                         target="_blank" rel="noopener">openstreetmap.org</a> und bereitet die Einträge optisch auf. Fehlende oder neue Daten
@@ -85,11 +81,6 @@
                         <p>
                             <img src="img/b-pin.png" alt="" style="width:100%; max-width: 40px;">
                             <a href="https://wiki.openstreetmap.org/wiki/DE:Tag:craft%3Dbeekeeper" target="_blank" rel="noopener">craft=beekeeper</a> für Imker</p>
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
                         <p>Von all diesen Orte werden falls vorhanden alle weiteren Daten wie die Adresse oder die Öfnungszeiten
                         im Popup angezeigt, wobei unbekante Tags in der Tabelle landen und teilweise Begriffe übersetzt werden.</p>

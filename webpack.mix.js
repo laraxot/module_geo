@@ -17,17 +17,55 @@ mix.options({
 });
 
 
+<<<<<<< HEAD
 require('laravel-mix-merge-manifest');
 
 //mix.setPublicPath('../../public').mergeManifest();
 var src=__dirname + '/Resources';
 var dest= 'Resources/views'
+=======
+// require('laravel-mix-merge-manifest');
+//mix.setPublicPath('../../public').mergeManifest();
+
+var src=__dirname + '/Resources';
+var dest= 'Resources/dist'
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
 mix.js(src+'/js/app.js', dest+'/js/geo.js')
     .sass( src + '/sass/app.scss', dest+'/css/geo.css')
     .setResourceRoot('../')
 	.setPublicPath(dest);
 
+<<<<<<< HEAD
 if (mix.inProduction()) {
     mix.version();
 }
+=======
+mix.vue({ version: 3 });
+
+mix.autoload({
+    jquery: ['$', 'window.jQuery', 'jQuery'], // more than one
+    moment: 'moment' // only one
+        //tether: ['Tether', 'windows.Tether'],
+});
+
+mix.extract([
+    'axios',
+    'vue',
+    'tether',
+    'lodash',
+    'popper.js',
+    'jquery',
+    'sweetalert2',
+    'moment',
+    'nouislider',
+    'bootstrap',
+    'video.js',
+    'videojs',
+]);
+
+
+if (mix.inProduction()) {
+    mix.version();
+}
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848

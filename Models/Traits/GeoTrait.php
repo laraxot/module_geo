@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 //--- models ---
 use Modules\Geo\Models\Place;
 //---- services --
+=======
+// --- models ---
+use Modules\Geo\Models\Place;
+// ---- services --
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 use Modules\Geo\Services\GeoService;
 
 /**
@@ -50,7 +56,11 @@ trait GeoTrait {
         return $fillable;
     }*/
 
+<<<<<<< HEAD
     //--- functions ----
+=======
+    // --- functions ----
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
     public function distance(?float $lat = null, ?float $lng = null): ?float {
         return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
@@ -60,7 +70,11 @@ trait GeoTrait {
         return (float) GeoService::distance((float) $this->{$lat_field}, (float) $this->{$lng_field}, $lat, $lng, $unit);
     }
 
+<<<<<<< HEAD
     //---- Scopes ----
+=======
+    // ---- Scopes ----
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -69,7 +83,11 @@ trait GeoTrait {
      */
     public function scopeWithDistance($query, float $lat, float $lng) {
         $q = $query;
+<<<<<<< HEAD
         if (0 != $lat && 0 != $lng) {
+=======
+        if ($lat > 0 && $lng > 0) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $haversine = GeoService::haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -86,7 +104,11 @@ trait GeoTrait {
      */
     public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
         $q = $query;
+<<<<<<< HEAD
         if (0 != $lat && 0 != $lng) {
+=======
+        if ($lat > 0 && $lng > 0) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
             return $query->selectRaw("*,{$haversine} AS distance")
@@ -102,8 +124,13 @@ trait GeoTrait {
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOfInPolygon($query, string $polygon_field, float $lat, float $lng) {
+<<<<<<< HEAD
         //(concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
         //errore poligono non chiuso
+=======
+        // (concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
+        // errore poligono non chiuso
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
         /*
 
  SELECT ID,zone_polygon
@@ -149,15 +176,26 @@ where zone_polygon IS NOT NULL
        ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
        )";
 
+<<<<<<< HEAD
         //dddx($query->whereNotNull($polygon_field)->whereRaw($sql)->toSql());
+=======
+        // dddx($query->whereNotNull($polygon_field)->whereRaw($sql)->toSql());
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
         return $query->whereNotNull($polygon_field)->whereRaw($sql);
     }
 
+<<<<<<< HEAD
     //---- mutators ----
 
     public function getAddress(): string {
         if ('' == $this->country) {
+=======
+    // ---- mutators ----
+
+    public function getAddress(): string {
+        if ('' === $this->country) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $this->country = 'Italia';
         }
 
@@ -174,8 +212,14 @@ where zone_polygon IS NOT NULL
         }
         if (isJson($address)) {
             $json = json_decode($address, true);
+<<<<<<< HEAD
             $lat = $json['latlng']['lat'];
             $lng = $json['latlng']['lng'];
+=======
+            $latlng = $json['latlng'];
+            $lat = $latlng['lat'];
+            $lng = $latlng['lng'];
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $this->update([
                 'latitude' => $lat,
                 'longitude' => $lng,
@@ -184,10 +228,20 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
+<<<<<<< HEAD
         if (is_object($address)) {
             dddx($address);
         }
         if (is_array($address)) {
+=======
+        // call to function is_object() with string will always evaluate to false
+        // if (\is_object($address)) {
+        //    dddx($address);
+        // }
+        // Call to function is_array() with string will always evaluate to false
+        /*
+        if (\is_array($address)) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $lat = $address['latlng']['lat'];
             $lng = $address['latlng']['lng'];
             $this->update([
@@ -198,6 +252,10 @@ where zone_polygon IS NOT NULL
 
             return $lat;
         }
+<<<<<<< HEAD
+=======
+        */
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
         return null;
     }
@@ -208,9 +266,18 @@ where zone_polygon IS NOT NULL
      * @param mixed $value
      */
     public function setAddressAttribute($value): void {
+<<<<<<< HEAD
         //*
 
         if (isJson($value)) {
+=======
+        // *
+
+        if (isJson($value)) {
+            /**
+             * @var array<string, mixed>
+             */
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             $json = json_decode($value, true);
             $json['latitude'] = $json['latlng']['lat'];
             $json['longitude'] = $json['latlng']['lng'];
@@ -221,7 +288,11 @@ where zone_polygon IS NOT NULL
                 $this->attributes['full_address'] = ',,';
             }
 
+<<<<<<< HEAD
             if (strlen($this->attributes['full_address']) < 10) {
+=======
+            if (\strlen($this->attributes['full_address']) < 10) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                 $address = collect($json);
                 $tmp = [];
                 $tmp[] = $address->get('route');
@@ -234,11 +305,19 @@ where zone_polygon IS NOT NULL
             }
         }
 
+<<<<<<< HEAD
         if (is_array($value)) {
             $value = json_encode($value);
         }
         $this->attributes['address'] = $value;
         //dddx(['isJson'=>\isJson($value),'value'=>$value]);
+=======
+        if (\is_array($value)) {
+            $value = json_encode($value);
+        }
+        $this->attributes['address'] = $value;
+        // dddx(['isJson'=>\isJson($value),'value'=>$value]);
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
     }
 
     /**
@@ -273,6 +352,7 @@ where zone_polygon IS NOT NULL
     */
 
     /**
+<<<<<<< HEAD
      * @param mixed $value
      *
      * @return string
@@ -281,15 +361,34 @@ where zone_polygon IS NOT NULL
         if (isJson($this->address)) {
             $addr = json_decode($this->address);
             if (is_object($addr)) {
+=======
+     * ---.
+     */
+    public function getFullAddressAttribute(?string $value): ?string {
+        if (null === $this->address) {
+            return null;
+        }
+        if (isJson($this->address)) {
+            $addr = json_decode($this->address);
+            if (\is_object($addr)) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                 $addr = get_object_vars($addr);
             }
 
             extract($addr);
 
+<<<<<<< HEAD
             $value = str_ireplace(', Italia', '', $value);
             if (is_array($value)) {
                 $value = implode(' ', $value);
             }
+=======
+            $value = str_ireplace(', Italia', '', (string) $value);
+            // Call to function is_array() with string will always evaluate to false.
+            // if (\is_array($value)) {
+            //    $value = implode(' ', $value);
+            // }
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
             if (isset($street_number)) {
                 $str = $street_number.', ';
                 $before = Str::before($value, $str);
@@ -307,11 +406,21 @@ where zone_polygon IS NOT NULL
                 return $value;
             }
         }
+<<<<<<< HEAD
         if (is_object($this->address)) {
             $address = collect($this->address)->except(['value', 'latlng']);
             $up = false;
             foreach ($address->all() as $k => $v) {
                 if ($this->$k != $v) {
+=======
+        // Call to function is_object() with string|null will always evaluate to false.
+        /*
+        if (\is_object($this->address)) {
+            $address = collect($this->address)->except(['value', 'latlng']);
+            $up = false;
+            foreach ($address->all() as $k => $v) {
+                if ($this->$k !== $v) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
                     $up = true;
                     break;
                 }
@@ -330,7 +439,11 @@ where zone_polygon IS NOT NULL
 
             return $value;
         }
+<<<<<<< HEAD
 
+=======
+        */
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
         $tmp = [];
         $tmp[] = $this->route;
         $tmp[] = $this->street_number;

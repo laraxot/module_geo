@@ -4,6 +4,7 @@ includes:
 parameters:
     level: 4
     paths:
+<<<<<<< HEAD
         - src
         - config
         - database
@@ -11,4 +12,20 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
+=======
+        - .
+    
+    # tmpDir: build/phpstan
+    # checkOctaneCompatibility: true
+    # checkModelProperties: true
+    
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    bootstrapFiles:
+    #    - ./Modules/Xot/Services/vendor/autoload.php
+
+    scanFiles:
+    #    - ./Modules/Xot/Helpers/Helper.php
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 

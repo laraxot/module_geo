@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+<<<<<<< HEAD
 //---------- traits
 use Illuminate\Database\Eloquent\Model;
 ////use Laravel\Scout\Searchable;
+=======
+// ---------- traits
+use Illuminate\Database\Eloquent\Model;
+// //use Laravel\Scout\Searchable;
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 use Modules\Xot\Traits\Updater;
 
 /**
@@ -15,18 +21,41 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseModel extends Model {
     use Updater;
+<<<<<<< HEAD
     //use Searchable;
     //use Cachable;
+=======
+    /**
+     * Indicates whether attributes are snake cased on arrays.
+     *
+     * @see  https://laravel-news.com/6-eloquent-secrets
+     *
+     * @var bool
+     */
+    public static $snakeAttributes = true;
+
+    protected $perPage = 30;
+
+    // use Searchable;
+    // use Cachable;
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
     /**
      * @var string[]
      */
     protected $fillable = ['id'];
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $casts = [
         //'published_at' => 'datetime:Y-m-d', // da verificare
+=======
+     * @var array<string, string>
+     */
+    protected $casts = [
+        // 'published_at' => 'datetime:Y-m-d', // da verificare
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
     ];
 
     /**
@@ -42,10 +71,17 @@ abstract class BaseModel extends Model {
      */
     public $incrementing = true;
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $hidden = [
         //'password'
+=======
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        // 'password'
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
     ];
     /**
      * @var bool

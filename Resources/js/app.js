@@ -6,7 +6,13 @@
 
 require('./bootstrap');
 
+<<<<<<< HEAD
 window.Vue = require('vue');
+=======
+require('./myvue3');
+
+//window.Vue = require('vue');
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,7 +27,11 @@ window.Vue = require('vue');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 //Vue.component('map-component', require('./components/MapComponent.vue').default);
+<<<<<<< HEAD
 Vue.component('map-pane', require('./components/MapPane.vue').default);
+=======
+//Vue.component('map-pane', require('./components/MapPane.vue').default);
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,7 +39,13 @@ Vue.component('map-pane', require('./components/MapPane.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //*
+<<<<<<< HEAD
 const app = new Vue({
     el: '#app',
 });
+=======
+//const app = new Vue({
+//    el: '#app',
+//});
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
 //*/

@@ -48,14 +48,22 @@ class CityPanel extends XotBasePanel {
      * quando aggiungi un campo select, è il numero della chiave
      * che viene messo come valore su value="id"
      */
+<<<<<<< HEAD
     public function optionId(object $row) {
+=======
+    public function optionId($row) {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
         return $row->getKey();
     }
 
     /**
      * on select the option label.
      */
+<<<<<<< HEAD
     public function optionLabel(object $row): string {
+=======
+    public function optionLabel($row): string {
+>>>>>>> 2b3acb63918214667a2bef656d1def3615e66848
         return $row->area_define_name;
     }
 

@@ -3,10 +3,17 @@
 use Illuminate\Support\Str;
 
 return [
-    'baseUrl' => '',
+    'baseUrl' => 'https://laraxot.github.io/module_geo',
     'production' => false,
     'siteName' => 'Docs Starter Template',
     'siteDescription' => 'Beautiful docs powered by Jigsaw',
+
+    'languages'=> ['it','en'],
+    'language'=> 'it',
+
+    'path' => 'module_geo/{language}/docs/{filename}',
+    'route' => 'module_geo/{language}/docs/{filename}',
+
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => env('DOCSEARCH_KEY'),

@@ -11,9 +11,14 @@ return [
     'languages'=> ['it','en'],
     'language'=> 'it',
 
-    'path' => 'module_geo/{language}/docs/{filename}',
-    'route' => 'module_geo/{language}/docs/{filename}',
-
+    //'path' => 'module_geo/{language}/{type}/{filename}',
+    //'route' => 'module_geo/{language}/{type}/{filename}',
+    /*
+    'path' => function ($page) {
+        return 'zibibbo';
+        return 'posts/' . ($page->featured ? 'featured/' : '') . Str::slug($page->getFilename());
+    },
+    */
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => env('DOCSEARCH_KEY'),

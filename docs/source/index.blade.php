@@ -21,6 +21,7 @@
     </div>
 
     <hr class="block my-8 border lg:hidden">
+    <pre>{{-- dd(get_defined_vars(),true) --}}</pre>
 
     <div class="md:flex -mx-2 -mx-4">
         <div class="mb-8 mx-3 px-2 md:w-1/3">
@@ -29,6 +30,8 @@
             <h3 id="intro-laravel" class="text-2xl text-blue-900 mb-0">Templating with <br>Laravel's Blade engine</h3>
 
             <p>Blade is a powerful, simple, and beautiful templating language, and now you can use it for your static sites, not just your Laravel-powered apps.</p>
+            eeeeeeeeeeeeeeeeeee
+
         </div>
 
         <div class="mb-8 mx-3 px-2 md:w-1/3">

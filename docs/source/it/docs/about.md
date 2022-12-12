@@ -3,6 +3,7 @@ title: About Geo
 description: About Geo
 extends: _layouts.documentation
 section: content
+language: it
 ---
 
 # About Geo {#about-geo}

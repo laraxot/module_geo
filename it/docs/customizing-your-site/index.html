@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="About Geo">
+        <meta name="description" content="Customizing your Jigsaw docs site">
 
         <meta property="og:site_name" content="Docs Starter Template"/>
-        <meta property="og:title" content="About Geo | Docs Starter Template"/>
-        <meta property="og:description" content="About Geo"/>
-        <meta property="og:url" content="https://jigsaw-docs-template.tighten.co/docs/about"/>
+        <meta property="og:title" content="Customizing Your Site | Docs Starter Template"/>
+        <meta property="og:description" content="Customizing your Jigsaw docs site"/>
+        <meta property="og:url" content="https://jigsaw-docs-template.tighten.co/it/docs/customizing-your-site"/>
         <meta property="og:image" content="/assets/img/logo.png"/>
         <meta property="og:type" content="website"/>
 
@@ -17,7 +17,7 @@
         <meta name="twitter:card" content="summary_large_image">
 
         
-        <title>Docs Starter Template | About Geo</title>
+        <title>Docs Starter Template | Customizing Your Site</title>
 
         <link rel="home" href="https://jigsaw-docs-template.tighten.co">
         <link rel="icon" href="https://jigsaw-docs-template.tighten.co/favicon.ico">
@@ -81,7 +81,7 @@
             <li class="pl-4">
             
         <a href="/docs/customizing-your-site"
-            class="lvl1   nav-menu__item hover:text-blue-500"
+            class="lvl1  active font-semibold text-blue-500 nav-menu__item hover:text-blue-500"
         >
             Customizing Your Site
         </a>
@@ -129,30 +129,82 @@
         </nav>
 
         <div class="DocSearch-content w-full lg:w-3/5 break-words pb-16 lg:pl-4" v-pre>
-            <h1 id="about-geo">About Geo</h1>
+            <h1 id="customizing">Customizing Your Site</h1>
 
-<p>Il modulo "module_geo" è un pacchetto per Laravel che fornisce funzionalità per la gestione delle informazioni geografiche all'interno di un'applicazione Laravel. Il modulo include metodi per gestire le informazioni geografiche, come le nazioni, le regioni, le città e gli indirizzi, nonché per utilizzare servizi di geocodifica per ottenere informazioni geografiche a partire da coordinate geografiche o indirizzi.</p>
+<h2>Styles</h2>
 
-<p>Per utilizzare il modulo, è necessario installarlo tramite Composer con il comando composer require laraxot/module_geo. Una volta installato, il modulo può essere utilizzato nell'applicazione Laravel tramite il seguente codice:</p>
+<p>This starter template comes pre-loaded with <a href="https://tailwindcss.com">Tailwind CSS</a>, a utility CSS framework that allows you to customize and build complex designs without touching a line of CSS. There are also a few base Sass files in the <code>/source/_assets/sass</code> folder, set up with the expectation that you can add any custom CSS into <code>_documentation.scss</code>.</p>
 
-<p>Copy code
-use Laraxot\ModuleGeo\Facades\ModuleGeo;
-Il modulo include diverse funzionalità per la gestione delle informazioni geografiche, come ad esempio il metodo getCountries() per recuperare tutte le nazioni, o il metodo getAddresses() per recuperare gli indirizzi salvati nel database.</p>
+<blockquote>
+  <p>You can re-work the architecture of the Sass includes any way you’d like; just make sure to keep the <code>@tailwind</code> references in your final files.</p>
+</blockquote>
 
-<p>Per utilizzare il modulo, è necessario prima configurare l'applicazione per supportare le funzionalità geografiche. La configurazione può essere eseguita tramite il comando Artisan php artisan geo:install, che creerà le tabelle del database necessarie per gestire le informazioni geografiche e importerà i dati di base per le nazioni, le regioni e le città. Inoltre, sarà necessario configurare l'accesso a un servizio di geocodifica per poter utilizzare le funzionalità di geocodifica del modulo.</p>
+<pre><code class="language-scss">// source/_assets/sass/main.scss
 
-<p>Una volta configurato il modulo, è possibile utilizzarlo per gestire le informazioni geografiche, come ad esempio per recuperare le nazioni, le regioni e le città, o per geocodificare indirizzi o coordinate geografiche. Ad esempio, per geocodificare un indirizzo e recuperare le coordinate geografiche corrispondenti, è possibile utilizzare il seguente codice:</p>
+@tailwind preflight;
+@tailwind components;
 
-<p>Copy code
-$geocoder = ModuleGeo::getGeocoder();
-$result = $geocoder->geocode('Via Roma, 1, Milano, Italia');</p>
+// Code syntax highlighting,
+// powered by https://highlightjs.org
+@import '~highlight.js/styles/a11y-light.css';
 
-<p>$latitude = $result->first()->getCoordinates()->getLatitude();
-$longitude = $result->first()->getCoordinates()->getLongitude();</p>
+@import 'base';
+@import 'navigation';
+@import 'documentation';
 
-<p>Il codice precedente utilizzerà il servizio di geocodifica configurato per geocodificare l'indirizzo "Via Roma, 1, Milano, Italia" e restituire le coordinate geografiche corrispondenti. In questo modo, è possibile utilizzare le funzionalità del modulo per gestire e utilizzare le informazioni geografiche all'interno dell'applicazione Laravel.</p>
+@tailwind utilities;
+</code></pre>
 
-<p>Per ulteriori informazioni su come utilizzare il modulo e su tutte le sue funzionalità, consultare la documentazione disponibile nel repository su GitHub.</p>
+<hr />
+
+<h2 id="customizing-typography">Typography Styles</h2>
+
+<p>Here’s a quick preview of what some of the basic type styles will look like in this starter template:</p>
+
+<div class="example pt-6">
+
+<h1>h1 Heading</h1>
+
+<h2>h2 Heading</h2>
+
+<h3>h3 Heading</h3>
+
+<h4>h4 Heading</h4>
+
+<h5>h5 Heading</h5>
+
+<h6>h6 Heading</h6>
+
+<p>The quick brown fox jumps over the lazy dog</p>
+
+<p><s>The quick brown fox jumps over the lazy dog</s></p>
+
+<p><u>The quick brown fox jumps over the lazy dog</u></p>
+
+<p><em>The quick brown fox jumps over the lazy dog</em></p>
+
+<p><strong>The quick brown fox jumps over the lazy dog</strong></p>
+
+<p><code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p><small>The quick brown fox jumps over the lazy dog</small></p>
+
+<blockquote>
+  <p>The quick brown fox jumps over the lazy dog</p>
+</blockquote>
+
+<p><a href="#">The quick brown fox jumps over the lazy dog</a></p>
+
+<pre><code class="language-php">class Foo extends bar
+{
+    public function fooBar()
+    {
+        //
+    }
+}
+</code></pre>
+
+</div>
         </div>
     </div>
 </section>

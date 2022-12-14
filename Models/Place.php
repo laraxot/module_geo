@@ -231,7 +231,7 @@ class Place extends BaseModelLang {
             $json = (array) json_decode($value);
             $latlng = $json['latlng'];
             if (! \is_object($latlng) || ! isset($latlng->lat) || ! isset($latlng->lng)) {
-                throw new Exception('['.__LINE__.']['.__FILE__.']');
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
             }
             $json['latitude'] = $latlng->lat;
             $json['longitude'] = $latlng->lng;

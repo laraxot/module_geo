@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
-use Exception;
-
 // https://www.geodatasource.com/world-cities-database/free
 // https://mikepolatoglou.com/geospatial-mysql-laravel-53
 // https://github.com/malhal/Laravel-Geographical
@@ -167,7 +165,7 @@ class GeoService {
 
         $original_data = json_decode($polygon, true);
         if (! \is_array($original_data)) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if (self::is_in_polygon($lat, $lng, $original_data)) {

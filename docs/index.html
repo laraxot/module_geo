@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="Modulo Geo">
+
+        <meta property="og:site_name" content="Modulo Geo" />
+        <meta property="og:title" content="Modulo Geo" />
+        <meta property="og:description" content="Modulo Geo" />
+        <meta property="og:url" content="https://laraxot.github.io/module_geo/docs" />
+        <meta property="og:image" content="https://laraxot.github.io/module_geo/assets/img/logo.png" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:image:alt" content="Modulo Geo">
+        <meta name="twitter:card" content="summary_large_image">
+
+        
+        <title>Modulo Geo</title>
+
+        <link rel="home" href="https://laraxot.github.io/module_geo">
+        <link rel="icon" href="https://laraxot.github.io/module_geo/favicon.ico">
+
+        
+                    <!-- Insert analytics code here -->
+        
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+        <link rel="stylesheet" href="https://laraxot.github.io/module_geo/assets/build/css/main.css?id=2a2535c432c92639df3dfdf3441781ef">
+
+            </head>
+
+    <body class="flex flex-col justify-between min-h-screen bg-gray-100 text-gray-800 leading-normal font-sans">
+        <header class="flex items-center shadow bg-white border-b h-24 mb-8 py-4" role="banner">
+            <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
+                <div class="flex items-center">
+                    <a href="https://laraxot.github.io/module_geo/" title="Modulo Geo home" class="inline-flex items-center">
+                        <img class="h-8 md:h-10 mr-3" src="https://laraxot.github.io/module_geo/assets/img/logo.svg" alt="Modulo Geo logo" />
+
+                        <h1 class="text-lg md:text-2xl text-blue-900 font-semibold hover:text-blue-600 my-0 pr-4">Modulo Geo</h1>
+                    </a>
+                </div>
+
+                <div class="flex flex-1 justify-end items-center text-right md:pl-10">
+                                    </div>
+            </div>
+
+                    </header>
+
+        <main role="main" class="w-full flex-auto">
+                <h1>Doc Posts</h1>
+    
+            <h2><a href="/it/docs/aggiornamenti">Aggiornamenti</a></h2>
+        <h3>By </h3>
+        &lt;h1 id=&quot;aggiornamenti&quot;&gt;Aggiornamenti&lt;/h1&gt;
+
+&lt;p&gt;Cms onsiste in un pacchetto PHP.&lt;/p&gt;
+
+&lt;p&gt;Quindi per aggiornare basta dare il comando in console:&lt;/p&gt;
+
+&lt;p&gt;composer update laraxot/module_geo&lt;/p&gt;
+
+&lt;p&gt;Assicurarsi di cancellare la cache delle viste di Laravel dopo l&#039;aggiornamento:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-console&quot;&gt;php artisan view:clear
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Infine, se si sono pubblicati il file di configurazione o i modelli Blade, assicurarsi che le personalizzazioni siano aggiornate con i valori predefiniti.&lt;/p&gt;
+
+&lt;h3&gt;Verifica dei pacchetti installati&lt;/h3&gt;
+
+&lt;p&gt;È possibile utilizzare il comando Artisan incorporato per visualizzare le versioni installate dei pacchetti:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-console&quot;&gt;php artisan module_geo:show-versions
+&lt;/code&gt;&lt;/pre&gt;
+
+            <h2><a href="/it/docs/components/form-search-address-categories">Form Search Address Categories</a></h2>
+        <h3>By </h3>
+        &lt;h1 id=&quot;form-search-address-categories&quot;&gt;Form Search Address Categories&lt;/h1&gt;
+
+&lt;p&gt;Richiama a sua volta un componente livewire (quindi in &quot;real-time&quot;) per cercare un indirizzo usando le API di Google Maps&lt;/p&gt;
+
+&lt;p&gt;Nome Componente:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;x-form-search-address-categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Non richiede parametri&lt;/p&gt;
+
+&lt;p&gt;E&#039; necessario utilizzare l&#039;API Key di Google Maps, che va impostata in:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;config(&#039;services.google.maps_key&#039;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cioè nel file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-console&quot;&gt;config/services.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Esempio:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-php&quot;&gt;&amp;lt;x-form-search-address-categories&amp;gt;
+
+&amp;lt;/x-form-search-address-categories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Per altre informazioni leggere documentazione sulle &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/overview&quot;&gt;API di Google Maps&lt;/a&gt;.&lt;/p&gt;
+
+            <h2><a href="/it/docs/installazione">Installazione Automatizzata</a></h2>
+        <h3>By </h3>
+        &lt;h1 id=&quot;installazione&quot;&gt;Installazione&lt;/h1&gt;
+
+&lt;p&gt;Un&#039;applicazione Laravel fresca è il modo ideale per iniziare con questo pacchetto.&lt;/p&gt;
+
+&lt;p&gt;Per installare il bacchetto basta mettere il seguente comando nella linea di comando:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-console&quot;&gt;composer require laraxot/module_geo
+
+php artisan module_geo:install
+&lt;/code&gt;&lt;/pre&gt;
+
+            <h2><a href="/it/docs/introduzione">Introducendo Geo</a></h2>
+        <h3>By </h3>
+        &lt;h1 id=&quot;introducendo-geo&quot;&gt;Introducendo Geo&lt;/h1&gt;
+
+&lt;p&gt;Il modulo &quot;module_geo&quot; è  potrebbe essere un modulo o un pacchetto aggiuntivo per Laravel che fornisce funzionalità per la gestione di dati geografici.&lt;/p&gt;
+
+            </main>
+
+        <script src="https://laraxot.github.io/module_geo/assets/build/js/main.js?id=73af017f2129fa41a4b5f03922c4c99d"></script>
+
+        
+        <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
+            <ul class="flex flex-col md:flex-row justify-center">
+                <li class="md:mr-2">
+                    &copy; <a href="https://tighten.co" title="Tighten website">Tighten</a> 2022.
+                </li>
+
+                <li>
+                    Built with <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>
+                    and <a href="https://tailwindcss.com" title="Tailwind CSS, a utility-first CSS framework">Tailwind CSS</a>.
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>

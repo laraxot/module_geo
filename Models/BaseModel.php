@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-// ---------- traits
-use Illuminate\Database\Eloquent\Model;
+//use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 // //use Laravel\Scout\Searchable;
+
+use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Traits\Updater;
 
 /**

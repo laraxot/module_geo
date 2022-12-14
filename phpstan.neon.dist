@@ -5,19 +5,9 @@ parameters:
     level: 4
     paths:
         - .
-
-    # tmpDir: build/phpstan
-    # checkOctaneCompatibility: true
-    # checkModelProperties: true
-
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
-
-
-    bootstrapFiles:
-    #    - ./Modules/Xot/Services/vendor/autoload.php
-
-    scanFiles:
-    #    - ./Modules/Xot/Helpers/Helper.php
-
+    excludePaths:
+        - ./vendor/*
+        - ./docs/*

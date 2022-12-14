@@ -3,14 +3,26 @@
 declare(strict_types=1);
 
 return [
-    'Getting Started' => [
-        'url' => 'docs/getting-started',
+    'Introduzione' => [
+        'url' => '#',
         'children' => [
-            'Customizing Your Site' => 'docs/customizing-your-site',
-            'Navigation' => 'docs/navigation',
-            'Algolia DocSearch' => 'docs/algolia-docsearch',
-            'Custom 404 Page' => 'docs/custom-404-page',
+            'Introducendo '.$moduleName => [
+                'url' => 'docs/introduzione',
+            ],
+            'Installazione' => [
+                'url' => 'docs/installazione',
+            ],
+            'Aggiornamenti' => [
+                'url' => 'docs/aggiornamenti',
+            ],
         ],
     ],
-    'Jigsaw Docs' => 'https://jigsaw.tighten.co/docs/installation',
+    'Componenti' => [
+        'url' => '#',
+        'children' => [
+            'Form Search Address Categories' => [
+                'url' => 'docs/components/form-search-address-categories',
+            ],
+        ],
+    ],
 ];

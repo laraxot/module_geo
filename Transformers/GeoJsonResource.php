@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Geo\Transformers;
 
 /* TO FIX
- 34     Call to an undefined method Modules\Xot\Contracts\PanelContract::imgSrc().
- 34     Parameter #1 $model of static method Modules\Xot\Services\PanelService::make()->get() expects Illuminate\Database\Eloquent\Model, $this(Modules\Geo\Transformers\GeoJsonResource) given.
+ 34     Call to an undefined method Modules\Cms\Contracts\PanelContract::imgSrc().
+ 34     Parameter #1 $model of static method Modules\Cms\Services\PanelService::make()->get() expects Illuminate\Database\Eloquent\Model, $this(Modules\Geo\Transformers\GeoJsonResource) given.
 */
 
 /*
@@ -15,7 +15,7 @@ namespace Modules\Geo\Transformers;
 **/
 
 use Illuminate\Http\Resources\Json\JsonResource as ResCollection;
-use Modules\Xot\Services\PanelService as Panel;
+use Modules\Cms\Services\PanelService as Panel;
 
 /**
  * Class GeoJsonResource.
@@ -49,7 +49,7 @@ class GeoJsonResource extends ResCollection {
                 // "index"=> 0,
                 'isActive' => true,
                 // "logo"=> "http://placehold.it/32x32",
-                // 39     Parameter #1 $model of static method Modules\Xot\Services\PanelService::make()->get()
+                // 39     Parameter #1 $model of static method Modules\Cms\Services\PanelService::make()->get()
                 // expects Illuminate\Database\Eloquent\Model,
                 // $this(Modules\Geo\Transformers\GeoJsonResource) given.
                 // 'image' => Panel::make()->get($this)->imgSrc(['width' => 200, 'height' => 200]),

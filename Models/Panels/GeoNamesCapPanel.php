@@ -6,7 +6,7 @@ namespace Modules\Geo\Models\Panels;
 
 // --- Services --
 
-use Modules\Xot\Models\Panels\XotBasePanel;
+use Modules\Cms\Models\Panels\XotBasePanel;
 
 /**
  * Class GeoNamesCapPanel.

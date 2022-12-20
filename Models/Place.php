@@ -73,7 +73,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property mixed                                                                $address
  * @property mixed                                                                $latlng
  * @property mixed                                                                $url
- *
  * @method static \Modules\Geo\Database\Factories\PlaceFactory        factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Place         newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Place         newQuery()
@@ -122,8 +121,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
- *
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Place whereAddress($value)
  */
 class Place extends BaseModelLang {
     use HasFactory;

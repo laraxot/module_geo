@@ -7,7 +7,7 @@ namespace Modules\Geo\Models\Panels\Actions;
 // -------- models -----------
 
 // -------- services --------
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 // use Modules\Xot\Services\ArrayService;
 // -------- bases -----------
 use Modules\Xot\Services\ImportService;

@@ -9,7 +9,7 @@ use Modules\Geo\Transformers\GeoJsonCollection;
 // -------- models -----------
 
 // -------- services --------
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class MakeGeoJsonFileAction.

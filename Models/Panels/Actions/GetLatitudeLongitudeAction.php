@@ -52,7 +52,7 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
 
             $address = $row->getAddress();
             try {
-                $addr_arr = ImportService::getAddressFields(['address' => $address, 'id' => $row->getAttributeValue('id')]);
+                $addr_arr = ImportService::make()->getAddressFields(['address' => $address, 'id' => $row->getAttributeValue('id')]);
                 $row->fill($addr_arr);
                 $row->save();
             } catch (\Exception $e) {

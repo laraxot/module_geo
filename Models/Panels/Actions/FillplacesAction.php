@@ -7,8 +7,8 @@ namespace Modules\Geo\Models\Panels\Actions;
 // -------- models -----------
 // -------- services --------
 // -------- bases -----------
-use Modules\Geo\Models\Place;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Geo\Models\Place;
 
 /**
  * Class SyncInputs.

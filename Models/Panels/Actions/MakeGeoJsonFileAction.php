@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Geo\Models\Panels\Actions;
 
 use Illuminate\Support\Facades\Storage;
-use Modules\Geo\Transformers\GeoJsonCollection;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 // -------- models -----------
 
 // -------- services --------
-use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Geo\Transformers\GeoJsonCollection;
 
 /**
  * Class MakeGeoJsonFileAction.

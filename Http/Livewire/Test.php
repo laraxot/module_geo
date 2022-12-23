@@ -15,7 +15,7 @@ class Test extends Component {
     /*
      * Lookup intermediary.
      */
-    //public $lookup;
+    // public $lookup;
 
     public function render() {
         $view = 'geo::livewire.test';

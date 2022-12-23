@@ -10,8 +10,8 @@ namespace Modules\Geo\Models\Panels\Actions;
 use Illuminate\Database\Eloquent\Model;
 // use Modules\Xot\Services\ArrayService;
 // -------- bases -----------
-use Modules\Xot\Services\ImportService;
 use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Modules\Xot\Services\ImportService;
 
 /**
  * Class GetLatitudeLongitudeAction.

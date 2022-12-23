@@ -38,7 +38,7 @@ use Modules\Geo\Services\GeoService;
 trait GeoTrait {
     /*
      * @return array
-     
+
     public function getFillable() {
         $shorts = collect(Place::$address_components)->map(
             function ($item) {

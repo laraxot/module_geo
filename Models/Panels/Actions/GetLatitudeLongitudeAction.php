@@ -7,10 +7,11 @@ namespace Modules\Geo\Models\Panels\Actions;
 // -------- models -----------
 
 // -------- services --------
-use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
+use Illuminate\Database\Eloquent\Model;
 // use Modules\Xot\Services\ArrayService;
 // -------- bases -----------
 use Modules\Xot\Services\ImportService;
+use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 
 /**
  * Class GetLatitudeLongitudeAction.
@@ -33,6 +34,9 @@ class GetLatitudeLongitudeAction extends XotBasePanelAction {
             ->inRandomOrder()
             ->get();
         */
+        /**
+         * @var Model[]
+         */
         $rows = $this->panel->getBuilder()
             ->whereRaw('latitude is null or longitude is null')
             ->inRandomOrder()

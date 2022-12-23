@@ -36,10 +36,10 @@ use Modules\Geo\Services\GeoService;
  * @property string $administrative_area_level_2_short.
  */
 trait GeoTrait {
-    /**
+    /*
      * @return array
-     */
-    /*public function getFillable() {
+     
+    public function getFillable() {
         $shorts = collect(Place::$address_components)->map(
             function ($item) {
                 return $item.'_short';

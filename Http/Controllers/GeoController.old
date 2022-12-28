@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 //--------models-----------
 use Modules\Geo\Models\GeoNamesCap;
 //--- extends ---
-use Modules\Theme\Services\ThemeService;
+use Modules\UI\Services\ThemeService;
 //--- services
 
 

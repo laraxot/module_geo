@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 // --- models ---
 use Modules\Geo\Models\Place;
 // ---- services --
+use Modules\Geo\Datas\GeoData;
 use Modules\Geo\Services\GeoService;
 
 /**
@@ -173,7 +174,7 @@ where zone_polygon IS NOT NULL
             return null;
         }
         if (isJson($address)) {
-            $json = json_decode($address, true);
+            $json = GeoData::from(json_decode($address, true));
             // Cannot access offset 'latlng' on mixed.
             $latlng = $json['latlng'];
             $lat = $latlng['lat'];

@@ -6,9 +6,9 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Str;
 // --- models ---
-use Modules\Geo\Models\Place;
-// ---- services --
 use Modules\Geo\Datas\GeoData;
+// ---- services --
+use Modules\Geo\Models\Place;
 use Modules\Geo\Services\GeoService;
 
 /**

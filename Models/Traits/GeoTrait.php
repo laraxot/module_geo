@@ -174,9 +174,8 @@ where zone_polygon IS NOT NULL
             return null;
         }
         if (isJson($address)) {
-            $json = GeoData::from(json_decode($address, true));
-            // Cannot access offset 'latlng' on mixed.
-            $latlng = $json['latlng'];
+            $geo = GeoData::from(json_decode($address, true));
+            $latlng = $geo->latlng;
             $lat = $latlng['lat'];
             $lng = $latlng['lng'];
             $this->update([
@@ -217,29 +216,42 @@ where zone_polygon IS NOT NULL
     public function setAddressAttribute($value): void {
         // *
 
-        if (isJson($value)) {
-            /**
+        if (is_string($value) && isJson($value)) {
+            /*
              * @var array<string, mixed>
              */
-            $json = json_decode($value, true);
-            $json['latitude'] = $json['latlng']['lat'];
-            $json['longitude'] = $json['latlng']['lng'];
+            //$json = json_decode($value, true);
+            //$json['latitude'] = $json['latlng']['lat'];
+            //$json['longitude'] = $json['latlng']['lng'];
 
-            unset($json['latlng'], $json['value']);
-            $this->attributes = array_merge($this->attributes, $json);
+            $geo = GeoData::from(json_decode($value, true));
+            $latlng = $geo->latlng;
+            $lat = $latlng['lat'];
+            $lng = $latlng['lng'];
+
+            //unset($json['latlng'], $json['value']);
+            //$this->attributes = array_merge($this->attributes, $json);
+            $this->attributes['latitude']=$lat;
+            $this->attributes['longitude']=$lng;
             if (! isset($this->attributes['full_address'])) {
                 $this->attributes['full_address'] = ',,';
             }
 
             if (\strlen($this->attributes['full_address']) < 10) {
-                $address = collect($json);
+                /*$address = collect($json);
                 $tmp = [];
                 $tmp[] = $address->get('route');
                 $tmp[] = $address->get('street_number');
                 $tmp[] = $address->get('postal_code');
                 $tmp[] = $address->get('administrative_area_level_3');
                 $tmp[] = $address->get('administrative_area_level_2_short');
-
+                */
+                $tmp = [];
+                $tmp[] = $geo->route;
+                $tmp[] = $geo->street_number;
+                $tmp[] = $geo->postal_code;
+                $tmp[] = $geo->administrative_area_level_3;
+                $tmp[] = $geo->administrative_area_level_2_short;
                 $this->attributes['full_address'] = implode(', ', $tmp);
             }
         }
@@ -290,31 +302,34 @@ where zone_polygon IS NOT NULL
             return null;
         }
         if (isJson($this->address)) {
+            /*
             $addr = json_decode($this->address);
             if (\is_object($addr)) {
                 $addr = get_object_vars($addr);
             }
 
             extract($addr);
+            */
+            $geo = GeoData::from(json_decode($this->address, true));
 
-            $value = str_ireplace(', Italia', '', (string) $value);
+            $value = str_ireplace(', Italia', '', $geo->value);
             // Call to function is_array() with string will always evaluate to false.
             // if (\is_array($value)) {
             //    $value = implode(' ', $value);
             // }
-            if (isset($street_number)) {
-                $str = $street_number.', ';
-                $before = Str::before($value, $str);
-                $after = Str::after($value, $str);
-                $value = $before.$str.''.($postal_code ?? '').', '.$after;
+            if (isset($geo->street_number)) {
+                $str = $geo->street_number.', ';
+                $before = Str::before($geo->value, $str);
+                $after = Str::after($geo->value, $str);
+                $value = $before.$str.''.($geo->postal_code ?? '').', '.$after;
 
                 return $value;
             }
-            if (isset($administrative_area_level_3)) {
-                $str = ', '.$administrative_area_level_3;
-                $before = Str::before($value, $str);
-                $after = Str::after($value, $str);
-                $value = $before.', '.($postal_code ?? '').''.$str.''.$after;
+            if (isset($geo->administrative_area_level_3)) {
+                $str = ', '.$geo->administrative_area_level_3;
+                $before = Str::before($geo->value, $str);
+                $after = Str::after($geo->value, $str);
+                $value = $before.', '.($geo->postal_code ?? '').''.$str.''.$after;
 
                 return $value;
             }

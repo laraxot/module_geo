@@ -220,19 +220,19 @@ where zone_polygon IS NOT NULL
             /*
              * @var array<string, mixed>
              */
-            //$json = json_decode($value, true);
-            //$json['latitude'] = $json['latlng']['lat'];
-            //$json['longitude'] = $json['latlng']['lng'];
+            // $json = json_decode($value, true);
+            // $json['latitude'] = $json['latlng']['lat'];
+            // $json['longitude'] = $json['latlng']['lng'];
 
             $geo = GeoData::from(json_decode($value, true));
             $latlng = $geo->latlng;
             $lat = $latlng['lat'];
             $lng = $latlng['lng'];
 
-            //unset($json['latlng'], $json['value']);
-            //$this->attributes = array_merge($this->attributes, $json);
-            $this->attributes['latitude']=$lat;
-            $this->attributes['longitude']=$lng;
+            // unset($json['latlng'], $json['value']);
+            // $this->attributes = array_merge($this->attributes, $json);
+            $this->attributes['latitude'] = $lat;
+            $this->attributes['longitude'] = $lng;
             if (! isset($this->attributes['full_address'])) {
                 $this->attributes['full_address'] = ',,';
             }

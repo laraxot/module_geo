@@ -25,7 +25,7 @@ class FormSearchAddressCategories extends Component {
     public int $warningCivicNumber = 0;
 
     public function mount($attributes, $slot) {
-        $this->emitTo('theme::modals.dialog', 'showModal');
+        $this->emitTo('ui::modals.dialog', 'showModal');
 
         $this->attributes = (string) $attributes;
         $this->slot = (string) $slot;

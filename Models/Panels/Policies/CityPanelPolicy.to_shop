@@ -1,8 +1,0 @@
-<?php
-
-namespace Modules\Geo\Models\Panels\Policies;
-
-use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
-
-class CityPanelPolicy extends XotBasePanelPolicy {
-}

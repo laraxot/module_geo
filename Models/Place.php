@@ -14,107 +14,109 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Modules\Geo\Models\Place.
  *
- * @property int $id
- * @property string|null $post_type
- * @property int|null $post_id
- * @property string|null $formatted_address
- * @property string|null $latitude
- * @property string|null $longitude
- * @property string|null $premise
- * @property string|null $premise_short
- * @property string|null $locality
- * @property string|null $locality_short
- * @property string|null $postal_town
- * @property string|null $postal_town_short
- * @property string|null $administrative_area_level_3
- * @property string|null $administrative_area_level_3_short
- * @property string|null $administrative_area_level_2
- * @property string|null $administrative_area_level_2_short
- * @property string|null $administrative_area_level_1
- * @property string|null $administrative_area_level_1_short
- * @property string|null $country
- * @property string|null $country_short
- * @property string|null $street_number
- * @property string|null $street_number_short
- * @property string|null $route
- * @property string|null $route_short
- * @property string|null $postal_code
- * @property string|null $postal_code_short
- * @property string|null $googleplace_url
- * @property string|null $googleplace_url_short
- * @property string|null $point_of_interest
- * @property string|null $point_of_interest_short
- * @property string|null $political
- * @property string|null $political_short
- * @property string|null $campground
- * @property string|null $campground_short
- * @property string|null $nearest_street
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $guid
- * @property string|null $image_src
- * @property-read string|null $lang
- * @property string|null $subtitle
- * @property string|null $title
- * @property string|null $txt
- * @property-read string|null $user_handle
- * @property-read string $value
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $linked
- * @property-read \Modules\Lang\Models\Post|null $post
- * @property-read \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
- * @property-read int|null $posts_count
- * @property-write mixed $address
- * @property-write mixed $latlng
- * @property-write mixed $url
- * @method static \Modules\Geo\Database\Factories\PlaceFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Place newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Place newQuery()
+ * @property int                                                                  $id
+ * @property string|null                                                          $post_type
+ * @property int|null                                                             $post_id
+ * @property string|null                                                          $formatted_address
+ * @property string|null                                                          $latitude
+ * @property string|null                                                          $longitude
+ * @property string|null                                                          $premise
+ * @property string|null                                                          $premise_short
+ * @property string|null                                                          $locality
+ * @property string|null                                                          $locality_short
+ * @property string|null                                                          $postal_town
+ * @property string|null                                                          $postal_town_short
+ * @property string|null                                                          $administrative_area_level_3
+ * @property string|null                                                          $administrative_area_level_3_short
+ * @property string|null                                                          $administrative_area_level_2
+ * @property string|null                                                          $administrative_area_level_2_short
+ * @property string|null                                                          $administrative_area_level_1
+ * @property string|null                                                          $administrative_area_level_1_short
+ * @property string|null                                                          $country
+ * @property string|null                                                          $country_short
+ * @property string|null                                                          $street_number
+ * @property string|null                                                          $street_number_short
+ * @property string|null                                                          $route
+ * @property string|null                                                          $route_short
+ * @property string|null                                                          $postal_code
+ * @property string|null                                                          $postal_code_short
+ * @property string|null                                                          $googleplace_url
+ * @property string|null                                                          $googleplace_url_short
+ * @property string|null                                                          $point_of_interest
+ * @property string|null                                                          $point_of_interest_short
+ * @property string|null                                                          $political
+ * @property string|null                                                          $political_short
+ * @property string|null                                                          $campground
+ * @property string|null                                                          $campground_short
+ * @property string|null                                                          $nearest_street
+ * @property string|null                                                          $created_by
+ * @property string|null                                                          $updated_by
+ * @property string|null                                                          $deleted_by
+ * @property \Illuminate\Support\Carbon|null                                      $created_at
+ * @property \Illuminate\Support\Carbon|null                                      $updated_at
+ * @property string|null                                                          $guid
+ * @property string|null                                                          $image_src
+ * @property string|null                                                          $lang
+ * @property string|null                                                          $subtitle
+ * @property string|null                                                          $title
+ * @property string|null                                                          $txt
+ * @property string|null                                                          $user_handle
+ * @property string                                                               $value
+ * @property \Illuminate\Database\Eloquent\Model|\Eloquent                        $linked
+ * @property \Modules\Lang\Models\Post|null                                       $post
+ * @property \Illuminate\Database\Eloquent\Collection|\Modules\Lang\Models\Post[] $posts
+ * @property int|null                                                             $posts_count
+ * @property mixed                                                                $address
+ * @property mixed                                                                $latlng
+ * @property mixed                                                                $url
+ *
+ * @method static \Modules\Geo\Database\Factories\PlaceFactory        factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang ofItem(string $guid)
- * @method static \Illuminate\Database\Eloquent\Builder|Place query()
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel1Short($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel2Short($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel3($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereAdministrativeAreaLevel3Short($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCampground($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCampgroundShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCountryShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereFormattedAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereGoogleplaceUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereGoogleplaceUrlShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereLatitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereLocality($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereLocalityShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereLongitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereNearestStreet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePointOfInterest($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePointOfInterestShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePolitical($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePoliticalShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostalCodeShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostalTown($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePostalTownShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePremise($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place wherePremiseShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereRoute($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereRouteShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereStreetNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereStreetNumberShort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Place whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel1Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel2Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereAdministrativeAreaLevel3Short($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCampground($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCampgroundShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCountryShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereFormattedAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereGoogleplaceUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereGoogleplaceUrlShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLocality($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLocalityShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereLongitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereNearestStreet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePointOfInterest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePointOfInterestShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePolitical($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePoliticalShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalCodeShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalTown($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePostalTownShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePremise($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         wherePremiseShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereRoute($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereRouteShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereStreetNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereStreetNumberShort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Place         whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModelLang withPost(string $guid)
+ *
  * @mixin \Eloquent
  */
 class Place extends BaseModelLang {

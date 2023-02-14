@@ -89,14 +89,15 @@ class Event extends BaseModelLang {
         'date_end' => 'datetime:Y-m-d\TH:i',
     ];
 
-    /**
+    /*
      * Create a new factory instance for the model.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
+     
     protected static function newFactory() {
         return EventFactory::new();
     }
+    */
 
     // ----- relationship -----
 

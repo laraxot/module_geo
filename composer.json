@@ -28,6 +28,7 @@
         "php": "^8.1",
         "illuminate/contracts": "^8.83|^9.30",
         "illuminate/support": "^9.12",
+        "laraxot/module_lang": "*",
         "laraxot/module_xot": "dev-master",
         "livewire/livewire": "^2.10",
         "phpdocumentor/type-resolver": "^1.5",
@@ -76,5 +77,9 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [{
+        "type": "composer",
+        "url": "https://wire-elements-pro.composer.sh"
+    }]
 }

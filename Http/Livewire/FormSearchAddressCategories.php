@@ -12,6 +12,7 @@ namespace Modules\Geo\Http\Livewire;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Session\SessionManager;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 use Modules\Xot\Services\ActionService;
 
 /**
@@ -57,7 +58,7 @@ class FormSearchAddressCategories extends Component {
         /**
          * @phpstan-var view-string
          */
-        $view = 'geo::livewire.form_search_address_categories';
+        $view = app(GetViewAction::class)->execute();
         $view_params = [
             'view' => $view,
         ];

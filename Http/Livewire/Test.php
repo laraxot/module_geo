@@ -11,6 +11,7 @@ namespace Modules\Geo\Http\Livewire;
 
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
 
 class Test extends Component {
     /*
@@ -19,7 +20,7 @@ class Test extends Component {
     // public $lookup;
 
     public function render(): Renderable {
-        $view = 'geo::livewire.test';
+        $view = app(GetViewAction::class)->execute();
         $view_params = [
             'view' => $view,
         ];

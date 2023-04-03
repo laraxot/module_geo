@@ -33,13 +33,15 @@ use Modules\Cms\Services\PanelService as Panel;
  * @property float       $latitude
  * @property float       $longitude
  */
-class GeoJsonResource extends ResCollection {
+class GeoJsonResource extends ResCollection
+{
     /**
      * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         $lang = app()->getLocale();
 
         return [

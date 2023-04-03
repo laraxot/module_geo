@@ -10,7 +10,8 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 /**
  * Class GeoServiceProvider.
  */
-class GeoServiceProvider extends XotBaseServiceProvider {
+class GeoServiceProvider extends XotBaseServiceProvider
+{
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;

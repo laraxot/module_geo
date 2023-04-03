@@ -16,12 +16,14 @@ use Modules\Xot\Services\ImportService;
 /**
  * Class GetLatitudeLongitudeAction.
  */
-class GetLatitudeLongitudeAction extends XotBasePanelAction {
+class GetLatitudeLongitudeAction extends XotBasePanelAction
+{
     public bool $onContainer = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
 
-    public function handle(): void {
+    public function handle(): void
+    {
         if (! method_exists($this->rows, 'whereRaw')) {
             throw new \Exception('in ['.\get_class($this->rows).'] method [whereRaw] not exists');
         }

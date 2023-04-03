@@ -14,7 +14,8 @@ use Modules\Geo\Transformers\GeoJsonCollection;
 /**
  * Class MakeGeoJsonFileAction.
  */
-class MakeGeoJsonFileAction extends XotBasePanelAction {
+class MakeGeoJsonFileAction extends XotBasePanelAction
+{
     public bool $onContainer = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
@@ -22,7 +23,8 @@ class MakeGeoJsonFileAction extends XotBasePanelAction {
     /**
      * @return GeoJsonCollection
      */
-    public function handle() {
+    public function handle()
+    {
         if (! method_exists($this->rows, 'getModel')) {
             throw new \Exception('method getModel is missing ['.__LINE__.']['.__FILE__.']');
         }

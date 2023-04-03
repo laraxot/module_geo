@@ -36,7 +36,8 @@ use Modules\Geo\Services\GeoService;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
-trait GeoTrait {
+trait GeoTrait
+{
     /*
      * @return array
 
@@ -53,11 +54,13 @@ trait GeoTrait {
 
     // --- functions ----
 
-    public function distance(?float $lat = null, ?float $lng = null): ?float {
+    public function distance(?float $lat = null, ?float $lng = null): ?float
+    {
         return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
     }
 
-    public function distanceCustomField(string $lat_field, string $lng_field, ?float $lat = null, ?float $lng = null, ?string $unit = ''): ?float {
+    public function distanceCustomField(string $lat_field, string $lng_field, ?float $lat = null, ?float $lng = null, ?string $unit = ''): ?float
+    {
         return (float) GeoService::distance((float) $this->{$lat_field}, (float) $this->{$lng_field}, $lat, $lng, $unit);
     }
 
@@ -68,7 +71,8 @@ trait GeoTrait {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithDistance($query, float $lat, float $lng) {
+    public function scopeWithDistance($query, float $lat, float $lng)
+    {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::haversine($lat, $lng);
@@ -85,7 +89,8 @@ trait GeoTrait {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng) {
+    public function scopeWithDistanceCustomField($query, string $lat_field, string $lng_field, float $lat, float $lng)
+    {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
@@ -102,7 +107,8 @@ trait GeoTrait {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOfInPolygon($query, string $polygon_field, float $lat, float $lng) {
+    public function scopeOfInPolygon($query, string $polygon_field, float $lat, float $lng)
+    {
         // (concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
         // errore poligono non chiuso
         /*
@@ -157,7 +163,8 @@ where zone_polygon IS NOT NULL
 
     // ---- mutators ----
 
-    public function getAddress(): string {
+    public function getAddress(): string
+    {
         if ('' === $this->country) {
             $this->country = 'Italia';
         }
@@ -165,7 +172,8 @@ where zone_polygon IS NOT NULL
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
-    public function getLatitudeAttribute(?float $value): ?float {
+    public function getLatitudeAttribute(?float $value): ?float
+    {
         if (null !== $value) {
             return $value;
         }
@@ -213,7 +221,8 @@ where zone_polygon IS NOT NULL
      *
      * @param mixed $value
      */
-    public function setAddressAttribute($value): void {
+    public function setAddressAttribute($value): void
+    {
         // *
 
         if (is_string($value) && isJson($value)) {
@@ -297,7 +306,8 @@ where zone_polygon IS NOT NULL
     /**
      * ---.
      */
-    public function getFullAddressAttribute(?string $value): ?string {
+    public function getFullAddressAttribute(?string $value): ?string
+    {
         if (null === $this->address) {
             return null;
         }

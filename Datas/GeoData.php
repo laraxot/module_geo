@@ -6,7 +6,8 @@ namespace Modules\Geo\Datas;
 
 use Spatie\LaravelData\Data;
 
-class GeoData extends Data {
+class GeoData extends Data
+{
     public array $latlng;
     public string $route;
     public string $street_number;

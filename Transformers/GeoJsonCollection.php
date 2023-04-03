@@ -14,7 +14,8 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 /**
  * Class GeoJsonCollection.
  */
-class GeoJsonCollection extends ResourceCollection {
+class GeoJsonCollection extends ResourceCollection
+{
     /**
      * @var string
      */
@@ -25,7 +26,8 @@ class GeoJsonCollection extends ResourceCollection {
      *
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         return [
             'type' => 'FeatureCollection',
             'features' => $this->collection,

@@ -6,5 +6,6 @@ namespace Modules\Geo\Models\Panels\Policies;
 
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 
-class GeoNamesCapPanelPolicy extends XotBasePanelPolicy {
+class GeoNamesCapPanelPolicy extends XotBasePanelPolicy
+{
 }

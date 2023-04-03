@@ -54,7 +54,8 @@ use Modules\Geo\Models\Traits\HasPlaceTrait;
  *
  * @mixin \Eloquent
  */
-class Event extends BaseModelLang {
+class Event extends BaseModelLang
+{
     use HasFactory;
     use HasPlaceTrait;
 

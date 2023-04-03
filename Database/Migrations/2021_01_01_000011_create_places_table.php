@@ -13,13 +13,15 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreatePlacesTable.
  */
-class CreatePlacesTable extends XotBaseMigration {
+class CreatePlacesTable extends XotBaseMigration
+{
     /**
      * db up.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

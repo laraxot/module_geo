@@ -7,11 +7,13 @@ namespace Modules\Geo\View\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 
-class FormSearchAddressCategories extends Component {
+class FormSearchAddressCategories extends Component
+{
     /**
      * Undocumented function.
      */
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         /**
          * @phpstan-var view-string
          */

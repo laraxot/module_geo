@@ -119,7 +119,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *
  * @mixin \Eloquent
  */
-class Place extends BaseModelLang {
+class Place extends BaseModelLang
+{
     use HasFactory;
 
     /**
@@ -163,7 +164,8 @@ class Place extends BaseModelLang {
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory() {
+    protected static function newFactory()
+    {
         return \Modules\Geo\Database\Factories\PlaceFactory::new();
     }
 
@@ -198,18 +200,21 @@ class Place extends BaseModelLang {
      *
      * @return string
      */
-    public function getValueAttribute($value) {
+    public function getValueAttribute($value)
+    {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function linked() {
+    public function linked()
+    {
         return $this->morphTo('post');
     }
 
-    public function setLatlngAttribute(array $value): void {
+    public function setLatlngAttribute(array $value): void
+    {
         $this->attributes['latitude'] = $value['lat'];
         $this->attributes['longitude'] = $value['lng'];
         unset($this->attributes['latlng']);
@@ -220,7 +225,8 @@ class Place extends BaseModelLang {
      *
      * @param string|array $value
      */
-    public function setAddressAttribute($value): void {
+    public function setAddressAttribute($value): void
+    {
         if (\is_string($value) && isJson($value)) {
             $json = (array) json_decode($value);
             $latlng = $json['latlng'];

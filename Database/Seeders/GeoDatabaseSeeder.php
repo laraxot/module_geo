@@ -10,13 +10,15 @@ use Illuminate\Database\Seeder;
 /**
  * Class GeoDatabaseSeeder.
  */
-class GeoDatabaseSeeder extends Seeder {
+class GeoDatabaseSeeder extends Seeder
+{
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         Model::unguard();
 
         // $this->call("OthersTableSeeder");

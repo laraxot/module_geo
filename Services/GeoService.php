@@ -15,7 +15,8 @@ namespace Modules\Geo\Services;
 /**
  * Class GeoService.
  */
-class GeoService {
+class GeoService
+{
     private static ?self $_instance = null;
 
     public static string $latitude_field = 'latitude';
@@ -26,7 +27,8 @@ class GeoService {
      *
      * this method will return instance of the class
      */
-    public static function getInstance(): self {
+    public static function getInstance(): self
+    {
         if (! self::$_instance) {
             self::$_instance = new self();
         }
@@ -34,21 +36,24 @@ class GeoService {
         return self::$_instance;
     }
 
-    public static function setLatitudeField(string $latitude_field): self {
+    public static function setLatitudeField(string $latitude_field): self
+    {
         $instance = self::getInstance();
         $instance::$latitude_field = $latitude_field;
 
         return $instance;
     }
 
-    public static function setLongitudeField(string $longitude_field): self {
+    public static function setLongitudeField(string $longitude_field): self
+    {
         $instance = self::getInstance();
         $instance::$longitude_field = $longitude_field;
 
         return $instance;
     }
 
-    public static function setLatitudeLongitudeField(string $latitude_field, string $longitude_field): self {
+    public static function setLatitudeLongitudeField(string $latitude_field, string $longitude_field): self
+    {
         $instance = self::getInstance();
         $instance::$latitude_field = $latitude_field;
         $instance::$longitude_field = $longitude_field;
@@ -83,7 +88,8 @@ class GeoService {
     /* ::                                                                         : */
     /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 
-    public static function distance(?float $lat1, ?float $lon1, ?float $lat2, ?float $lon2, ?string $unit): ?float {
+    public static function distance(?float $lat1, ?float $lon1, ?float $lat2, ?float $lon2, ?string $unit): ?float
+    {
         if (($lat1 === $lat2) && ($lon1 === $lon2)) {
             return 0;
         }
@@ -127,7 +133,8 @@ class GeoService {
      *
      * @return string
      */
-    public static function haversine($latitude, $longitude) {
+    public static function haversine($latitude, $longitude)
+    {
         return '(6371 * acos(cos(radians('.$latitude.'))
         * cos(radians(`'.self::$latitude_field.'`))
         * cos(radians(`'.self::$longitude_field.'`)
@@ -139,7 +146,8 @@ class GeoService {
     /**
      * Undocumented function.
      */
-    public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool {
+    public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
+    {
         $i = $j = $c = 0;
         $points_polygon = \count($polygon) - 1;
 
@@ -158,7 +166,8 @@ class GeoService {
         return (bool) $c;
     }
 
-    public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool {
+    public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool
+    {
         if (empty($polygon)) {
             return false;
         }

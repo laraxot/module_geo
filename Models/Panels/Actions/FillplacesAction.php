@@ -13,12 +13,14 @@ use Modules\Geo\Models\Place;
 /**
  * Class SyncInputs.
  */
-class FillplacesAction extends XotBasePanelAction {
+class FillplacesAction extends XotBasePanelAction
+{
     public bool $onContainer = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-sync"></i>';
 
-    public function handle() {
+    public function handle()
+    {
         Place::whereRaw('1=1')->delete();
         $rows = Place::factory()->count(10)->create();
 

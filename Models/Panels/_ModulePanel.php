@@ -6,8 +6,10 @@ namespace Modules\Geo\Models\Panels;
 
 use Modules\Cms\Models\Panels\XotBasePanel;
 
-class _ModulePanel extends XotBasePanel {
-    public function actions(): array {
+class _ModulePanel extends XotBasePanel
+{
+    public function actions(): array
+    {
         return [
             new Actions\TestAction(),
         ];

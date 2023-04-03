@@ -13,13 +13,15 @@ use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Modules\Cms\Actions\GetViewAction;
 
-class Test extends Component {
+class Test extends Component
+{
     /*
      * Lookup intermediary.
      */
     // public $lookup;
 
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         $view = app(GetViewAction::class)->execute();
         $view_params = [
             'view' => $view,

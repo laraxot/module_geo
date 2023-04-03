@@ -12,12 +12,14 @@ use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 /**
  * Class TestAction.
  */
-class TestAction extends XotBasePanelAction {
+class TestAction extends XotBasePanelAction
+{
     public bool $onItem = true; // onlyContainer
 
     public string $icon = '<i class="fas fa-magic"></i><i class="fas fa-map-marked-alt"></i>';
 
-    public function handle() {
+    public function handle()
+    {
         return $this->panel->out();
     }
 

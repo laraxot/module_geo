@@ -6,5 +6,6 @@ namespace Modules\Geo\Models\Panels\Policies;
 
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPolicy;
 
-class PlacePanelPolicy extends XotBasePanelPolicy {
+class PlacePanelPolicy extends XotBasePanelPolicy
+{
 }

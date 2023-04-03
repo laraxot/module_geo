@@ -11,14 +11,17 @@ use Modules\Geo\Models\Place;
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  */
-trait HasPlaceTrait {
+trait HasPlaceTrait
+{
     // ----- relationship -----
 
-    public function place(): MorphOne {
+    public function place(): MorphOne
+    {
         return $this->morphOne(Place::class, 'model');
     }
 
-    public function places(): MorphMany {
+    public function places(): MorphMany
+    {
         return $this->morphMany(Place::class, 'model');
     }
 

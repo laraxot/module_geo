@@ -17,7 +17,8 @@ use Modules\Xot\Traits\Updater;
  *
  * @mixin \Eloquent
  */
-class GeoNamesCap extends Model {
+class GeoNamesCap extends Model
+{
     // use Searchable;
     use Updater;
 

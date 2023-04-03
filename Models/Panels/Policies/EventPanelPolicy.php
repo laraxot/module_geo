@@ -15,5 +15,6 @@ Declaration of Modules\Blog\Models\Policies\EventPolicy::index(Modules\LU\Models
 /**
  * Class EventPanelPolicy.
  */
-class EventPanelPolicy extends XotBasePanelPolicy {
+class EventPanelPolicy extends XotBasePanelPolicy
+{
 }

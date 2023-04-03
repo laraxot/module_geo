@@ -11,7 +11,8 @@ use Modules\Cms\Models\Panels\XotBasePanel;
 /**
  * Class GeoNamesCapPanel.
  */
-class GeoNamesCapPanel extends XotBasePanel {
+class GeoNamesCapPanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      */
@@ -22,7 +23,8 @@ class GeoNamesCapPanel extends XotBasePanel {
      */
     public static string $title = 'title';
 
-    public function fields(): array {
+    public function fields(): array
+    {
         return [
         ];
     }

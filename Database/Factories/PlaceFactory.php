@@ -10,7 +10,8 @@ use Modules\Geo\Models\Place as Model;
 /**
  * Class ArticleFactory.
  */
-class PlaceFactory extends Factory {
+class PlaceFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -23,7 +24,8 @@ class PlaceFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
+    public function definition()
+    {
         return [
             // 'title' => $this->faker->sentence,
             // 'description' => $this->faker->paragraph,

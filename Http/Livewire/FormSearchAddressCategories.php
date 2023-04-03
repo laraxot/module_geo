@@ -18,7 +18,8 @@ use Modules\Xot\Services\ActionService;
 /**
  * Undocumented class.
  */
-class FormSearchAddressCategories extends Component {
+class FormSearchAddressCategories extends Component
+{
     // public \Illuminate\View\ComponentAttributeBag $attributes;
     // public \Illuminate\Support\HtmlString $slot;
     public string $name = 'address';
@@ -43,7 +44,8 @@ class FormSearchAddressCategories extends Component {
      *
      * @return void
      */
-    public function mount(SessionManager $session/* $attributes, $slot */) {
+    public function mount(SessionManager $session/* $attributes, $slot */)
+    {
         $this->session = $session;
         // $this->attributes = $attributes;
         // $this->slot = $slot;
@@ -54,7 +56,8 @@ class FormSearchAddressCategories extends Component {
     /**
      * Undocumented function.
      */
-    public function render(): Renderable {
+    public function render(): Renderable
+    {
         /**
          * @phpstan-var view-string
          */
@@ -71,7 +74,8 @@ class FormSearchAddressCategories extends Component {
      *
      * @return void
      */
-    public function search() {
+    public function search()
+    {
         $this->warningSuggestedAddresses = false;
         $this->warningCivicNumber = false;
         $this->showActivityTypes = false;
@@ -114,7 +118,8 @@ class FormSearchAddressCategories extends Component {
     /**
      * Undocumented function.
      */
-    public function formatAddress(): string {
+    public function formatAddress(): string
+    {
         $data = (object) $this->form_data;
 
         if (! isset($data->street_number)) {
@@ -135,7 +140,8 @@ class FormSearchAddressCategories extends Component {
      *
      * @return void
      */
-    public function placeChanged(string $val0, string $val1) {
+    public function placeChanged(string $val0, string $val1)
+    {
         $this->warningSuggestedAddresses = false;
         $this->warningCivicNumber = false;
         $this->showActivityTypes = false;
@@ -159,7 +165,8 @@ class FormSearchAddressCategories extends Component {
      *
      * @return void
      */
-    public function saveNotServed() {
+    public function saveNotServed()
+    {
         // dddx('aaa');
         // la VALIDAZIONE rompe le scatole
         // appena inizia a validare mi scompare il modal

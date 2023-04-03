@@ -14,7 +14,8 @@ use Modules\Cms\Models\Panels\Actions\XotBasePanelAction;
 /**
  * Class FindNeighborsActions.
  */
-class FindNeighborsActions extends XotBasePanelAction {
+class FindNeighborsActions extends XotBasePanelAction
+{
     public bool $onItem = true;
 
     public string $icon = '<i class="fal fa-radar"></i><i class="fas fa-list-ol"></i>';
@@ -22,7 +23,8 @@ class FindNeighborsActions extends XotBasePanelAction {
     /**
      * @return mixed
      */
-    public function handle() {
+    public function handle()
+    {
         return $this->panel->view();
     }
 }

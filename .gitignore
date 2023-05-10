@@ -1,6 +1,7 @@
 *.jar
 *.log
 *.lock
+package-lock.json
 *.phar
 .git-rewrite
 .php-cs-fixer.cache

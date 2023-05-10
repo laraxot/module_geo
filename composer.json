@@ -27,8 +27,7 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^8.83|^9.30|^10.0",
-        "illuminate/support": "^9.12",
-        "laraxot/module_lang": "*",
+        "illuminate/support": "^9.12|^10.0",
         "laraxot/module_xot": "dev-master",
         "livewire/livewire": "^2.10",
         "phpdocumentor/type-resolver": "^1.5",
@@ -46,7 +45,7 @@
         "nunomaduro/larastan": "^2.0|^1.0.3",
         "orchestra/testbench": "^6.24|^7.6",
         "pestphp/pest": "^1.22",
-        "pestphp/pest-plugin-laravel": "^1.3",
+        "pestphp/pest-plugin-laravel": "*",
         "phpstan/extension-installer": "^1.1",
         "phpunit/phpunit": "^9.3",
         "spatie/invade": "^1.0",

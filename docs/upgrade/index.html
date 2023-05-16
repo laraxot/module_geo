@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Form Search Address Categories">
+    <meta name="description" content="Aggiornamenti">
 
     <meta property="og:site_name" content="Modulo Geo" />
-    <meta property="og:title" content="Form Search Address Categories | Modulo Geo" />
-    <meta property="og:description" content="Form Search Address Categories" />
-    <meta property="og:url" content="https://laraxot.github.io/module_geo/it/docs/components/form-search-address-categories" />
+    <meta property="og:title" content="Aggiornamenti | Modulo Geo" />
+    <meta property="og:description" content="Aggiornamenti" />
+    <meta property="og:url" content="https://laraxot.github.io/module_geo/docs/upgrade" />
     <meta property="og:image" content="https://laraxot.github.io/module_geo/assets/img/logo.png" />
     <meta property="og:type" content="website" />
 
@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     
-    <title>Modulo Geo | Form Search Address Categories</title>
+    <title>Modulo Geo | Aggiornamenti</title>
 
     <link rel="home" href="https://laraxot.github.io/module_geo">
     <link rel="icon" href="/favicon.ico">
@@ -105,7 +105,7 @@
             <li class="pl-4">
             
         <a href="https://laraxot.github.io/module_geo/docs/upgrade"
-            class="lvl1   nav-menu__item hover:text-blue-500"
+            class="lvl1  active font-semibold text-blue-500 nav-menu__item hover:text-blue-500"
         >
             Aggiornamenti
         </a>
@@ -126,7 +126,7 @@
             <li class="pl-4">
             
         <a href="https://laraxot.github.io/module_geo/docs/components/form-search-address-categories"
-            class="lvl1  active font-semibold text-blue-500 nav-menu__item hover:text-blue-500"
+            class="lvl1   nav-menu__item hover:text-blue-500"
         >
             Form Search Address Categories
         </a>
@@ -138,35 +138,27 @@
         </nav>
 
         <div class="DocSearch-content w-full lg:w-3/5 break-words pb-16 lg:pl-4" v-pre>
-            <h1 id="form-search-address-categories">Form Search Address Categories</h1>
+            <h1 id="aggiornamenti">Aggiornamenti</h1>
 
-<p>Richiama a sua volta un componente livewire (quindi in "real-time") per cercare un indirizzo usando le API di Google Maps</p>
+<p>Cms onsiste in un pacchetto PHP.</p>
 
-<p>Nome Componente:</p>
+<p>Quindi per aggiornare basta dare il comando in console:</p>
 
-<pre><code class="language-php">x-form-search-address-categories
+<p>composer update laraxot/module_geo</p>
+
+<p>Assicurarsi di cancellare la cache delle viste di Laravel dopo l'aggiornamento:</p>
+
+<pre><code class="language-console">php artisan view:clear
 </code></pre>
 
-<p>Non richiede parametri</p>
+<p>Infine, se si sono pubblicati il file di configurazione o i modelli Blade, assicurarsi che le personalizzazioni siano aggiornate con i valori predefiniti.</p>
 
-<p>E' necessario utilizzare l'API Key di Google Maps, che va impostata in:</p>
+<h3>Verifica dei pacchetti installati</h3>
 
-<pre><code class="language-php">config('services.google.maps_key')
+<p>È possibile utilizzare il comando Artisan incorporato per visualizzare le versioni installate dei pacchetti:</p>
+
+<pre><code class="language-console">php artisan module_geo:show-versions
 </code></pre>
-
-<p>cioè nel file:</p>
-
-<pre><code class="language-console">config/services.php
-</code></pre>
-
-<p>Esempio:</p>
-
-<pre><code class="language-php">&lt;x-form-search-address-categories&gt;
-
-&lt;/x-form-search-address-categories&gt;
-</code></pre>
-
-<p>Per altre informazioni leggere documentazione sulle <a href="https://developers.google.com/maps/documentation/javascript/overview">API di Google Maps</a>.</p>
         </div>
     </div>
 </section>

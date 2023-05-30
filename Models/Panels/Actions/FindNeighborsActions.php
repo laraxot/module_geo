@@ -20,9 +20,6 @@ class FindNeighborsActions extends XotBasePanelAction
 
     public string $icon = '<i class="fal fa-radar"></i><i class="fas fa-list-ol"></i>';
 
-    /**
-     * @return mixed
-     */
     public function handle()
     {
         return $this->panel->view();

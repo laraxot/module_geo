@@ -172,8 +172,6 @@ class Place extends BaseModelLang
     // ----- mutators -----
 
     /**
-     * @param mixed $value
-     *
      * @throws \Exception
      */
     /*
@@ -196,8 +194,6 @@ class Place extends BaseModelLang
     */
 
     /**
-     * @param mixed $value
-     *
      * @return string
      */
     public function getValueAttribute($value)

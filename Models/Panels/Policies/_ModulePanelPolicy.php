@@ -14,4 +14,9 @@ class _ModulePanelPolicy extends XotBasePanelPolicy
     {
         return true;
     }
+
+    public function runLocationService(UserContract $user, PanelContract $panel): bool
+    {
+        return true;
+    }
 }

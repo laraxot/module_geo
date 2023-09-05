@@ -12,6 +12,7 @@ class _ModulePanel extends XotBasePanel
     {
         return [
             new Actions\TestAction(),
+            new Actions\RunLocationServiceAction(),
         ];
     }
 }

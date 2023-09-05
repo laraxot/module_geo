@@ -1,4 +1,4 @@
 @extends('adm_theme::layouts.app')
 @section('content')
-  TEST
+    <livewire:select-address />
 @endsection

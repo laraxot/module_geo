@@ -48,6 +48,7 @@ class HereService
         }
 
         $summary = $json['routes'][0]['sections']['0']['summary'];
+
         // dddx(['A' => $lat1.','.$lon1, 'B' => $lat2.','.$lon2, 'summary' => $summary]);
         /*
          "duration" => 0

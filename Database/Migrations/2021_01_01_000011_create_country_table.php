@@ -10,9 +10,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
- * Class CreateRegionsTable.
+ * Class CreateCountryTable.
  */
-class CreateRegionsTable extends XotBaseMigration
+class CreateCountryTable extends XotBaseMigration
 {
     /**
      * db up.

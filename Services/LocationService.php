@@ -58,9 +58,9 @@ class LocationService
 
         foreach ($data as $datum) {
             if (Str::endsWith($model, 'Region')) {
-                $datum = ['name' => $datum];
+                $datum = ['name' => $datum, 'country' => 'Italia'];
             } elseif (Str::endsWith($model, 'Province')) {
-                $datum = ['code' => $datum['codice'], 'name' => $datum['nome'], 'abbreviation' => $datum['sigla'], 'region' => $datum['regione']];
+                $datum = ['code' => $datum['codice'], 'name' => $datum['nome'], 'abbreviation' => $datum['sigla'], 'region' => $datum['regione'], 'country' => 'Italia'];
             } elseif (Str::endsWith($model, 'Municipality')) {
                 $datum = [
                     'code' => $datum['codice'],
@@ -70,7 +70,9 @@ class LocationService
                     'postal_code' => $datum['cap'],
                     'prefix' => $datum['prefisso'],
                     'province_name' => $datum['provincia']['nome'],
+                    'province_abbreviation' => Province::firstWhere('name', $datum['provincia']['nome'])->abbreviation,
                     'region_name' => $datum['provincia']['regione'],
+                    'country_name' => 'Italia',
                     'email' => $datum['email'],
                     'certified_email' => $datum['pec'],
                     'phone' => $datum['telefono'],

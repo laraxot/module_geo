@@ -13,15 +13,11 @@ class Province extends Model
         'name',
         'abbreviation',
         'region',
+        'country',
     ];
-
-    public function region()
-    {
-        return $this->belongsTo(Region::class, 'region', 'name');
-    }
 
     public function municipalities()
     {
-        return $this->hasMany(Municipality::class, 'province_name', 'name');
+        return $this->hasMany(Municipality::class, 'province_abbreviation', 'abbreviation');
     }
 }

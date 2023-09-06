@@ -16,7 +16,9 @@ class Municipality extends Model
         'postal_code',
         'prefix',
         'province_name',
+        'province_abbreviation',
         'region_name',
+        'country_name',
         'email',
         'certified_email',
         'phone',
@@ -25,7 +27,7 @@ class Municipality extends Model
         'longitude',
     ];
 
-    public function province()
+    /*public function province()
     {
         return $this->belongsTo(Province::class, 'province_name', 'name');
     }
@@ -33,5 +35,5 @@ class Municipality extends Model
     public function region()
     {
         return $this->belongsTo(Region::class, 'region_name', 'name');
-    }
+    }*/
 }

@@ -30,7 +30,9 @@ class CreateMunicipalitiesTable extends XotBaseMigration
                 $table->string('postal_code', 10);
                 $table->string('prefix', 10);
                 $table->string('province_name');
+                $table->string('country_name');
                 $table->string('region_name');
+
                 $table->string('email')->nullable();
                 $table->string('certified_email');
                 $table->string('phone', 20)->nullable();
@@ -47,7 +49,12 @@ class CreateMunicipalitiesTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
-                $table->string('prefix', 10)->nullable()->change();
+                if (! $this->hasColumn('country_name')) {
+                    $table->text('country_name');
+                }
+                if (! $this->hasColumn('province_abbreviation')) {
+                    $table->text('province_abbreviation');
+                }
             }
         );
     }

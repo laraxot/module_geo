@@ -1,4 +1,7 @@
 <?php
+/**
+ * Syntax error or access violation: 1118 Row size too large. The maximum row size for the used table type, not counting BLOBs, is 8126. This includes storage overhead, check the manual. You have to change some columns to TEXT or BLOBs (SQL: alter table `places` add `address` text null).
+ */
 
 declare(strict_types=1);
 
@@ -7,9 +10,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
- * Class CreateProvincesTable.
+ * Class CreateRegionsTable.
  */
-class CreateProvincesTable extends XotBaseMigration
+class CreateRegionsTable extends XotBaseMigration
 {
     /**
      * db up.
@@ -22,10 +25,7 @@ class CreateProvincesTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->increments('id');
-                $table->text('code');
                 $table->text('name');
-                $table->text('abbreviation');
-                $table->text('region');
 
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
@@ -37,6 +37,9 @@ class CreateProvincesTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
+                if (! $this->hasColumn('country')) {
+                    $table->text('country');
+                }
             }
         );
     }

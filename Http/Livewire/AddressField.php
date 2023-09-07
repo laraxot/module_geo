@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Http\Livewire;
 
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Modules\Cms\Actions\GetViewAction;
@@ -33,12 +32,10 @@ class AddressField extends Component
 
         if ('country' == $name) {
             $this->getList();
-            $this->form_data[$this->name] = 'Italia';
-            $this->selected();
         }
     }
 
-    public function getList($key = '', $previous = '')
+    public function getList(array $params = [])
     {
         $models = config('morph_map');
 
@@ -49,34 +46,53 @@ class AddressField extends Component
         $model = $models[$this->name];
 
         if ('country' == $this->name) {
-            $this->select_list = $model::get()->pluck('name', 'name')->toArray();
+            $this->select_list = array_merge(['' => '---------'], $model::get()->pluck('name', 'name')->toArray());
+        } elseif ([] == $params) {
+            $this->select_list = ['' => '---------'];
         } else {
-            $this->select_list = $model::where($previous, $key)->get()->pluck('name', 'name')->toArray();
+            $this->select_list = array_merge(['' => '---------'], $model::where($params['next_field'], $params['current_value'])->get()->pluck('name', 'name')->toArray());
         }
     }
 
     public function selectedListener($params)
     {
-        extract($params);
-
-        if ($type == $this->name) {
-            $this->getList($key, $previous);
+        if (isset($params['next_class'])) {
+            if ($params['next_class'] == $this->name) {
+                $this->getList($params);
+                $this->form_data = [];
+            } elseif ('municipality' == $this->name) {
+                if ('province' == $params['next_class'] || 'region' == $params['next_class']) {
+                    $this->form_data[$this->name] = '';
+                    $this->getList([]);
+                }
+            } elseif ('province' == $this->name) {
+                if ('region' == $params['next_class']) {
+                    $this->form_data[$this->name] = '';
+                    $this->getList([]);
+                }
+            }
         }
     }
 
     public function selected()
     {
+        $params = [];
+        $params['current_name'] = $this->name;
+        $params['current_value'] = $this->form_data[$this->name];
         if ('country' == $this->name) {
-            $nextSelect = 'region';
+            $params['next_class'] = 'region';
+            $params['next_field'] = 'country';
         } elseif ('region' == $this->name) {
-            $nextSelect = 'province';
+            $params['next_class'] = 'province';
+            $params['next_field'] = 'region';
         } elseif ('province' == $this->name) {
-            $nextSelect = 'municipality';
+            $params['next_class'] = 'municipality';
+            $params['next_field'] = 'province_name';
         }
 
-        Debugbar::info($nextSelect);
-
-        $this->emitTo('address-field', 'selected', ['previous' => $this->name, 'type' => $nextSelect, 'key' => $this->form_data[$this->name]]);
+        if ([] != $params) {
+            $this->emitTo('address-field', 'selected', $params);
+        }
     }
 
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Http\Livewire;
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 use Modules\Cms\Actions\GetViewAction;
@@ -21,18 +22,41 @@ class AddressField extends Component
     public array $form_data = [];
     public array $select_list = [];
     public string $name;
+    public array $data = [];
 
-    protected $listeners = ['selected' => 'selectedListener'];
+    protected $listeners = ['updateFormData' => 'updateFormData'];
 
-    public function mount(string $name)
+    public function mount(string $name, array $data)
     {
         $this->name = $name;
 
         $this->select_list = [];
 
-        if ('country' == $name) {
-            $this->getList();
+        if ([] != $data) {
+            $this->updateFormData($data);
         }
+
+        $this->getList();
+    }
+
+    public function updateFormData(array $data)
+    {
+        switch ($this->name) {
+            case 'country':
+                $data['region'] = '';
+                $data['province'] = '';
+                $data['municipality'] = '';
+                break;
+            case 'region':
+                $data['province'] = '';
+                $data['municipality'] = '';
+                break;
+            case 'province':
+                $data['municipality'] = '';
+                break;
+        }
+        $this->form_data = array_merge($this->form_data, $data);
+        $this->getList();
     }
 
     public function getList(array $params = [])
@@ -46,53 +70,21 @@ class AddressField extends Component
         $model = $models[$this->name];
 
         if ('country' == $this->name) {
-            $this->select_list = array_merge(['' => '---------'], $model::get()->pluck('name', 'name')->toArray());
-        } elseif ([] == $params) {
-            $this->select_list = ['' => '---------'];
-        } else {
-            $this->select_list = array_merge(['' => '---------'], $model::where($params['next_field'], $params['current_value'])->get()->pluck('name', 'name')->toArray());
+            $this->select_list = array_merge(['' => '----'], $model::get()->pluck('name', 'name')->toArray());
+        } elseif ('region' == $this->name && isset($this->form_data['country'])) {
+            $this->select_list = array_merge(['' => '----'], $model::where('country', $this->form_data['country'])->get()->pluck('name', 'name')->toArray());
+        } elseif ('province' == $this->name && isset($this->form_data['region'])) {
+            $this->select_list = array_merge(['' => '----'], $model::where('region', $this->form_data['region'])->get()->pluck('abbreviation', 'abbreviation')->toArray());
+            $this->form_data['municipality'] = '';
+        } elseif ('municipality' == $this->name && isset($this->form_data['province'])) {
+            $this->select_list = array_merge(['' => '----'], $model::where('province_abbreviation', $this->form_data['province'])->get()->pluck('name', 'name')->toArray());
         }
     }
 
-    public function selectedListener($params)
+    public function updated($name, $value)
     {
-        if (isset($params['next_class'])) {
-            if ($params['next_class'] == $this->name) {
-                $this->getList($params);
-                $this->form_data = [];
-            } elseif ('municipality' == $this->name) {
-                if ('province' == $params['next_class'] || 'region' == $params['next_class']) {
-                    $this->form_data[$this->name] = '';
-                    $this->getList([]);
-                }
-            } elseif ('province' == $this->name) {
-                if ('region' == $params['next_class']) {
-                    $this->form_data[$this->name] = '';
-                    $this->getList([]);
-                }
-            }
-        }
-    }
-
-    public function selected()
-    {
-        $params = [];
-        $params['current_name'] = $this->name;
-        $params['current_value'] = $this->form_data[$this->name];
-        if ('country' == $this->name) {
-            $params['next_class'] = 'region';
-            $params['next_field'] = 'country';
-        } elseif ('region' == $this->name) {
-            $params['next_class'] = 'province';
-            $params['next_field'] = 'region';
-        } elseif ('province' == $this->name) {
-            $params['next_class'] = 'municipality';
-            $params['next_field'] = 'province_name';
-        }
-
-        if ([] != $params) {
-            $this->emitTo('address-field', 'selected', $params);
-        }
+        $this->emit('updateFormData', $this->form_data);
+        // Debugbar::info($this->form_data);
     }
 
     /**

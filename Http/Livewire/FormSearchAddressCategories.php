@@ -15,6 +15,9 @@ use Livewire\Component;
 use Modules\Cms\Actions\GetViewAction;
 use Modules\Xot\Services\ActionService;
 
+use function Safe\json_decode;
+use function Safe\json_encode;
+
 /**
  * Undocumented class.
  */

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use function Safe\json_decode;
+
 // https://www.geodatasource.com/world-cities-database/free
 // https://mikepolatoglou.com/geospatial-mysql-laravel-53
 // https://github.com/malhal/Laravel-Geographical

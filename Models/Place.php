@@ -8,6 +8,9 @@ namespace Modules\Geo\Models;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use function Safe\json_decode;
+use function Safe\json_encode;
+
 // use Modules\Geo\Database\Factories\PlaceFactory;
 // use Modules\Xot\Services\ImportService;
 

@@ -10,6 +10,8 @@ use Modules\Geo\Models\Municipality;
 use Modules\Geo\Models\Province;
 use Modules\Geo\Models\Region;
 
+use function Safe\json_decode;
+
 class LocationService
 {
     private Client $client;

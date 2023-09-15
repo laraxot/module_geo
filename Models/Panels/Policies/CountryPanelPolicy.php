@@ -1,11 +1,11 @@
 <?php
-namespace Modules\Geo\Models\Panels\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\LU\Models\User as User;
-use Modules\Geo\Models\Panels\Policies\CountryPanelPolicy as Post; 
+declare(strict_types=1);
+
+namespace Modules\Geo\Models\Panels\Policies;
 
 use Modules\Cms\Models\Panels\Policies\XotBasePanelPermissionPolicy;
 
-class CountryPanelPolicy extends XotBasePanelPermissionPolicy {
+class CountryPanelPolicy extends XotBasePanelPermissionPolicy
+{
 }

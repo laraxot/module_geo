@@ -9,13 +9,15 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateMunicipalitiesTable.
  */
-class CreateMunicipalitiesTable extends XotBaseMigration {
+class CreateMunicipalitiesTable extends XotBaseMigration
+{
     /**
      * db up.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {

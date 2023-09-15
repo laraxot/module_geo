@@ -9,15 +9,13 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateMunicipalitiesTable.
  */
-class CreateMunicipalitiesTable extends XotBaseMigration
-{
+class CreateMunicipalitiesTable extends XotBaseMigration {
     /**
      * db up.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
@@ -55,6 +53,10 @@ class CreateMunicipalitiesTable extends XotBaseMigration
                 if (! $this->hasColumn('province_abbreviation')) {
                     $table->text('province_abbreviation');
                 }
+
+                $table->text('certified_email')->nullable()->change();
+
+                $table->string('prefix', 10)->nullable()->change();
             }
         );
     }

@@ -74,7 +74,7 @@ class ProvincePanel extends XotBasePanel
         return [];
     }
 
-    public function filters(Request $request = null): array
+    public function filters(?Request $request = null): array
     {
         return [];
     }

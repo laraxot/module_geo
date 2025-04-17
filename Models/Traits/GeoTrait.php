@@ -54,12 +54,12 @@ trait GeoTrait
 
     // --- functions ----
 
-    public function distance(float $lat = null, float $lng = null): ?float
+    public function distance(?float $lat = null, ?float $lng = null): ?float
     {
         return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
     }
 
-    public function distanceCustomField(string $lat_field, string $lng_field, float $lat = null, float $lng = null, ?string $unit = ''): ?float
+    public function distanceCustomField(string $lat_field, string $lng_field, ?float $lat = null, ?float $lng = null, ?string $unit = ''): ?float
     {
         return (float) GeoService::distance((float) $this->{$lat_field}, (float) $this->{$lng_field}, $lat, $lng, $unit);
     }

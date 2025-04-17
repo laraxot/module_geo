@@ -30,8 +30,8 @@ use Modules\Geo\Models\Traits\HasPlaceTrait;
  * @property string|null                                                              $title
  * @property string|null                                                              $txt
  * @property string|null                                                              $user_handle
- * @property \Modules\Geo\Models\Place|null                                           $place
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Geo\Models\Place> $places
+ * @property Place|null                                                               $place
+ * @property \Illuminate\Database\Eloquent\Collection<int, Place>                     $places
  * @property int|null                                                                 $places_count
  * @property \Modules\Lang\Models\Post|null                                           $post
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Lang\Models\Post> $posts

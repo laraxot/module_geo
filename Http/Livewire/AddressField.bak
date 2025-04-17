@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * https://forum.laravel-livewire.com/t/wire-ignore-with-google-autocomplete/734/3.
+ * $this->dispatchBrowserEvent('address:list:refresh');.
+ */
+
+declare(strict_types=1);
+
+namespace Modules\Geo\Http\Livewire;
+
+use Illuminate\Contracts\Support\Renderable;
+use Livewire\Component;
+use Modules\Cms\Actions\GetViewAction;
+
+/**
+ * Undocumented class.
+ */
+class AddressField extends Component
+{
+    public array $form_data = [];
+    public array $select_list = [];
+    public string $name;
+    public array $data = [];
+
+    protected $listeners = ['selected' => 'selectedListener'];
+
+    public function mount(string $name, array $data)
+    {
+        $this->name = $name;
+        $this->data = $data;
+
+        $this->select_list = [];
+
+        if ('country' == $name) {
+            $this->getList();
+        }
+
+        if ([] != $this->data) {
+            $this->form_data = array_merge($this->form_data, $this->data);
+            $this->selected();
+        }
+    }
+
+    public function getList(array $params = [])
+    {
+        $models = config('morph_map');
+
+        if (! isset($models[$this->name])) {
+            throw new \Exception('Model '.$this->name.' is not existing');
+        }
+
+        $model = $models[$this->name];
+
+        if ('country' == $this->name) {
+            $this->select_list = array_merge(['' => '---------'], $model::get()->pluck('name', 'name')->toArray());
+        } elseif ([] == $params) {
+            $this->select_list = ['' => '---------'];
+        } else {
+            $this->select_list = array_merge(['' => '---------'], $model::where($params['next_field'], $params['current_value'])->get()->pluck('name', 'name')->toArray());
+        }
+    }
+
+    public function selectedListener($params)
+    {
+        if (isset($params['next_class'])) {
+            if ($params['next_class'] == $this->name) {
+                $this->getList($params);
+                $this->form_data = [];
+            } elseif ('municipality' == $this->name) {
+                if ('province' == $params['next_class'] || 'region' == $params['next_class']) {
+                    $this->form_data[$this->name] = '';
+                    $this->getList([]);
+                }
+            } elseif ('province' == $this->name) {
+                if ('region' == $params['next_class']) {
+                    $this->form_data[$this->name] = '';
+                    $this->getList([]);
+                }
+            }
+        }
+    }
+
+    public function selected()
+    {
+        $params = [];
+        $params['current_name'] = $this->name;
+        $params['current_value'] = $this->form_data[$this->name];
+
+        if ('country' == $this->name) {
+            $params['next_class'] = 'region';
+            $params['next_field'] = 'country';
+        } elseif ('region' == $this->name) {
+            $params['next_class'] = 'province';
+            $params['next_field'] = 'region';
+        } elseif ('province' == $this->name) {
+            $params['next_class'] = 'municipality';
+            $params['next_field'] = 'province_name';
+        }
+
+        if ([] != $params) {
+            $this->emit('updateFormData', $this->form_data);
+            $this->emitTo('address-field', 'selected', $params);
+        }
+    }
+
+    /**
+     * Undocumented function.
+     */
+    public function render(): Renderable
+    {
+        /**
+         * @phpstan-var view-string
+         */
+        $view = app(GetViewAction::class)->execute();
+        $view_params = [
+            'view' => $view,
+        ];
+
+        return view($view, $view_params);
+    }
+}
